@@ -945,6 +945,10 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/outdoors/desert)
+"aPZ" = (
+/obj/structure/table/wood,
+/turf/open/floor/rogue/carpet/lord/left,
+/area/rogue/indoors/deserttown/manor)
 "aQj" = (
 /obj/structure/mineral_door/swing_door,
 /turf/open/floor/rogue/lightpath,
@@ -2462,8 +2466,8 @@
 /area/rogue/indoors/deserttown)
 "bUF" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
-/obj/item/clothing/under/roguetown/trou,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/obj/item/clothing/under/roguetown/sirwal/brown,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown)
 "bUI" = (
@@ -2879,8 +2883,10 @@
 /area/rogue/indoors/deserttown/garrison/cell)
 "cmv" = (
 /obj/structure/roguemachine/mail{
-	ournum = 12
+	ournum = 12;
+	mailtag = "Palace Throneroom"
 	},
+/obj/structure/rack/rogue/shelf/big,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown/manor)
 "cmL" = (
@@ -4027,6 +4033,13 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
+"dih" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
+/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown)
 "diK" = (
 /obj/structure/chair/bench/church{
 	dir = 1
@@ -4248,6 +4261,9 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/storage/roguebag,
+/obj/structure/roguemachine/mail{
+	mailtag = "Merchantry"
+	},
 /turf/open/floor/rogue/cobble,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -7493,6 +7509,8 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
+/obj/item/paper/scroll,
+/obj/item/natural/feather,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "fJz" = (
@@ -11499,6 +11517,7 @@
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/item/clothing/under/roguetown/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown)
 "jaN" = (
@@ -11531,6 +11550,19 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/bath)
+"jcl" = (
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/structure/table/wood{
+	dir = 6;
+	icon_state = "largetable"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown/tavern)
 "jcA" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/darkpath,
@@ -13154,9 +13186,8 @@
 /area/rogue/under/town/basement)
 "knJ" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
-/obj/item/clothing/under/roguetown/tights/random,
 /obj/effect/decal/cleanable/dirt/cobweb,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown)
 "knN" = (
@@ -14032,6 +14063,17 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/deserttown)
+"kWU" = (
+/obj/item/natural/feather,
+/obj/structure/table/wood{
+	dir = 5;
+	icon_state = "largetable"
+	},
+/obj/structure/roguemachine/mail{
+	mailtag = "Tavern"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown/tavern)
 "kXa" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/under/cavewet/bogcaves)
@@ -15301,7 +15343,6 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown)
 "mek" = (
-/obj/structure/roguemachine/mail,
 /obj/structure/fermentation_keg/fancypot,
 /turf/open/floor/rogue/wood/herringbone,
 /area/rogue/indoors/town/shop)
@@ -18602,7 +18643,7 @@
 "oOe" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/roguemachine/mail{
-	mailtag = "Whitevein";
+	mailtag = "Bathmaster";
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -20223,7 +20264,9 @@
 /area/rogue/indoors/inq)
 "pWK" = (
 /obj/structure/table/wood,
-/obj/structure/roguemachine/mail/r,
+/obj/structure/roguemachine/mail/r{
+	mailtag = "Magician's Tower"
+	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/deserttown/magician)
 "pXj" = (
@@ -21564,6 +21607,13 @@
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/deserttown)
+"qTt" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/obj/item/clothing/under/roguetown/sirwal/brown,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown)
 "qTI" = (
 /obj/structure/table/church/m{
 	icon_state = "churchtable_end"
@@ -22301,7 +22351,9 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/deserttown/warden)
 "rwF" = (
-/obj/structure/roguemachine/mail/r,
+/obj/structure/roguemachine/mail/r{
+	mailtag = "Physician's Office"
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/deserttown/manor)
 "rxd" = (
@@ -23193,6 +23245,9 @@
 /obj/item/reagent_containers/glass/cup/silver{
 	pixel_x = 5;
 	pixel_y = 1
+	},
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 4
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown/manor)
@@ -25748,7 +25803,9 @@
 /obj/item/paper,
 /obj/item/natural/feather,
 /obj/item/natural/feather,
-/obj/structure/roguemachine/mail/l,
+/obj/structure/roguemachine/mail/l{
+	mailtag = "Mercenary Den"
+	},
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/deserttown)
@@ -26192,6 +26249,13 @@
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/darkpath,
 /area/rogue/under/town/basement)
+"uxT" = (
+/obj/structure/roguemachine/drugmachine{
+	density = 0;
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/bath)
 "uxX" = (
 /obj/structure/bookcase/random,
 /obj/item/book/rogue/beardling,
@@ -27040,6 +27104,13 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown/tavern)
+"vfV" = (
+/obj/structure/roguemachine/scomm,
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown/manor)
 "vfY" = (
 /obj/structure/closet/crate/chest{
 	lockid = "merc"
@@ -27500,7 +27571,7 @@
 /obj/structure/table/wood/poor,
 /obj/item/natural/feather,
 /obj/structure/roguemachine/mail{
-	mailtag = "Vanguard Outpost"
+	mailtag = "Janissary Outpost"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/deserttown/warden)
@@ -27552,6 +27623,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
+"vCn" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/under/roguetown/sirwal/brown,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/deserttown)
 "vCw" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/wood,
@@ -28781,7 +28858,9 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church/basement)
 "wyp" = (
-/obj/structure/roguemachine/mail,
+/obj/structure/roguemachine/mail{
+	mailtag = "Stewardry"
+	},
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
 	pixel_y = 0
@@ -29097,8 +29176,9 @@
 /area/rogue/outdoors/deserttown)
 "wKB" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/under/roguetown/trou,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/under/roguetown/sirwal/brown,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
+/obj/item/clothing/suit/roguetown/shirt/dress/thawb/beige,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown)
 "wKC" = (
@@ -226217,7 +226297,7 @@ mxD
 mxD
 mxD
 iDI
-geu
+uxT
 geu
 nYZ
 nYZ
@@ -324981,7 +325061,7 @@ wgb
 ato
 cnF
 aVy
-bUF
+qTt
 ato
 ato
 ato
@@ -325289,7 +325369,7 @@ fSn
 iBX
 ato
 fSZ
-bUF
+vCn
 ato
 wgb
 aoQ
@@ -328909,7 +328989,7 @@ fSZ
 sBZ
 ato
 ato
-bUF
+qTt
 ato
 vxG
 sBZ
@@ -330119,7 +330199,7 @@ sBZ
 iFG
 cnF
 ato
-puQ
+dih
 sBZ
 sBZ
 diU
@@ -338165,7 +338245,7 @@ eUX
 eUX
 eUX
 foZ
-gbU
+aPZ
 gbU
 qQy
 pJL
@@ -339675,7 +339755,7 @@ eUX
 eUX
 eUX
 qDj
-mQL
+vfV
 ovf
 sco
 sco
@@ -340068,7 +340148,7 @@ bCr
 bCr
 bCr
 bCr
-hYi
+pJR
 uNB
 jbh
 jbh
@@ -340368,9 +340448,9 @@ wgb
 hYi
 kyF
 bCr
+vgv
 bCr
-bCr
-pJR
+hYi
 jbh
 jbh
 jbh
@@ -340670,8 +340750,8 @@ wgb
 hYi
 nAs
 bCr
-bCr
-vgv
+hYi
+gsH
 hYi
 jbh
 jbh
@@ -340972,9 +341052,9 @@ wgb
 hYi
 hYi
 fvW
-gsH
 hYi
-hYi
+kWU
+jcl
 jbh
 aai
 pMR
@@ -350347,7 +350427,7 @@ sBZ
 sBZ
 ato
 fSZ
-bUF
+vCn
 ato
 wgb
 aoQ
@@ -350939,7 +351019,7 @@ wgb
 wgb
 wgb
 ato
-puQ
+dih
 sBZ
 ato
 sBZ
@@ -450917,7 +450997,7 @@ ato
 mDe
 fHW
 ato
-puQ
+dih
 rMi
 ato
 aJD
@@ -452127,7 +452207,7 @@ gJh
 sBZ
 xxG
 sBZ
-bUF
+qTt
 ato
 ktu
 aoQ
