@@ -21,7 +21,7 @@
 	min_pq = 0
 	max_pq = null
 	round_contrib_points = 2
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_MINOR_NOBLE
 	cmode_music = 'sound/music/combat_zybantine.ogg'
 	allowed_maps = list("Desert Town")
 	job_subclasses = list(

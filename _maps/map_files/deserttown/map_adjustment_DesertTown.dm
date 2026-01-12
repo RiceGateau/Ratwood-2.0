@@ -13,7 +13,8 @@
 	)
 	title_adjust = list(
 		/datum/job/roguetown/marshal = list(display_title = "Mayor"),
-		/datum/job/roguetown/priest =  list(display_title = "High Priest", f_title = "High Priestess")
+		/datum/job/roguetown/priest =  list(display_title = "High Priest", f_title = "High Priestess"),
+		/datum/job/roguetown/captain = list(display_title = "Cataphract Captain"),
 	)
 	tutorial_adjust = list(
 		/datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building!!!"
@@ -24,7 +25,7 @@
 		// /datum/job/roguetown/adventurer//Adventurers (Could rename which are 'foreigners but who cares)'
 		// /datum/job/roguetown/wretch,
 		// /datum/job/roguetown/bandit,
-		/datum/job/roguetown/pilgrim, //I have Nomads in the dtvillager.dm
+		// /datum/job/roguetown/pilgrim, //I have Nomads in the dtvillager.dm //actually this makes sense as a non-zyb foreigner!
 		// /datum/job/roguetown/trader,
 		// /datum/job/roguetown/assassin,
 

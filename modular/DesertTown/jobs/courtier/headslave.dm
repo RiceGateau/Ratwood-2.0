@@ -23,9 +23,7 @@
 	social_rank = SOCIAL_RANK_YEOMAN
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	job_subclasses = list(
-		/datum/advclass/headslave/headslave,
-		// /datum/advclass/headslave/headmaid,
-		// /datum/advclass/headslave/chiefbutler
+		/datum/advclass/headslave,
 	)
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 

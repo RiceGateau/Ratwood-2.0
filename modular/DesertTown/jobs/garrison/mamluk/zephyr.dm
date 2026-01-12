@@ -31,7 +31,7 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/traps = SKILL_LEVEL_APPRENTICE,
 	)
-	extra_context = "Chooses between Light Armor (Dodge Expert) & Medium Armor. Additionally, this subclass can set traps."
+	extra_context = "Can set traps."
 
 /datum/outfit/job/roguetown/mamluk/zephyr/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -79,91 +79,3 @@
 		H.verbs |= /mob/proc/haltyell
 		//Skirmishers get funny spells. Wowzers.
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/skirmisher_trap)
-
-//Skirmisher's tripwire. Just Pioneer's with edits.
-//As with Pioneer, it has exploits. I hate this so much.
-//This does not make use of the sapper check. Just shovels.
-// /obj/effect/proc_holder/spell/targeted/skirmisher_trap
-// 	name = "Set Trap (Delayed)"
-// 	desc = "After 8 seconds, a trap arms beneath your feet. Wardens and MAAs are immune to setting them off."
-// 	overlay_state = "trap2"//Temp.
-// 	invocations = list("A rod of iron...")
-// 	range = 0
-// 	releasedrain = 0
-// 	recharge_time = 50 SECONDS
-// 	max_targets = 0
-// 	cast_without_targets = TRUE
-// 	antimagic_allowed = TRUE
-// 	associated_skill = /datum/skill/craft/traps
-// 	invocation_type = "whisper"
-// 	miracle = FALSE
-// 	req_items = list(/obj/item/rogueweapon/shovel)
-// 	var/setup_delay = 8 SECONDS
-// 	var/pending = FALSE
-// 	var/trap_path = /obj/structure/trap/bogtrap/bomb
-
-
-//Do this if it turns out to be absurd.
-//Having skirmishers able to alarm areas makes sense.
-//They're not offensive traps for the most part. Unlike poison gas and explosives.
-/*
-	if(_is_town_area(T))//Inverse. Find a good spot, buddy.
-		to_chat(user, span_warning("I cannot set a trap here; the ground is too soft."))
-		revert_cast()
-		return FALSE
-*/
-
-	// for(var/obj/structure/fluff/traveltile/TT in range(1, T))
-	// 	to_chat(user, span_warning("Should find better place to set up the trap."))
-	// 	revert_cast()
-	// 	return FALSE
-
-//Rous for silly traps. Will it be useful? Probably not. Knockdown will, though.
-//Flare trap is effectively a global alarm. Same as the church bell.
-//Now you can alarm the keep's rooftop on lowpop and such.
-	// var/list/trap_choices = list(
-	// 	"Rous"			= /obj/structure/trap/bogtrap/rous,
-	// 	"Flare"			= /obj/structure/trap/bogtrap/flare_trap,
-	// )
-
-	// var/choice = input(user, "Select the trap type to rig:", "Trap") as null|anything in trap_choices
-	// if(!choice)
-	// 	revert_cast()
-	// 	return FALSE
-
-	// var/trap_path = trap_choices[choice]
-
-	// pending = TRUE
-
-	// user.visible_message(
-	// 	span_notice("[user] kneels, rigging something beneath their feet."),
-	// 	span_notice("I begin setting a [choice] trap.")
-	// )
-	// playsound(user, 'sound/misc/clockloop.ogg', 50, TRUE)
-
-	// if(!do_after(user, setup_delay, target = T))
-	// 	pending = FALSE
-	// 	to_chat(user, span_warning("I stop setting the trap."))
-	// 	revert_cast()
-	// 	return FALSE
-
-	// for(var/obj/structure/fluff/traveltile/TT in range(1, T))
-	// 	pending = FALSE
-	// 	to_chat(user, span_warning("Should find better place to set up the trap."))
-	// 	revert_cast()
-	// 	return FALSE
-
-	// _clear_existing_trap(T)
-	// _spawn_trap(T, trap_path)
-
-	// user.visible_message(
-	// 	span_warning("A hidden mechanism clicks into place under [user]!"),
-	// 	span_notice("The [choice] trap arms beneath my feet.")
-	// )
-	// playsound(T, 'sound/misc/chains.ogg', 50, TRUE)
-
-	// message_admins("[user.real_name]([key_name(user)]) has planted a trap, [ADMIN_JMP(user)]")
-	// log_admin("[user.real_name]([key_name(user)]) has planted a trap")
-
-	// pending = FALSE
-	// return TRUE
