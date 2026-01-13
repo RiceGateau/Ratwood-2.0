@@ -14,10 +14,10 @@
 
 	spells = list(
 		/obj/effect/proc_holder/spell/self/grant_title,
-		/obj/effect/proc_holder/spell/self/convertrole/servant,
+		/obj/effect/proc_holder/spell/self/convertrole/slave,
 		/obj/effect/proc_holder/spell/self/convertrole/guard,
 		/obj/effect/proc_holder/spell/self/grant_nobility,
-		/obj/effect/proc_holder/spell/self/convertrole/bog
+		/obj/effect/proc_holder/spell/self/convertrole/janissary
 	)
 	outfit = /datum/outfit/job/roguetown/sultan
 	visuals_only_outfit = /datum/outfit/job/roguetown/sultan/visuals
@@ -110,7 +110,7 @@
 	Warrior Lord subclass. An evolution from the Daring Twit. This is the original Lord Class.
 */
 /datum/advclass/sultan/warrior
-	name = "Iron-fisted Sultan"
+	name = "Iron-fisted Warlord"
 	tutorial = "You're a noble warrior. You rose to your rank through your own strength and skill, whether by leading your men or by fighting alongside them. Or perhaps you are none of that, but simply a well-trained heir elevated to the position of Lord. You're trained in the usage of heavy armor, and knows swordsmanship well."
 	outfit = /datum/outfit/job/roguetown/sultan/warrior
 	category_tags = list(CTAG_SULTAN)
@@ -151,7 +151,7 @@
 	Has a high noble income plus a starting pouch with insane amount of money.
 */
 /datum/advclass/sultan/merchant
-	name = "Merchant Lord"
+	name = "Wise Dealer"
 	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Rotwood Vale. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
 	But you have plenty of wealth, keen ears, and know a good deal from a bad one."
 	outfit = /datum/outfit/job/roguetown/sultan/merchant
@@ -190,7 +190,7 @@
 	but if a warrior duke can be about as strong as a Knight, then a wizard duke could probably afford to be as strong as a mage's associate. They'll get T3, no armor prof.
 */
 /datum/advclass/sultan/wizard
-	name = "Magocrat"
+	name = "Sorcerous Sultan"
 	tutorial = "A good ruler is backed with force. You just happen to have a keen amount of mastery over the world's strongest forces: Magic. Of course, having to manage your realm has meant that you aren't as studied as the realm's greatest wizards- but your cunning sorcery is what has you sat upon the throne."
 	outfit = /datum/outfit/job/roguetown/sultan/wizard
 	category_tags = list(CTAG_SULTAN)
@@ -393,20 +393,20 @@
 // 	ADD_TRAIT(recruit, TRAIT_NOBLE, TRAIT_GENERIC)
 // 	return TRUE
 
-// /obj/effect/proc_holder/spell/self/convertrole/servant
-// 	name = "Recruit Servant"
-// 	new_role = "Servant"
-// 	overlay_state = "recruit_servant"
-// 	recruitment_faction = "Servants"
-// 	recruitment_message = "Serve the crown, %RECRUIT!"
-// 	accept_message = "FOR THE CROWN!"
-// 	refuse_message = "I refuse."
-// 	recharge_time = 100
+/obj/effect/proc_holder/spell/self/convertrole/slave
+	name = "Recruit Slave"
+	new_role = "Slave"
+	overlay_state = "recruit_servant"
+	recruitment_faction = "Servants"
+	recruitment_message = "Serve the crown, %RECRUIT!"
+	accept_message = "I OBEY, MASTER!"
+	refuse_message = "I refuse."
+	recharge_time = 100
 
-// /obj/effect/proc_holder/spell/self/convertrole/bog
-// 	name = "Recruit Warden"
-// 	new_role = "Warden"
-// 	recruitment_faction = "Bog Guard"
-// 	recruitment_message = "Serve the Wardens, %RECRUIT!"
-// 	accept_message = "FOR THE GROVE!"
-// 	refuse_message = "I refuse."
+/obj/effect/proc_holder/spell/self/convertrole/janissary
+	name = "Recruit Janissary"
+	new_role = "Janissary"
+	recruitment_faction = "Bog Guard"
+	recruitment_message = "Serve the Janissaries, %RECRUIT!"
+	accept_message = "FOR THE CROWN!"
+	refuse_message = "I refuse."
