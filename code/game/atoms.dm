@@ -46,9 +46,6 @@
 	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
 	var/chat_color_darkened
 
-	/// Overwatch: per-atom interaction history (doors, items, etc.)
-	var/list/overwatch_history
-
 	var/voicecolor_override
 
 	///overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
@@ -214,11 +211,6 @@
  * * clears the light object
  */
 /atom/Destroy()
-	// Clean up any per-atom overwatch history
-	if(overwatch_history)
-		QDEL_LIST(overwatch_history)
-		overwatch_history = null
-
 	if(alternate_appearances)
 		for(var/K in alternate_appearances)
 			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]

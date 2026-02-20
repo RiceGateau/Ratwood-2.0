@@ -83,10 +83,6 @@ GLOBAL_LIST_EMPTY(overwatch_events) // List of lists, keyed by ckey
 	damage_amount = damage
 	damage_type = damagetype
 
-	// Capture the victim's new HP at the time of the attack, similar to
-	// how log_combat records NEWHP in the attack logs. This keeps
-	// Overwatch aligned with existing LOGS data without extra work in
-	// callers.
 	if(istype(victim))
 		victim_new_hp = victim.health
 	
@@ -181,29 +177,8 @@ GLOBAL_LIST_EMPTY(overwatch_events) // List of lists, keyed by ckey
 		overwatch_add_event_for_ckey(attacker_ckey, event)
 
 /proc/overwatch_record_interact(mob/user, atom/target, action)
-	// Lightweight check - only track if user is a player
-	if(!user || !target || !user.client || !user.ckey)
-		return
-	
-	// Only track specific object types to reduce overhead
-	if(!istype(target, /obj/item) && !istype(target, /obj/structure/mineral_door))
-		return
-	
-	var/datum/overwatch_event/interact/event = new(user, target, action)
-	
-	// Store on the object itself
-	if(!target.overwatch_history)
-		target.overwatch_history = list()
-	
-	target.overwatch_history += event
-	
-	// Trim to max events
-	while(target.overwatch_history.len > OVERWATCH_MAX_EVENTS)
-		var/datum/overwatch_event/oldest = target.overwatch_history[1]
-		target.overwatch_history -= oldest
-		qdel(oldest)
+	return
 
-// Add overwatch history to atoms
 // Visual marker system
 /obj/effect/overwatch_marker
 	name = "OVERWATCH marker"
@@ -230,39 +205,6 @@ GLOBAL_LIST_EMPTY(overwatch_events) // List of lists, keyed by ckey
 	// Auto-delete after 30 seconds
 	QDEL_IN(src, 30 SECONDS)
 
-// Shared proc to display overwatch interaction history for an atom
-/atom/proc/show_overwatch_history(mob/user)
-	if(!user || !user.client || !check_rights(R_ADMIN, FALSE, user.client))
-		return
-
-	if(!overwatch_history || !overwatch_history.len)
-		to_chat(user, span_notice("[src] has no recorded interactions."))
-		return
-
-	var/list/output = list()
-	output += "<b>OVERWATCH - Interaction History for [name]</b><br>"
-	output += "<i>Showing last [overwatch_history.len] interactions:</i><br><br>"
-
-	for(var/datum/overwatch_event/interact/event in overwatch_history)
-		output += "[event.get_summary()]<br>"
-
-	var/datum/browser/popup = new(user, "overwatch_history_[world.time]", "OVERWATCH History", 600, 400)
-	popup.set_content(output.Join())
-	popup.open()
-
-// Context menu verb for viewing item interactions
-/obj/item/verb/check_overwatch_history()
-	set name = "Check Overwatch History"
-	set src in view(1)
-
-	src.show_overwatch_history(usr)
-
-// Context menu verb for viewing mineral door interactions
-/obj/structure/mineral_door/verb/check_overwatch_history()
-	set name = "Check Overwatch History"
-	set src in view(1)
-
-	src.show_overwatch_history(usr)
 
 // Admin verb for showing first strike markers
 /client/proc/overwatch_show_first_strike(ckey as text)
