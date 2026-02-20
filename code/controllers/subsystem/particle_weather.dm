@@ -41,10 +41,10 @@ SUBSYSTEM_DEF(ParticleWeather)
 	switch(SSmapping.config.map_name)
 		if("Rockhill")
 			selected_forecast = new /datum/forecast/rockhill()
-		else if("Dun World")
+		if("Dun World")
 			selected_forecast = new /datum/forecast/dunworld()
 
-		else if("Alashur")//placeholder, update with desertmap
+		if("Alashur")//placeholder, update with desertmap
 			selected_forecast = new /datum/forecast/alashur()
 		else
 			selected_forecast = new /datum/forecast/rockhill()	//Default to rockhill if no configs match so we have some weather
