@@ -189,6 +189,7 @@
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
+	fueluse = 0
 
 /obj/machinery/light/rogue/candle/off
 	name = "candles"
