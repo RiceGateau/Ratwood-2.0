@@ -10,6 +10,8 @@ type Message = {
   author: string;
   message: string;
   is_admin: BooleanLike;
+  embed_type?: string;
+  embed_url?: string;
 };
 
 type Data = {
@@ -134,9 +136,35 @@ export const AdminHelpChat = (props) => {
                             </Box>
                           </Stack.Item>
                         </Stack>
-                        <Box mt={0.5} style={{ wordWrap: 'break-word' }}>
-                          {msg.message}
-                        </Box>
+                        {msg.embed_type === 'image' && msg.embed_url ? (
+                          <img
+                            src={msg.embed_url}
+                            alt="Embedded image"
+                            style={{
+                              maxWidth: '100%',
+                              maxHeight: '400px',
+                              borderRadius: '4px',
+                              marginTop: '4px',
+                              display: 'block',
+                            }}
+                          />
+                        ) : msg.embed_type === 'video' && msg.embed_url ? (
+                          <video
+                            src={msg.embed_url}
+                            controls
+                            style={{
+                              maxWidth: '100%',
+                              maxHeight: '300px',
+                              borderRadius: '4px',
+                              marginTop: '4px',
+                              display: 'block',
+                            }}
+                          />
+                        ) : (
+                          <Box mt={0.5} style={{ wordWrap: 'break-word' }}>
+                            {msg.message}
+                          </Box>
+                        )}
                       </Box>
                     </Stack.Item>
                   ))

@@ -500,6 +500,30 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			admin_ticket_log(ticket.initiator.mob, "<font color='green'>[key_name_admin(user)] is using advanced tools on your character in relation to this ticket.</font>")
 			user.client.callproc_datum(ticket.initiator.mob)
 			return TRUE
+
+		if("embed_media")
+			var/ticket_id = params["ticket_id"]
+			var/datum/admin_help/ticket = TicketByID(ticket_id)
+			if(!ticket || ticket.state != AHELP_ACTIVE)
+				return FALSE
+			var/url = params["url"]
+			var/embed_type = params["embed_type"]
+			if(!url || !embed_type)
+				return FALSE
+			url = trim(url)
+			// Only allow https URLs for safety
+			if(findtext(url, "https://") != 1)
+				return FALSE
+			// Only allow image or video types
+			if(embed_type != "image" && embed_type != "video")
+				return FALSE
+			var/prefix = embed_type == "image" ? "EMBED_IMAGE:" : "EMBED_VIDEO:"
+			ticket.AddInteraction("<font color='blue'>PM from [key_name_admin(user)]: [prefix][url]</font>")
+			// Notify the player if connected
+			if(ticket.initiator)
+				to_chat(ticket.initiator, span_adminhelp("<b>Admin [key_name_admin(user)] embedded a [embed_type] in your ticket.</b>"))
+			log_admin_private("Ticket #[ticket.id]: [key_name(user)] embedded [embed_type]: [url]")
+			return TRUE
 	
 	return FALSE
 
@@ -967,7 +991,19 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			msg_data["is_admin"] = FALSE
 			msg_data["author"] = "System"
 			msg_data["message"] = trim(clean_text)
-		
+
+		// Detect embedded media — EMBED_IMAGE: and EMBED_VIDEO: are 12 chars each,
+		// so the URL starts at position 13.
+		var/raw_msg = msg_data["message"]
+		if(raw_msg && findtext(raw_msg, "EMBED_IMAGE:") == 1)
+			msg_data["embed_type"] = "image"
+			msg_data["embed_url"] = copytext(raw_msg, 13)
+			msg_data["message"] = "(image embed)"
+		else if(raw_msg && findtext(raw_msg, "EMBED_VIDEO:") == 1)
+			msg_data["embed_type"] = "video"
+			msg_data["embed_url"] = copytext(raw_msg, 13)
+			msg_data["message"] = "(video embed)"
+
 		data["messages"] += list(msg_data)
 	
 	// (OVERWATCH data is now attached only in the admin ticket panel
@@ -1007,6 +1043,27 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			// Call the overwatch proc to show first strike
 			usr.client.overwatch_show_first_strike_from_ticket(ckey)
 			
+			return TRUE
+
+		if("embed_media")
+			if(state != AHELP_ACTIVE)
+				return FALSE
+			if(!usr.client?.holder)
+				return FALSE
+			var/url = params["url"]
+			var/embed_type = params["embed_type"]
+			if(!url || !embed_type)
+				return FALSE
+			url = trim(url)
+			if(findtext(url, "https://") != 1)
+				return FALSE
+			if(embed_type != "image" && embed_type != "video")
+				return FALSE
+			var/prefix = embed_type == "image" ? "EMBED_IMAGE:" : "EMBED_VIDEO:"
+			AddInteraction("<font color='blue'>PM from [key_name_admin(usr)]: [prefix][url]</font>")
+			if(initiator)
+				to_chat(initiator, span_adminhelp("<b>Admin [key_name_admin(usr)] embedded a [embed_type] in your ticket.</b>"))
+			log_admin_private("Ticket #[id]: [key_name(usr)] embedded [embed_type]: [url]")
 			return TRUE
 
 /datum/admin_help/ui_state(mob/user)
