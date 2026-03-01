@@ -60,6 +60,8 @@
 	var/list/weather_messages = list()
 	//warning message that plays when weather is picked
 	var/warning_message
+	//warning message just before weather fires
+	var/late_warning_message = span_greenannounce("The realms wind blows as weather begins to turn.")
 	// Sounds to play at different severities - order from lowest to highest
 	var/list/weather_sounds = list()
 	var/list/indoor_weather_sounds = list()
@@ -462,3 +464,13 @@
 		if (QDELETED(B))
 			continue
 		B.on_weather_queued(src)
+
+/datum/particle_weather/proc/send_late_warning()
+	if(!late_warning_message)
+		return
+
+	for(var/mob/living/M in GLOB.player_list)
+		if(!M.client)
+			continue
+		if(can_weather(M))
+			to_chat(M, late_warning_message)

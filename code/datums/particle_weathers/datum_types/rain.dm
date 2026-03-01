@@ -19,6 +19,7 @@
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/rain
 	warning_message = span_greenannounce("Grey clouds gather up above the realm, beholding the gift of life.")
+	late_warning_message = span_greenannounce("Heavy drops begin to fall in rapid succession.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
@@ -48,7 +49,8 @@
 	name = "Rain Storm"
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/rain
-	warning_message = span_danger("Dark clouds gather up above the realm, sparks arcing between heavenly reaches.")
+	warning_message = span_greenannounce("Dark clouds gather up above the realm, sparks arcing between heavenly reaches.")
+	late_warning_message = span_greenannounce("The wind shifts and the storm breaks.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/storm)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)

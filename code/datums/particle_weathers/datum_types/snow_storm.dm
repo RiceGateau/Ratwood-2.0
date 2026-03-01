@@ -18,6 +18,7 @@
 	desc = "Gentle Snow, la la description."
 	particleEffectType = /particles/weather/snow
 	warning_message = span_greenannounce("The air chills across the realm, soft white specs appearing near warm breaths.")
+	late_warning_message = span_greenannounce("Flakes swirl as snow starts to drift down from the sky.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
 
@@ -44,6 +45,7 @@
 	desc = "Snow storm, la la description."
 	particleEffectType = /particles/weather/snow
 	warning_message = span_greenannounce("Heavy clouds build in the sky as the air chills across the realm, soft white specs appearing near warm breaths.")
+	late_warning_message = span_greenannounce("Heavy snow begins to fall thick and fast.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
 
@@ -64,9 +66,9 @@
 /datum/particle_weather/snow_storm/weather_act(mob/living/L)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		H.apply_weather_temperature(-rand(3,5))
+		H.apply_weather_temperature(-rand(1.5,3))
 	else
-		L.adjust_bodytemperature(-rand(3,5))
+		L.adjust_bodytemperature(-rand(1.5,3))
 
 /turf
 	var/turf_flags = TURF_EFFECT_AFFECTABLE

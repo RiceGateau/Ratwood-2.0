@@ -2157,7 +2157,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 
 			var/step = 0.25 + (protection)
 			env_adjust = -step
-		if(loc_temp <= BODYTEMP_NORMAL_MIN)
+		if(loc_temp <= BODYTEMP_NORMAL_MIN && !istype(cur_turf, /turf/open/water))
 			if(!(GLOB.cold_breath_overlay in H.overlays))
 				H.add_overlay(GLOB.cold_breath_overlay)
 		else
@@ -2199,24 +2199,41 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 			H.apply_damage(burn_damage, BURN, spread_damage = TRUE)
 
 	if(H.bodytemperature > BODYTEMP_NORMAL_MAX && !HAS_TRAIT(H, TRAIT_RESISTHEAT))	//either level one or level two heat
+		if(H.hypothermia_timer_id)
+			deltimer(H.hypothermia_timer_id)
+			H.hypothermia_timer_id = null
 		//Body temperature is too hot.
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
+		if(H.construct)
+			if(H.bodytemperature >= BODYTEMP_HEAT_LEVEL_ONE_MAX)
+				H.apply_status_effect(/datum/status_effect/debuff/overheat)
+				H.update_health_hud()
+			return
 		if(H.bodytemperature >= BODYTEMP_HEAT_LEVEL_ONE_MAX)
-			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warn)),20 SECONDS,TIMER_UNIQUE)
-			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_heatstroke)),3 MINUTES ,TIMER_UNIQUE | TIMER_STOPPABLE)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warn)),20 SECONDS,TIMER_UNIQUE | TIMER_STOPPABLE | TIMER_NO_HASH_WAIT)
+			if(!H.heatstroke_timer_id)
+				H.heatstroke_timer_id = addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_heatstroke)),3 MINUTES ,TIMER_STOPPABLE)
 
 		else	//level 1 heat
-			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warn)),20 SECONDS,TIMER_UNIQUE)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, heat_warn)),20 SECONDS,TIMER_UNIQUE | TIMER_STOPPABLE | TIMER_NO_HASH_WAIT)
 			H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
 
 
-
 	else if(H.bodytemperature < BODYTEMP_NORMAL_MIN && !HAS_TRAIT(H, TRAIT_RESISTCOLD))	//either level one or level two cold
+		if(H.heatstroke_timer_id)
+			deltimer(H.heatstroke_timer_id)
+			H.heatstroke_timer_id = null
+		if(H.construct)
+			if(H.bodytemperature < BODYTEMP_COLD_LEVEL_ONE_MAX)
+				H.apply_status_effect(/datum/status_effect/debuff/brittle)
+				H.update_health_hud()
+			return
 		if(H.bodytemperature < BODYTEMP_COLD_LEVEL_ONE_MAX)	//Level 2 cold - con punishment, frostbite, speed reduction
 			if(prob(15))
 				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, emote), "shiver"), (rand(2,6)SECONDS),TIMER_UNIQUE | TIMER_STOPPABLE)
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warn)),20 SECONDS,TIMER_UNIQUE)
-			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_frostbite)),3 MINUTES, TIMER_UNIQUE | TIMER_STOPPABLE)
+			if(!H.hypothermia_timer_id)
+				H.hypothermia_timer_id = addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, apply_hypothermia)),2 MINUTES, TIMER_STOPPABLE)
 			H.add_movespeed_modifier(MOVESPEED_ID_COLD, override = TRUE, multiplicative_slowdown = ((BODYTEMP_COLD_LEVEL_ONE_MAX - H.bodytemperature) / 35), blacklisted_movetypes = FLOATING)
 			H.apply_status_effect(/datum/status_effect/debuff/freezing)	//con debuff
 			H.relieve_heatstroke_from_cold()	//if you somehow bypass level 1, straight to level 2, still fix heatstroke
@@ -2227,6 +2244,12 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 			H.relieve_heatstroke_from_cold()	//if has heatstroke, body chill fixes it
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, cold_warn)),20 SECONDS,TIMER_UNIQUE)
 	else
+		if(H.hypothermia_timer_id)
+			deltimer(H.hypothermia_timer_id)
+			H.hypothermia_timer_id = null
+		if(H.heatstroke_timer_id)
+			deltimer(H.heatstroke_timer_id)
+			H.heatstroke_timer_id = null
 		H.clear_alert("temp")
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
 	H.update_health_hud()
@@ -2251,7 +2274,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT && !no_protection)
 		H.adjust_bodytemperature(11)
 	else
-		H.adjust_bodytemperature(BODYTEMP_HEATING_MAX + (H.fire_stacks * 12))
+		H.adjust_bodytemperature(20)	//arbitrary value, but our temp scale runs from 0 to 600 behind the scenes
 
 /datum/species/proc/Canignite_mob(mob/living/carbon/human/H)
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))

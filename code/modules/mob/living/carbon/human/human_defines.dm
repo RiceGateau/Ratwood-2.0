@@ -206,3 +206,5 @@
 
 	var/already_converted_once = FALSE // ritualcircles.dm , used to make it so players can't switch around between inhumen gods to stack buffs with conversion rites
 	var/time_flags = 0
+	var/heatstroke_timer_id
+	var/hypothermia_timer_id

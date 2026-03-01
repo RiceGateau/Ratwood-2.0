@@ -13,7 +13,10 @@
 	body_parts_covered = HEAD|HAIR|EARS|EYES|NOSE
 	worn_x_dimension = 32
 	worn_y_dimension = 32
-
+	cold_protection = HEAD
+	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
+	heat_protection = null
+	max_heat_protection_temperature = BODYTEMP_NORMAL_MAX
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/gronn
 	name = "gronnic ravager mantle"

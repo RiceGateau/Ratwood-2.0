@@ -513,17 +513,122 @@
 	clotting_threshold = 0
 	clotting_rate = 0
 	bypass_bloody_wound_check = TRUE
+	var/stage = 1
+	var/last_stage_tick
+	var/stage_interval = 2 MINUTES
+
+/datum/wound/frostbite/on_mob_gain(mob/living/affected)
+	. = ..()
+	last_stage_tick = world.time
+	update_stage_name()
 
 /datum/wound/frostbite/on_life()
 	. = ..()
+
 	if(!iscarbon(owner))
 		return
-	var/obj/item/bodypart/affected = bodypart_owner
 
+	var/mob/living/carbon/C = owner
+	var/obj/item/bodypart/BP = bodypart_owner
 
-	var/mob/living/carbon/carbon_owner = owner
-	if(!carbon_owner.stat && prob(30))
-		if(affected.bandage)
-			carbon_owner.apply_damage(1, BURN)
-		else
-			carbon_owner.apply_damage(5, BURN)
+	// Warmth degrades frostbite
+	if(C.bodytemperature >= BODYTEMP_NORMAL_MIN)
+		if(world.time >= last_stage_tick + (1 MINUTES))
+			stage--
+			last_stage_tick = world.time
+
+			if(stage >= 1)
+				to_chat(C, span_notice("The feeling slowly returns to my [BP]..."))
+				update_stage_name()
+			else
+				stage = 1
+
+	// Stage progression
+	if(stage < 3 && world.time >= last_stage_tick + stage_interval && C.bodytemperature < BODYTEMP_NORMAL_MIN)
+		stage++
+		last_stage_tick = world.time
+		update_stage_name()
+
+		switch(stage)
+			if(2)
+				to_chat(C, span_userdanger("My [BP] is completely numb..."))
+			if(3)
+				to_chat(C, span_userdanger("My [BP] feels dead and brittle!"))
+
+	// Damage scaling per stage
+	if(!C.stat && prob(30))
+		var/damage = 0
+		switch(stage)
+			if(1)
+				damage = 2
+			if(2)
+				damage = 5
+			if(3)
+				damage = 10
+		if(BP.bandage)
+			damage = damage *0.25
+
+		C.apply_damage(damage, BURN)
+
+/datum/wound/frostbite/proc/update_stage_name()
+	var/stage_text
+
+	switch(stage)
+		if(1)
+			stage_text = "I"
+		if(2)
+			stage_text = "II"
+		if(3)
+			stage_text = "III"
+
+	check_name = span_blue("FROSTBITE ([stage_text])")
+
+/datum/wound/hypothermia
+	name = "hypothermia"
+	check_name = span_blue("HYPOTHERMIA")
+	severity = 0
+	crit_message = ""
+	whp = 40
+	woundpain = 0
+	mob_overlay = null
+	can_sew = FALSE
+	can_cauterize = FALSE
+	critical = FALSE
+	sleep_healing = 0
+	bleed_rate = 0
+	clotting_threshold = 0
+	clotting_rate = 0
+	bypass_bloody_wound_check = TRUE
+
+	var/start_time
+	var/duration = 1 MINUTES
+
+/datum/wound/hypothermia/on_mob_gain(mob/living/affected)
+	. = ..()
+	start_time = world.time
+
+/datum/wound/hypothermia/on_life()
+	. = ..()
+
+	if(!iscarbon(owner))
+		return
+
+	var/mob/living/carbon/C = owner
+
+	// If warmed up, remove hypothermia
+	if(C.bodytemperature >= BODYTEMP_NORMAL_MIN)
+		to_chat(C, span_notice("Feeling returns to my body as I warm up."))
+		qdel(src)
+		return
+
+	// Occasional discomfort message
+	if(!C.stat && prob(5))
+		to_chat(C, span_warning("I can't stop shivering..."))
+
+	// After 1 minute, convert to frostbite
+	if(world.time >= start_time + duration)
+		var/obj/item/bodypart/BP = bodypart_owner
+		if(BP)
+			to_chat(C, span_userdanger("I feel pins and needles in [BP]!"))
+			BP.add_wound(/datum/wound/frostbite)
+		qdel(src)

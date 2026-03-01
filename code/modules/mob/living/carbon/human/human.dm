@@ -1085,12 +1085,10 @@
 		to_chat(src, span_warning("Sweat drips down my brow."))
 	return
 
-
-/mob/living/carbon/human/proc/apply_frostbite()
-	var/mob/living/carbon/human/H = src
-	if(H.bodytemperature >= BODYTEMP_COLD_LEVEL_ONE_MAX)
+/mob/living/carbon/human/proc/apply_hypothermia()
+	if(bodytemperature >= BODYTEMP_COLD_LEVEL_ONE_MAX)
 		return
-
+	src.hypothermia_timer_id = null
 	var/list/zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
@@ -1100,37 +1098,37 @@
 		BODY_ZONE_L_LEG
 	)
 
-	var/list/valid_zones = list()
+	var/list/valid = list()
 
 	for(var/zone in zones)
-		var/obj/item/bodypart/BP = H.get_bodypart(zone)
+		var/obj/item/bodypart/BP = get_bodypart(zone)
 		if(!BP)
 			continue
 
-		var/has_frostbite = FALSE
+		var/has_hypo = FALSE
 		for(var/datum/wound/W in BP.wounds)
-			if(istype(W, /datum/wound/frostbite))
-				has_frostbite = TRUE
+			if(istype(W, /datum/wound/hypothermia))
+				has_hypo = TRUE
 
-		if(!has_frostbite)
-			valid_zones += zone
+		if(!has_hypo)
+			valid += zone
 
-	if(!length(valid_zones))
+	if(!length(valid))
 		return
 
-	var/def_zone = pick(valid_zones)
-	var/obj/item/bodypart/BP = H.get_bodypart(def_zone)
+	var/def_zone = pick(valid)
+	var/obj/item/bodypart/BP = get_bodypart(def_zone)
 
 	if(BP)
-		to_chat(H, span_userdanger("I feel pins and needles in [BP]!"))
-		BP.add_wound(/datum/wound/frostbite)
-		BP.update_disabled()
+		to_chat(src, span_warning("I feel painfully cold in my [BP]..."))
+		BP.add_wound(/datum/wound/hypothermia)
+
 
 /mob/living/carbon/human/proc/apply_heatstroke()
 	var/mob/living/carbon/human/H = src
 	if(H.bodytemperature <= BODYTEMP_HEAT_LEVEL_ONE_MAX)	//if not hot enough after timer, kill
 		return
-
+	H.heatstroke_timer_id = null
 	var/def_zone = BODY_ZONE_HEAD
 	var/obj/item/bodypart/BP = H.get_bodypart(def_zone)
 	for(var/datum/wound/W in BP.wounds)
@@ -1189,9 +1187,9 @@
 	// APPLY PROTECTION SCALING
 	// ---------------------------
 	var/final_delta = base_delta
-	var/half_delta = (base_delta / 2)
+	var/three_quarter_delta = (base_delta * 0.75)
 	if(protection > 0)
-		(final_delta -= (half_delta * protection))
+		(final_delta -= (three_quarter_delta * protection))
 
 	adjust_bodytemperature(final_delta)
 

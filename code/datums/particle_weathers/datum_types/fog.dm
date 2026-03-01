@@ -82,6 +82,7 @@
 	desc = "Gentle fog, la la description."
 	particleEffectType = /particles/weather/fog
 	warning_message = span_greenannounce("The air is thick and damp, and a rush of cool dry air foretells what approachs.")
+	late_warning_message = span_greenannounce("A cold mist rolls in, swallowing the horizon.")
 	scale_vol_with_severity = TRUE
 	//weather_sounds = list(/datum/looping_sound/rain)
 	//indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)

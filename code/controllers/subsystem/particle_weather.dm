@@ -73,10 +73,18 @@ SUBSYSTEM_DEF(ParticleWeather)
 		runningWeather.start(color)
 	else
 		var/randTime = rand(0, 6000) + initial(runningWeather.weather_duration_upper)
+
 		queued_weather = runningWeather
 		queued_weather_start_time = world.time + randTime
+
+		// Early forecast warning
 		runningWeather.send_warning()
-		addtimer(CALLBACK(runningWeather, /datum/particle_weather/proc/start), randTime, TIMER_UNIQUE|TIMER_STOPPABLE) //Around 0-10 minutes between weathers
+
+		// Schedule late warning 30 seconds before start
+		if(randTime > 30 SECONDS)
+			addtimer(CALLBACK(runningWeather, /datum/particle_weather/proc/send_late_warning),randTime - (30 SECONDS),TIMER_UNIQUE|TIMER_STOPPABLE)
+		// Schedule actual start
+		addtimer(CALLBACK(runningWeather, /datum/particle_weather/proc/start),randTime,TIMER_UNIQUE|TIMER_STOPPABLE)
 
 
 /datum/controller/subsystem/ParticleWeather/proc/make_eligible(possible_weather)

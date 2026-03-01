@@ -25,6 +25,7 @@
 	desc = "A dry wind kicks sand through the air."
 	particleEffectType = /particles/weather/sand/gentle
 	warning_message = span_greenannounce("Dry gusts winds their way across the realm, pulling at loose ground.")
+	late_warning_message = span_greenannounce("The wind groans lowly, carrying specs of sand and dust.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/sandstorm)
 	indoor_weather_sounds = list(/datum/looping_sound/wind)
@@ -140,6 +141,7 @@
 	desc = "A howling wall of sand scours the land."
 	particleEffectType = /particles/weather/sand
 	warning_message = span_greenannounce("Ferocious winds howl their way across the realm, building thick clouds close to the earth.")
+	late_warning_message = span_greenannounce("The wind screams, carrying blinding dust.")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/sandstorm)
 	indoor_weather_sounds = list(/datum/looping_sound/wind)

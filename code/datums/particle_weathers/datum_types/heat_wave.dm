@@ -34,7 +34,7 @@
 	particleEffectType = /particles/weather/heat
 
 	warning_message = span_greenannounce("A brutal heatwave rolls across the realm, warping the very air.")
-
+	late_warning_message = span_greenannounce("The air becomes stifling and unbearably still.")
 	scale_vol_with_severity = TRUE
 
 	weather_sounds = list(/datum/looping_sound/sandstorm)

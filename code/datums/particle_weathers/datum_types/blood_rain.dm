@@ -19,6 +19,7 @@
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/blood_rain
 	warning_message = span_greenannounce("The air grows heavy- something is very wrong.")
+	late_warning_message = span_userdanger("A metallic scent fills the air. Something is wrong with the sky...")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
@@ -48,6 +49,7 @@
 	desc = "Gentle Rain, la la description."
 	particleEffectType = /particles/weather/blood_rain
 	warning_message = span_greenannounce("The air grows heavy- something is very wrong.")
+	late_warning_message = span_greenannounce("A metallic scent fills the air. Something is wrong with the sky...")
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/storm)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
