@@ -500,7 +500,7 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 				belt = /obj/item/storage/belt/rogue/leather/black
-				var/helmets = list("Puritan's Armored Hat", "Visored Sallet", "Volfskulle Bascinet", "Fluted Armet", "Froggemund")
+				var/helmets = list("Puritan's Armored Hat", "Visored Sallet", "Volfskulle Bascinet", "Fluted Armet")
 				var/helmet_choice = input(H, "Choose your VISAGE.", "GET PSYCHED.") as anything in helmets
 				switch(helmet_choice)
 					if("Puritan's Armored Hat")
@@ -511,8 +511,6 @@
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate/puritan
 					if("Fluted Armet")
 						head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/fluted
-					if("Froggemund")
-						head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 
 	backl = /obj/item/storage/backpack/rogue/satchel
 	wrists = /obj/item/clothing/neck/roguetown/psicross/silver
