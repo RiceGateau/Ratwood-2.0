@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Box,
   Button,
@@ -91,6 +91,13 @@ export const AdminTicketPanel = (props) => {
     'image' | 'video' | null
   >(null);
   const [embedUrl, setEmbedUrl] = useState('');
+  const [inputRows, setInputRows] = useState(1);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatTextareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [selected_ticket?.messages.length, selected_ticket?.ticket_id]);
 
   const handleSend = () => {
     if (inputText.trim() && selected_ticket) {
@@ -99,6 +106,10 @@ export const AdminTicketPanel = (props) => {
         message: inputText,
       });
       setInputText('');
+      setInputRows(1);
+      if (chatTextareaRef.current) {
+        chatTextareaRef.current.style.height = 'auto';
+      }
     }
   };
 
@@ -147,7 +158,7 @@ export const AdminTicketPanel = (props) => {
   const tickets = getTickets();
 
   return (
-    <Window width={1200} height={800} title="Admin Ticket Panel">
+    <Window width={1200} height={800} title={`Admin Ticket Panel (${active_tickets.length} active)`}>
       <Window.Content>
         <Stack fill>
           {/* Left Panel - Ticket List */}
@@ -285,6 +296,18 @@ export const AdminTicketPanel = (props) => {
                               }
                             >
                               FLW
+                            </Button>
+                            <Button
+                              compact
+                              icon="book"
+                              tooltip="Logs - Open the round logs panel for this player."
+                              onClick={() =>
+                                act('overwatch_logs', {
+                                  ticket_id: selected_ticket.ticket_id,
+                                })
+                              }
+                            >
+                              Logs
                             </Button>
                             <Button
                               compact
@@ -583,6 +606,7 @@ export const AdminTicketPanel = (props) => {
                                 </Stack.Item>
                               ))
                             )}
+                            <div ref={messagesEndRef} />
                           </Stack>
                         </Section>
                       </Stack.Item>
@@ -592,14 +616,29 @@ export const AdminTicketPanel = (props) => {
                           <Section>
                             <Stack>
                               <Stack.Item grow>
-                                <Input
-                                  fluid
-                                  placeholder="Type your response..."
+                                <textarea
+                                  ref={chatTextareaRef}
+                                  className="Input TextArea Input--fluid"
+                                  placeholder="Type your response... (Shift+Enter for newline)"
                                   value={inputText}
-                                  onChange={setInputText}
-                                  onEnter={handleSend}
+                                  rows={inputRows}
+                                  onChange={(e) => {
+                                    const val = e.target.value;
+                                    setInputText(val);
+                                    e.target.style.height = 'auto';
+                                    e.target.style.height = `${Math.min(e.target.scrollHeight, 144)}px`;
+                                    const lines = (val.match(/\n/g) || []).length + 1;
+                                    setInputRows(Math.min(Math.max(lines, 1), 6));
+                                  }}
+                                  onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                      e.preventDefault();
+                                      handleSend();
+                                    }
+                                  }}
                                   disabled={!selected_ticket.can_send}
                                   maxLength={1024}
+                                  style={{ resize: 'none', overflow: 'hidden' }}
                                 />
                               </Stack.Item>
                               <Stack.Item>

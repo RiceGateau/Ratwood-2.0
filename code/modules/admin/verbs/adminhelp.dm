@@ -100,6 +100,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	C.current_ticket = CKey2ActiveTicket(C.ckey)
 	if(C.current_ticket)
 		C.current_ticket.initiator = C
+		C.current_ticket.initiator_mob = C.mob
 		C.current_ticket.AddInteraction("Client reconnected.")
 
 //Dissasociate ticket
@@ -339,9 +340,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("overwatch_logs")
 			var/ticket_id = params["ticket_id"]
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
-			if(!ticket || !ticket.initiator || !ticket.initiator.mob)
+			if(!ticket)
 				return FALSE
-			show_individual_logging_panel(ticket.initiator.mob)
+			var/mob/log_target = ticket.initiator ? ticket.initiator.mob : ticket.initiator_mob
+			if(!log_target)
+				return FALSE
+			show_individual_logging_panel(log_target)
 			return TRUE
 
 		if("overwatch_ping")
@@ -373,21 +377,27 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("ticket_pp")
 			var/ticket_id = params["ticket_id"]
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
-			if(!ticket || !ticket.initiator || !ticket.initiator.mob || !user.client?.holder)
+			if(!ticket || !user.client?.holder)
+				return FALSE
+			var/mob/pp_target = ticket.initiator ? ticket.initiator.mob : ticket.initiator_mob
+			if(!pp_target)
 				return FALSE
 			// Let the ticket know the admin is opening the player panel
-			admin_ticket_log(ticket.initiator.mob, "<font color='green'>[key_name_admin(user)] is reviewing your character via the player panel.</font>")
-			user.client.holder.show_player_panel_next(ticket.initiator.mob)
+			admin_ticket_log(pp_target, "<font color='green'>[key_name_admin(user)] is reviewing your character via the player panel.</font>")
+			user.client.holder.show_player_panel_next(pp_target)
 			return TRUE
 
 		if("ticket_vv")
 			var/ticket_id = params["ticket_id"]
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
-			if(!ticket || !ticket.initiator || !ticket.initiator.mob || !user.client)
+			if(!ticket || !user.client)
+				return FALSE
+			var/mob/vv_target = ticket.initiator ? ticket.initiator.mob : ticket.initiator_mob
+			if(!vv_target)
 				return FALSE
 			// Transparency: viewing variables for this ticket's initiator
-			admin_ticket_log(ticket.initiator.mob, "<font color='green'>[key_name_admin(user)] is viewing your variables in relation to this ticket.</font>")
-			user.client.debug_variables(ticket.initiator.mob)
+			admin_ticket_log(vv_target, "<font color='green'>[key_name_admin(user)] is viewing your variables in relation to this ticket.</font>")
+			user.client.debug_variables(vv_target)
 			return TRUE
 
 		if("ticket_sm")
@@ -401,15 +411,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("ticket_flw")
 			var/ticket_id = params["ticket_id"]
 			var/datum/admin_help/ticket = TicketByID(ticket_id)
-			if(!ticket || !ticket.initiator || !ticket.initiator.mob || !user.client)
+			if(!ticket || !user.client)
+				return FALSE
+			var/mob/flw_target = ticket.initiator ? ticket.initiator.mob : ticket.initiator_mob
+			if(!flw_target)
 				return FALSE
 			// Only allow non-observers with proper admin rights to follow
 			var/client/C = user.client
 			if(!isobserver(user) && !check_rights_for(C, R_ADMIN))
 				return FALSE
 
-			// Let the player know an admin is observing them
-			admin_ticket_log(ticket.initiator.mob, "<font color='green'>[key_name_admin(user)] is now observing you.</font>")
+			// Let the player know an admin is observing them (only if connected)
+			admin_ticket_log(flw_target, "<font color='green'>[key_name_admin(user)] is now observing you.</font>")
 
 			// Mirror the behaviour of the adminplayerobservefollow href
 			var/can_ghost = TRUE
@@ -421,7 +434,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			var/mob/dead/observer/A = C.mob
 			if(!istype(A))
 				return FALSE
-			A.ManualFollow(ticket.initiator.mob)
+			A.ManualFollow(flw_target)
 			return TRUE
 
 		if("ticket_tp")
@@ -566,6 +579,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/closed_at
 
 	var/client/initiator	//semi-misnomer, it's the person who ahelped/was bwoinked
+	var/mob/initiator_mob	//stored separately so tools still work when player is DC'd
 	var/initiator_ckey
 	var/initiator_key_name
 	var/heard_by_no_admins = FALSE
@@ -592,6 +606,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	name = copytext_char(msg, 1, 100)
 
 	initiator = C
+	initiator_mob = C.mob
 	initiator_ckey = initiator.ckey
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket)	//This is a bug
@@ -683,8 +698,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/MessageNoRecipient(msg, play_sound = TRUE)
 	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 	var/ref_src = "[REF(src)]"
+	// Truncate the displayed name in the inline notification to keep the header readable
+	var/display_name = length_char(name) > 60 ? "[copytext_char(name, 1, 61)]..." : name
 	// Simplified message to be sent to all admins, including title and action links
-	var/admin_msg = span_adminnotice("<font color='#c87941'><b>Ticket #[id]: [name] ([initiator_ckey]) - [TicketHref("Show Ticket", ref_src)][ClosureLinks(ref_src)]</b><br><span class='linkify' style='font-weight:normal;color:#c9c1ba'>[msg]</span></font>")
+	var/admin_msg = span_adminnotice("<font color='#c87941'><b>Ticket #[id]: [display_name] ([initiator_ckey]) - [TicketHref("Show Ticket", ref_src)][ClosureLinks(ref_src)]</b><br><span class='linkify' style='font-weight:normal;color:#c87941'>[msg]</span></font>")
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 

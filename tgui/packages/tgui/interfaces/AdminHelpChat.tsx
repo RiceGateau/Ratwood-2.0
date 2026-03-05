@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Box, Button, Input, Section, Stack } from 'tgui-core/components';
+import { useEffect, useRef, useState } from 'react';
+import { Box, Button, Section, Stack } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -40,11 +40,22 @@ export const AdminHelpChat = (props) => {
     is_admin,
   } = data;
   const [inputText, setInputText] = useState('');
+  const [inputRows, setInputRows] = useState(1);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatTextareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages.length]);
 
   const handleSend = () => {
     if (inputText.trim()) {
       act('send_message', { message: inputText });
       setInputText('');
+      setInputRows(1);
+      if (chatTextareaRef.current) {
+        chatTextareaRef.current.style.height = 'auto';
+      }
     }
   };
 
@@ -169,6 +180,7 @@ export const AdminHelpChat = (props) => {
                     </Stack.Item>
                   ))
                 )}
+                <div ref={messagesEndRef} />
               </Stack>
             </Section>
           </Stack.Item>
@@ -179,18 +191,33 @@ export const AdminHelpChat = (props) => {
             <Section>
               <Stack>
                 <Stack.Item grow>
-                  <Input
-                    fluid
+                  <textarea
+                    ref={chatTextareaRef}
+                    className="Input TextArea Input--fluid"
                     placeholder={
                       can_send
-                        ? 'Type your message...'
+                        ? 'Type your message... (Shift+Enter for newline)'
                         : 'This ticket is closed'
                     }
                     value={inputText}
-                    onChange={setInputText}
-                    onEnter={handleSend}
+                    rows={inputRows}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setInputText(val);
+                      e.target.style.height = 'auto';
+                      e.target.style.height = `${Math.min(e.target.scrollHeight, 144)}px`;
+                      const lines = (val.match(/\n/g) || []).length + 1;
+                      setInputRows(Math.min(Math.max(lines, 1), 6));
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSend();
+                      }
+                    }}
                     disabled={!can_send}
                     maxLength={1024}
+                    style={{ resize: 'none', overflow: 'hidden' }}
                   />
                 </Stack.Item>
                 <Stack.Item>
