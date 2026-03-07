@@ -707,7 +707,7 @@
 
 /obj/item/clothing/neck/roguetown/collar/cowbell/Initialize(mapload)
 		. = ..()
-		AddComponent(/datum/component/squeak, SFX_COLLARJINGLE, 50, 100, 1) //We want squeak so wearer jingles if touched while wearing collar
+		AddComponent(/datum/component/squeak, SFX_CBJINGLE, 50, 100, 1) //We want squeak so wearer jingles if touched while wearing collar
 
 /obj/item/clothing/neck/roguetown/collar/catbell
 	name = "catbell collar"
