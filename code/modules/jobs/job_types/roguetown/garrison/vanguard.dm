@@ -113,7 +113,7 @@
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 		STATKEY_PER = 1,
-		STATKEY_SPE = 1
+		STATKEY_SPD = 1
 	)
 	subclass_skills = list(
 		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
