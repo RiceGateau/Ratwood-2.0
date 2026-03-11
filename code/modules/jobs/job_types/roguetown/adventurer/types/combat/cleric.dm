@@ -310,7 +310,7 @@
 					C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2)
 					H.adjust_skillrank_up_to(/datum/skill/magic/holy, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					H.change_stat(STATKEY_WIL, 1) //ENDURE
-					armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate
 				if("VEYLED, LIKE HIS MARTYRS - ARMOUR")
 					C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_WEAK, devotion_limit = CLERIC_REQ_1)
 					H.change_stat(STATKEY_CON, 1) //SURVIVE
