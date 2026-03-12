@@ -63,7 +63,7 @@
 				r_hand = /obj/item/rogueweapon/sword/saber/iron
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/wood
-		var/armors = list("Chainmaille Set","Iron Breastplate","Gambeson & Helmet","Light Raneshi Armor")
+		var/armors = list("Chainmaille Set","Iron Breastplate","Gambeson & Helmet","Light Zybantine Armor")
 		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
 		switch(armor_choice)
 			if("Chainmaille Set")
@@ -88,7 +88,7 @@
 				pants = /obj/item/clothing/under/roguetown/trou/leather
 				head = /obj/item/clothing/head/roguetown/helmet/kettle
 				gloves = /obj/item/clothing/gloves/roguetown/angle
-			if("Light Raneshi Armor")
+			if("Light Zybantine Armor")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/raneshen
 				pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/raneshen
 				head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab

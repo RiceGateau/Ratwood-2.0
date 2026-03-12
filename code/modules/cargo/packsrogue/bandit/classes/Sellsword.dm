@@ -401,7 +401,7 @@
 	contains = list(/obj/item/rogueweapon/greatsword/grenz/flamberge)
 
 //////////////////////
-// RANESHEN - RIDER //
+// ZYBANTINE - RIDER //
 //////////////////////
 
 /datum/supply_pack/rogue/Sellsword/driderhead
