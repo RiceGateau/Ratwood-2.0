@@ -4217,32 +4217,12 @@
 /turf/open/floor/rogue/darkpath,
 /area/rogue/under/deserttown/basement/town)
 "cjg" = (
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/spear,
-/obj/item/rogueweapon/spear,
-/obj/item/rogueweapon/spear,
-/obj/item/rogueweapon/spear,
-/obj/item/rogueweapon/spear,
-/obj/item/rogueweapon/scabbard/gwstrap{
-	pixel_x = -12;
-	pixel_y = -21
-	},
-/obj/item/rogueweapon/scabbard/gwstrap{
-	pixel_x = -12;
-	pixel_y = -21
-	},
-/obj/item/rogueweapon/scabbard/gwstrap{
-	pixel_x = -12;
-	pixel_y = -21
-	},
-/obj/item/rogueweapon/scabbard/gwstrap{
-	pixel_x = -12;
-	pixel_y = -21
-	},
-/obj/item/rogueweapon/scabbard/gwstrap{
-	pixel_x = -12;
-	pixel_y = -21
-	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -5215,13 +5195,33 @@
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/indoors/deserttown)
 "cJC" = (
-/obj/item/rope/chain,
-/obj/item/rope/chain,
-/obj/item/rope/chain,
-/obj/structure/closet/crate/chest{
-	lockid = "warden"
-	},
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/shield/wood,
 /obj/structure/rack/rogue/shelf,
+/obj/item/rogueweapon/scabbard/sword{
+	pixel_x = 10;
+	pixel_y = 35
+	},
+/obj/item/rogueweapon/scabbard/sword{
+	pixel_x = 10;
+	pixel_y = 35
+	},
+/obj/item/rogueweapon/scabbard/sword{
+	pixel_x = 10;
+	pixel_y = 35
+	},
+/obj/item/rogueweapon/scabbard/sword{
+	pixel_x = 10;
+	pixel_y = 35
+	},
+/obj/item/rogueweapon/scabbard/sword{
+	pixel_x = 10;
+	pixel_y = 35
+	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -7169,21 +7169,35 @@
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/under/deserttown/basement/town)
 "dGH" = (
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/structure/closet/crate/chest{
-	lockid = "warden"
+/obj/machinery/light/rogue/torchholder/r,
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/woodstaff,
+/obj/item/rogueweapon/woodstaff,
+/obj/item/rogueweapon/mace/woodclub{
+	pixel_x = 5;
+	pixel_y = -4
 	},
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/reagent_containers/glass/bucket,
-/obj/effect/decal/cleanable/dirt/cobweb{
-	dir = 1
+/obj/item/rogueweapon/mace/woodclub{
+	pixel_x = 5;
+	pixel_y = -4
 	},
 /obj/structure/rack/rogue/shelf,
+/obj/item/rogueweapon/scabbard/gwstrap{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/item/rogueweapon/scabbard/gwstrap{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/item/rogueweapon/scabbard/gwstrap{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/item/rogueweapon/scabbard/gwstrap{
+	pixel_x = -12;
+	pixel_y = 14
+	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -9977,8 +9991,12 @@
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/indoors/deserttown/magician)
 "eWZ" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/whip,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/structure/closet/crate/chest{
+	lockid = "warden"
+	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -14831,13 +14849,17 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/deserttown/smithguild)
 "htz" = (
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/structure/rack/rogue,
+/obj/item/needle,
+/obj/item/needle,
+/obj/item/needle,
+/obj/item/needle,
+/obj/structure/closet/crate/chest{
+	lockid = "walls"
+	},
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -17620,18 +17642,27 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/deserttown/academy)
 "iZG" = (
-/obj/item/needle,
-/obj/item/needle,
-/obj/item/needle,
-/obj/item/needle,
-/obj/structure/closet/crate/chest{
-	lockid = "walls"
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/huntingknife/idagger,
+/obj/item/rogueweapon/huntingknife/idagger,
+/obj/item/rogueweapon/huntingknife/idagger,
+/obj/item/rogueweapon/huntingknife/idagger,
+/obj/item/rogueweapon/scabbard/sheath{
+	pixel_y = 28
 	},
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
-/obj/item/natural/cloth,
 /obj/structure/rack/rogue/shelf,
+/obj/item/rogueweapon/scabbard/sheath{
+	pixel_y = 28
+	},
+/obj/item/rogueweapon/scabbard/sheath{
+	pixel_y = 28
+	},
+/obj/item/rogueweapon/scabbard/sheath{
+	pixel_y = 28
+	},
+/obj/item/rogueweapon/scabbard/sheath{
+	pixel_y = 28
+	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -19985,14 +20016,10 @@
 /area/rogue/indoors/deserttown/bath)
 "kfd" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/huntingknife/idagger,
-/obj/item/rogueweapon/huntingknife/idagger,
-/obj/item/rogueweapon/huntingknife/idagger,
-/obj/item/rogueweapon/huntingknife/idagger,
-/obj/item/rogueweapon/scabbard/sheath,
-/obj/item/rogueweapon/scabbard/sheath,
-/obj/item/rogueweapon/scabbard/sheath,
-/obj/item/rogueweapon/scabbard/sheath,
+/obj/item/rogueweapon/sword/saber/iron,
+/obj/item/rogueweapon/sword/saber/iron,
+/obj/item/rogueweapon/sword/saber/iron,
+/obj/item/rogueweapon/sword/saber/iron,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -20757,11 +20784,9 @@
 /area/rogue/indoors/deserttown/academy)
 "kzB" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/whip,
+/obj/item/rogueweapon/whip,
+/obj/item/rogueweapon/whip,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -24490,18 +24515,12 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/grove)
 "mDy" = (
-/obj/machinery/light/rogue/torchholder/r,
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/woodstaff,
-/obj/item/rogueweapon/woodstaff,
-/obj/item/rogueweapon/mace/woodclub{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/item/rogueweapon/mace/woodclub{
-	pixel_x = 5;
-	pixel_y = -4
-	},
+/obj/item/rogueweapon/spear,
+/obj/item/rogueweapon/spear,
+/obj/item/rogueweapon/spear,
+/obj/item/rogueweapon/spear,
+/obj/item/rogueweapon/spear,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -26216,27 +26235,13 @@
 	},
 /area/rogue/indoors/inq/basement)
 "nwG" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/saber/iron,
-/obj/item/rogueweapon/sword/saber/iron,
-/obj/item/rogueweapon/sword/saber/iron,
-/obj/item/rogueweapon/sword/saber/iron,
-/obj/item/rogueweapon/scabbard/sword{
-	pixel_x = 10;
-	pixel_y = -5
+/obj/structure/closet/crate/chest{
+	lockid = "walls"
 	},
-/obj/item/rogueweapon/scabbard/sword{
-	pixel_x = 10;
-	pixel_y = -5
-	},
-/obj/item/rogueweapon/scabbard/sword{
-	pixel_x = 10;
-	pixel_y = -5
-	},
-/obj/item/rogueweapon/scabbard/sword{
-	pixel_x = 10;
-	pixel_y = -5
-	},
+/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
+/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
+/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
+/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -31450,21 +31455,19 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/deserttown/manor)
 "qes" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace,
-/obj/item/rogueweapon/mace,
-/obj/item/rogueweapon/mace,
-/obj/item/rogueweapon/mace/cudgel{
-	pixel_x = 7;
-	pixel_y = -9
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/structure/closet/crate/chest{
+	lockid = "warden"
 	},
-/obj/item/rogueweapon/mace/cudgel{
-	pixel_x = 7;
-	pixel_y = -9
-	},
-/obj/item/rogueweapon/mace/cudgel{
-	pixel_x = 7;
-	pixel_y = -9
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/decal/cleanable/dirt/cobweb{
+	dir = 8
 	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
@@ -38725,13 +38728,22 @@
 	},
 /area/rogue/indoors/deserttown/smithguild)
 "tCf" = (
-/obj/structure/closet/crate/chest{
-	lockid = "walls"
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/mace,
+/obj/item/rogueweapon/mace,
+/obj/item/rogueweapon/mace,
+/obj/item/rogueweapon/mace/cudgel{
+	pixel_x = 7;
+	pixel_y = -9
 	},
-/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
-/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
-/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
-/obj/item/reagent_containers/glass/bottle/alchemical/healthpot,
+/obj/item/rogueweapon/mace/cudgel{
+	pixel_x = 7;
+	pixel_y = -9
+	},
+/obj/item/rogueweapon/mace/cudgel{
+	pixel_x = 7;
+	pixel_y = -9
+	},
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
@@ -38826,11 +38838,10 @@
 /area/rogue/indoors/deserttown/bath)
 "tFF" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb,
+/obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb,
+/obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb,
+/obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb,
 /turf/open/floor/rogue/concrete{
 	icon = 'modular/DesertTown/icons/alt/roguefloor.dmi'
 	},
@@ -486778,11 +486789,11 @@ pfb
 oGK
 tCf
 mMW
-qes
+mMW
+mMW
+mMW
 mMW
 nwG
-mMW
-oLw
 oGK
 qbX
 pfb
@@ -487082,7 +487093,7 @@ iZG
 mMW
 kfd
 mMW
-eWZ
+oLw
 mMW
 htz
 oGK
@@ -487386,7 +487397,7 @@ kzB
 mMW
 cjg
 mMW
-rqe
+eWZ
 oGK
 qbX
 pfb
@@ -487686,9 +487697,9 @@ dGH
 mMW
 mDy
 mMW
-owc
+rqe
 mMW
-bZm
+qes
 oGK
 pfb
 pfb
@@ -487985,11 +487996,11 @@ qbX
 pfb
 oGK
 oGK
-oGK
-oGK
-oGK
-oGK
-oGK
+mMW
+owc
+mMW
+bZm
+mMW
 oGK
 oGK
 pfb
@@ -488286,13 +488297,13 @@ oGK
 qbX
 pfb
 pfb
-pfb
-pfb
-pfb
-pfb
-qbX
-pfb
-pfb
+oGK
+oGK
+oGK
+oGK
+oGK
+oGK
+oGK
 pfb
 pfb
 pfb
@@ -488587,15 +488598,15 @@ hYl
 wpm
 qbX
 qbX
-vBr
-qbX
 pfb
 pfb
 pfb
 pfb
 pfb
 pfb
-vBr
+pfb
+pfb
+pfb
 pfb
 pfb
 oGK
@@ -488888,17 +488899,17 @@ hYl
 hYl
 oGK
 oGK
-wpm
-oGK
-oGK
+pfb
+vBr
 qbX
-qbX
-oGK
-oGK
-oGK
-oGK
-oGK
-oGK
+pfb
+pfb
+pfb
+pfb
+pfb
+pfb
+vBr
+pfb
 oGK
 oGK
 naM
@@ -489189,19 +489200,19 @@ hYl
 hYl
 hYl
 hYl
-naM
-naM
-naM
 oGK
-eOi
-wpm
 oGK
-naM
-naM
-naM
-naM
-naM
-naM
+oGK
+oGK
+qbX
+qbX
+oGK
+oGK
+oGK
+oGK
+oGK
+oGK
+oGK
 naM
 naM
 naM
@@ -489494,10 +489505,10 @@ hYl
 naM
 naM
 naM
-hYl
-hYl
-hYl
-hYl
+oGK
+eOi
+wpm
+oGK
 naM
 naM
 naM

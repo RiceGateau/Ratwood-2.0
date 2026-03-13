@@ -91,13 +91,13 @@
 /datum/outfit/job/roguetown/janissary/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	// head = /obj/item/clothing/head/roguetown/helmet/janissary
-	head = /obj/item/clothing/head/roguetown/helmet/sallet/raneshen
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb
 	// shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/raneshen
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
 	// pants = /obj/item/clothing/under/roguetown/trou/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/raneshen
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/raneshen
-	cloak = /obj/item/clothing/cloak/half/shadowcloak
+	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb
+	cloak = /obj/item/clothing/cloak/raincloak/drab
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -158,11 +158,11 @@
 
 /datum/outfit/job/roguetown/janissary/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/sallet/raneshen
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/raneshen
-	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/raneshen
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
+	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	cloak = /obj/item/clothing/cloak/half/shadowcloak
+	cloak = /obj/item/clothing/cloak/raincloak/drab
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
