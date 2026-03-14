@@ -90,12 +90,9 @@
 
 /datum/outfit/job/roguetown/janissary/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
-	// head = /obj/item/clothing/head/roguetown/helmet/janissary
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/nomad
-	// shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
-	// pants = /obj/item/clothing/under/roguetown/trou/leather
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/zyb
 	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb
 	cloak = /obj/item/clothing/cloak/raincloak/drab
@@ -103,7 +100,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/roguetown/coif/padded
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden
 	beltr = /obj/item/quiver/arrows
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
@@ -161,15 +158,15 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/zyb
 	mask = /obj/item/clothing/head/roguetown/roguehood/shalal/nomad
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/zyb
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/zyb
 	pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex/zyb
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	cloak = /obj/item/clothing/cloak/raincloak/drab
+	cloak = /obj/item/clothing/cloak/raincloak/darkdrab
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	neck = /obj/item/clothing/neck/roguetown/coif/padded
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	beltr = /obj/item/rogueweapon/sword/saber/iron

@@ -48,7 +48,7 @@
 
 //All skills/traits are on the loadouts. All are identical. Welcome to the stupid way we have to make sub-classes...
 /datum/outfit/job/roguetown/JanissaryAgha
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/janissary
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/agha
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
 	cloak = /obj/item/clothing/cloak/half/shadowcloak
@@ -58,7 +58,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
 	backr = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/helmet/janissary
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
 	id = /obj/item/scomstone/garrison
 
 //Rare-ish anti-armor two hander sword. Kinda alternative of a bastard sword type. Could be cool.
