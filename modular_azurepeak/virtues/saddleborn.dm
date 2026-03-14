@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(virtue_mount_choices, (list(
 	/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
 	/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled,
 	/mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/tame/saddled,
-	/mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame/saddled,
-	/mob/living/simple_animal/hostile/retaliate/rogue/goat/tame,
+	list("goat buck", /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame/saddled),
+	list("goat doe", /mob/living/simple_animal/hostile/retaliate/rogue/goat/tame/saddled),
 )))
 
 GLOBAL_LIST_INIT(virtue_mount_choices_noble, (list(
