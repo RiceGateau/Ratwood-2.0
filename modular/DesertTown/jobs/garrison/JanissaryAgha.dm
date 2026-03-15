@@ -10,7 +10,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "An experienced soldier of the Sultan's Janissary Corp you have been tasked with overseeing the newly constructed border. \
-				You report to the Royal Family and their Councillors, \
+				You report to the Royal Family and their sheikhs, \
 				and your job is to keep the younger Janissaries in line and to ensure the routes to the city remain safe.\
 				The Border must not fall."
 	display_order = JDO_SERGEANT
@@ -58,7 +58,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
 	backr = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	id = /obj/item/scomstone/garrison
 
 //Rare-ish anti-armor two hander sword. Kinda alternative of a bastard sword type. Could be cool.
@@ -93,9 +93,9 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_MASTER,	// We are basically identical to a regular MAA, except having better athletics to help us manage our order usage better
-		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,	//Decent tracking akin to Skirmisher.
+		/datum/skill/misc/athletics = SKILL_LEVEL_MASTER,	
+		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,	
 	)
 
 /datum/outfit/job/roguetown/JanissaryAgha/JanissaryAgha/pre_equip(mob/living/carbon/human/H)
