@@ -10,7 +10,7 @@
 	landsound = 'sound/foley/jumpland/dirtland.wav'
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
-	slowdown = 1
+	// slowdown = 1
 
 /turf/open/floor/rogue/dunes/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
