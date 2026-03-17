@@ -9,7 +9,7 @@
 #define CTAG_MAMLUKSERGEANT	"CAT_MAMLUKSERGEANT"		// Sergeant class - Handles Sergeant class selector (weapons selection)
 #define CTAG_MAMLUK			"CAT_MAMLUK"		// Menatarms alt
 #define CTAG_SLAVEMASTER	"CAT_SLAVEMASTER"
-#define CTAG_DTTOWNER		"CAT_DTTOWNER"
+// #define CTAG_DTTOWNER		"CAT_DTTOWNER"
 #define CTAG_PSLAVE			"CAT_PSLAVE"
 #define CTAG_DTCOURTMAGE	"CAT_DTCOURTMAGE"
 #define CTAG_HEADSLAVE		"CAT_HEADSLAVE"		// Seneschal's aesthetic choices.

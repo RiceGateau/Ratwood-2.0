@@ -159,7 +159,6 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Refugee",
 	"Pilgrim",
 	//desert
-	"Villager",
 	"Nomad",
 ))
 

@@ -12,10 +12,11 @@
 	)
 	title_adjust = list(
 		/datum/job/roguetown/lord = list(display_title = "Sultan", f_title = "Sultana"),//this just effects the Lord Name code that effects global messages like from the throne
-		/datum/job/roguetown/marshal = list(display_title = "Mayor"),
+		// /datum/job/roguetown/marshal = list(display_title = "Mayor"),
 		/datum/job/roguetown/priest =  list(display_title = "High Priest", f_title = "High Priestess"),
 		/datum/job/roguetown/captain = list(display_title = "Cataphract Captain"),
 		/datum/job/roguetown/physician = list(display_title = "Palace Physician"),
+		/datum/job/roguetown/villager = list(display_title = "Villager"),
 	)
 	tutorial_adjust = list(
 		/datum/job/roguetown/marshal = "CHANGE THIS LATER. Manage the town outside of the palace. Hang out in the mayor building!!!",
@@ -71,7 +72,7 @@
 		// /datum/job/roguetown/tailor,
 		// /datum/job/roguetown/elder,
 		
-		/datum/job/roguetown/villager,
+		// /datum/job/roguetown/villager,
 		// /datum/job/roguetown/farmer,
 		// /datum/job/roguetown/prisonerb,
 		// /datum/job/roguetown/prisonerr,

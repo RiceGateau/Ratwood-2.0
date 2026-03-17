@@ -31,8 +31,8 @@
 	name = "Palace Slave"
 /obj/effect/landmark/start/dt/headslave
 	name = "Head Slave"
-/obj/effect/landmark/start/dt/dttowner
-	name = "Villager"
+// /obj/effect/landmark/start/dt/dttowner
+// 	name = "Villager"
 /obj/effect/landmark/start/dt/courtslave
 	name = "Enslaved Adventurer"
 

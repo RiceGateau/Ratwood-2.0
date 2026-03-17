@@ -8,8 +8,6 @@
 	map_file_name = "rockhill.dmm"
 	realm_name = "Rockhill"
 	blacklist = list(//I had wanted the map variable in the roles themselves to bar them from non-desert maps but it still shows up in the Latejoin menu so I'm doing this just to keep it clear)
-		/datum/job/roguetown/dtvillager,
-
 		/datum/job/roguetown/sultan,
 		/datum/job/roguetown/cataphract,
 		/datum/job/roguetown/vizier,
@@ -26,8 +24,6 @@
 		
 		/datum/job/roguetown/slave,
 		/datum/job/roguetown/dtprince,
-		/datum/job/roguetown/dtshophand,
-		/datum/job/roguetown/dtvillager,
 		/datum/job/roguetown/dtshophand,
 		
 		/datum/job/roguetown/adventurer/courtslave,)
