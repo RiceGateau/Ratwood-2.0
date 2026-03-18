@@ -176,6 +176,7 @@
 #define TRAIT_SCARRED "Scarred"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
 #define TRAIT_BANDITCAMP "banditcamp"
+#define TRAIT_DUNGEONMASTER_LABOR_CAMP "dungeonmasterlaborcamp"
 #define TRAIT_VAMPMANSION "vampiremansion"
 #define TRAIT_VAMP_DREAMS "vamp_dreams"
 #define TRAIT_LIMPDICK "Limp Dick"
@@ -216,7 +217,6 @@
 #define TRAIT_NOHUNGER	"Foodless"
 #define TRAIT_DARKVISION "Darksight"
 #define TRAIT_NOCSHADES "Nocshaded"
-#define TRAIT_SANDSTORMED "Sandstormed"
 #define TRAIT_LIGHT_STEP	"Light Step"
 #define TRAIT_AZURENATIVE "Vale Native"
 #define TRAIT_SLEUTH	"Sleuth"
@@ -684,7 +684,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_REFUSED_VAMP_CONVERT "refused_vampire_conversion"
 /// makes your footsteps completely silent
 #define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
-#define TRAIT_SANDSTORM_GOGGLES "sandstorm_eyeprotection"
 
 //bodypart traits
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
