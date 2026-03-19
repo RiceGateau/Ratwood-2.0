@@ -8,6 +8,7 @@
 	if(!prob(pottery_shatter_chance))
 		return FALSE
 	visible_message(span_warning("[src] shatters on impact!"))
+	new /obj/effect/decal/cleanable/debris/glassy(get_turf(src))
 	playsound(get_turf(src), 'sound/foley/glassbreak.ogg', 75, TRUE)
 	qdel(src)
 	return TRUE
@@ -308,6 +309,17 @@
 	return ..()
 
 /obj/item/reagent_containers/glass/cup/claycupclassic/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	if(pottery_throw_shatter(hit_atom, thrownthing))
+		return
+	return ..()
+
+/obj/item/reagent_containers/glass/cup/ceramic
+	pottery_fragile = TRUE
+
+/obj/item/reagent_containers/glass/cup/ceramic/fancy
+	pottery_fragile = TRUE
+
+/obj/item/reagent_containers/glass/cup/ceramic/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
 	if(pottery_throw_shatter(hit_atom, thrownthing))
 		return
 	return ..()
@@ -826,6 +838,11 @@
 			to_chat(user, span_notice("I glaze the cup with the dye brush."))
 			color = brush.dye
 		return
+
+/obj/item/reagent_containers/glass/cup/porcelain/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	if(pottery_throw_shatter(hit_atom, thrownthing))
+		return
+	return ..()
 
 /obj/item/reagent_containers/glass/cup/porcelain/fancy
 	name = "fancy porcelain teacup"

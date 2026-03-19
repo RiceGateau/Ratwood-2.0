@@ -124,21 +124,21 @@
 			quality_prefix = "crude "
 			quality_multiplier = 0.4
 		if(1)
-			quality_prefix = "rough "
+			quality_prefix = "poor "
 			quality_multiplier = 0.6
 		if(2)
 			quality_multiplier = 0.8
 		if(3)
 			quality_prefix = "fine "
-			quality_multiplier = 1.04
+			quality_multiplier = 1.1
 		if(4)
 			quality_prefix = "flawless "
-			quality_multiplier = 1.28
+			quality_multiplier = 1.2
 		if(5)
 			quality_prefix = "masterwork "
-			quality_multiplier = 1.6
+			quality_multiplier = 1.5
 
-	if(quality_prefix && quality_tier >= 3)
+	if(quality_prefix)
 		result.name = quality_prefix + initial(result.name)
 
 	if(result.sellprice)
@@ -200,9 +200,13 @@
 	var/skill_level = user.get_skill_level(/datum/skill/craft/ceramics)
 	if(skill_level < G.selected_recipe.craftdiff)
 		to_chat(user, span_warning("I need [SSskills.level_names_plain[G.selected_recipe.craftdiff]] pottery skill for this glasswork."))
+		QDEL_NULL(G.selected_recipe)
+		G.blow_progress = 0
 		return
 
-	var/time_to_blow = max(6, round(G.selected_recipe.base_time / G.blows_required) - (skill_level * 2))
+	// Glassblowing is twice as slow as pottery wheel spinning - same skill scaling formula, but doubled
+	var/base_per_blow = max(1, round(G.selected_recipe.base_time / G.blows_required))
+	var/time_to_blow = max(12, 2 * (base_per_blow + (SKILL_LEVEL_JOURNEYMAN - skill_level) * 4))
 	to_chat(user, span_notice("I blow and shape the heated glass ([G.blow_progress + 1]/[G.blows_required])..."))
 	playsound(src, "bubbles", 65, FALSE)
 	if(!do_after(user, time_to_blow, target = src))
@@ -211,6 +215,30 @@
 	if(loaded_glass != G)
 		to_chat(user, span_warning("I lose control of the glasswork."))
 		return
+
+	// Glassblowing has twice the failure chance of pottery wheel
+	if(skill_level <= SKILL_LEVEL_EXPERT)
+		var/failure_chance = 0
+		switch(skill_level)
+			if(SKILL_LEVEL_NONE)
+				failure_chance = 90
+			if(SKILL_LEVEL_NOVICE)
+				failure_chance = 50
+			if(SKILL_LEVEL_APPRENTICE)
+				failure_chance = 40
+			if(SKILL_LEVEL_JOURNEYMAN)
+				failure_chance = 30
+			if(SKILL_LEVEL_EXPERT)
+				failure_chance = 20
+		if(prob(failure_chance))
+			user.visible_message(span_warning("[user] loses control of the glass — it cracks and shatters!"), span_warning("I lose control of the molten glass — it cracks and shatters!"))
+			playsound(src, 'sound/foley/glassbreak.ogg', 75, TRUE)
+			loaded_glass = null
+			update_icon()
+			qdel(G)
+			if(user.mind)
+				user.mind.add_sleep_experience(/datum/skill/craft/ceramics, 2, FALSE)
+			return
 
 	G.blow_progress++
 	if(G.blow_progress < G.blows_required)
@@ -241,7 +269,7 @@
 /datum/glass_blow_recipe
 	abstract_type = /datum/glass_blow_recipe
 	var/name = "glass shape"
-	var/craftdiff = SKILL_LEVEL_NOVICE
+	var/craftdiff = SKILL_LEVEL_NONE
 	var/base_time = 40
 	var/result_type = /obj/item/natural/glass
 	var/result_count = 1
@@ -250,7 +278,7 @@
 
 /datum/glass_blow_recipe/statue_1
 	name = "glass statue (style I)"
-	craftdiff = SKILL_LEVEL_APPRENTICE
+	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design1
 	recipe_icon = 'icons/roguetown/items/cooking.dmi'
@@ -258,7 +286,7 @@
 
 /datum/glass_blow_recipe/statue_2
 	name = "glass statue (style II)"
-	craftdiff = SKILL_LEVEL_APPRENTICE
+	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design2
 	recipe_icon = 'icons/roguetown/items/cooking.dmi'
@@ -266,7 +294,7 @@
 
 /datum/glass_blow_recipe/statue_3
 	name = "glass statue (style III)"
-	craftdiff = SKILL_LEVEL_APPRENTICE
+	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design3
 	recipe_icon = 'icons/roguetown/items/cooking.dmi'
@@ -274,7 +302,7 @@
 
 /datum/glass_blow_recipe/statue_4
 	name = "glass statue (style IV)"
-	craftdiff = SKILL_LEVEL_APPRENTICE
+	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design4
 	recipe_icon = 'icons/roguetown/items/cooking.dmi'
@@ -282,7 +310,7 @@
 
 /datum/glass_blow_recipe/statue_5
 	name = "glass statue (style V)"
-	craftdiff = SKILL_LEVEL_APPRENTICE
+	craftdiff = SKILL_LEVEL_JOURNEYMAN
 	base_time = 42
 	result_type = /obj/item/roguestatue/glass/design5
 	recipe_icon = 'icons/roguetown/items/cooking.dmi'

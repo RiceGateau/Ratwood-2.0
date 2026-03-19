@@ -69,7 +69,6 @@
 		to_chat(user, span_notice("I place [W] on the wheel."))
 		update_icon()
 		return
-	. = ..()
 
 /obj/structure/fluff/ceramicswheel/attack_hand(mob/living/user)
 	if(loaded_clay)
@@ -84,7 +83,6 @@
 		to_chat(user, span_notice("I take [removed] off the wheel."))
 		update_icon()
 		return
-	. = ...
 
 /obj/structure/fluff/ceramicswheel/proc/calculate_pottery_quality(skill_level)
 	// Quality tiers: 0=Crude, 1=Rough, 2=Competent(regular), 3=Fine, 4=Flawless, 5=Masterwork
@@ -420,10 +418,6 @@
 /datum/pottery_wheel_recipe/porcelain/fancy_teapot
 	name = "fancy porcelain teapot"
 	result_type = /obj/item/natural/clay/porcelain/fancyteapot
-
-/datum/pottery_wheel_recipe/porcelain/decorative_teapot
-	name = "decorative porcelain teapot"
-	result_type = /obj/item/natural/clay/porcelain/decorativeteapot
 
 /datum/pottery_wheel_recipe/porcelain/advanced
 	abstract_type = /datum/pottery_wheel_recipe/porcelain/advanced

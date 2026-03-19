@@ -196,6 +196,10 @@
 		return
 
 	if(istype(W, /obj/item/natural/stone) || istype(W, /obj/item/natural/dirtclod/sand) || istype(W, /obj/item/alch/stonedust))
+		var/is_stonedust = istype(W, /obj/item/alch/stonedust)
+		if(is_stonedust && user.get_skill_level(/datum/skill/craft/ceramics) < SKILL_LEVEL_JOURNEYMAN)
+			to_chat(user, span_warning("I need journeyman pottery knowledge to prepare glass batches."))
+			return ..()
 		if(ash_kneads < 2)
 			to_chat(user, span_warning("I need to knead in 2 ash before adding sand."))
 			return
@@ -209,7 +213,6 @@
 		sand_added = TRUE
 		set_wet_state(FALSE)
 		needs_knead_after_wet = FALSE
-		var/is_stonedust = istype(W, /obj/item/alch/stonedust)
 		qdel(W)
 		if(user.mind)
 			user.mind.add_sleep_experience(/datum/skill/craft/ceramics, 1, FALSE)
@@ -282,16 +285,16 @@
 			quality_multiplier = 0.8
 		if(3)
 			quality_prefix = "fine "
-			quality_multiplier = 1.04
+			quality_multiplier = 1.1
 		if(4)
 			quality_prefix = "flawless "
-			quality_multiplier = 1.28
+			quality_multiplier = 1.2
 		if(5)
 			quality_prefix = "masterwork "
-			quality_multiplier = 1.6
+			quality_multiplier = 1.5
 	
 	// Apply quality prefix to name
-	if(quality_prefix && quality_tier >= 3)
+	if(quality_prefix)
 		result.name = quality_prefix + initial(result.name)
 	
 	// Apply quality multiplier to sell price
