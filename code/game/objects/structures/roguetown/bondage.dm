@@ -120,19 +120,51 @@
 	desc = "A wooden partition with a suspicious hole."
 	icon_state = "gloryhole"
 	density = TRUE
-	layer = ABOVE_ALL_MOB_LAYER
-	plane = GAME_PLANE_UPPER
+	layer = MOB_LAYER
+	plane = GAME_PLANE
 	buckleverb = "position"
 	var/buckle_offset_x = 0
 	var/buckle_offset_y = 1
 
+/obj/structure/bondage/gloryhole/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		return
+	. += "Right-click to step up to \the [src]."
+
 /obj/structure/bondage/gloryhole/post_buckle_mob(mob/living/M)
 	. = ..()
 	M.set_mob_offsets("bed_buckle", _x = buckle_offset_x, _y = buckle_offset_y)
+	M.layer = LYING_MOB_LAYER
+	M.plane = GAME_PLANE_LOWER
 
 /obj/structure/bondage/gloryhole/post_unbuckle_mob(mob/living/M)
 	. = ..()
 	M.reset_offsets("bed_buckle")
+	M.plane = initial(M.plane)
+
+/obj/structure/bondage/gloryhole/attack_right(mob/living/user)
+	if(!ishuman(user) || !(user.mobility_flags & MOBILITY_STAND)) // must be standing
+		return ..()
+
+	var/can_buckle_old = can_buckle
+	can_buckle = 0
+	. = ..()
+	can_buckle = can_buckle_old
+	if(.)
+		return
+	var/adir = get_dir(loc, user)
+	switch(adir)
+		if(EAST)
+			animate(user, pixel_x = -26, time = 2.7)
+		if(SOUTH)
+			animate(user, pixel_y = 26, time = 2.7)
+		if(WEST)
+			animate(user, pixel_x = 26, time = 2.7)
+		else
+			return
+	user.is_shifted = TRUE
+	user.passthroughable |= (NORTH | EAST | SOUTH | WEST)
 
 /obj/structure/bondage/gloryhole/CanPass(atom/movable/mover, turf/target)
 	if(has_buckled_mobs())
