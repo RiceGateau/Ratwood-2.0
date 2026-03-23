@@ -27,13 +27,14 @@
 	job_subclasses = list(
 		/datum/advclass/janissary/footman,
 		/datum/advclass/janissary/zephyr,
+		/datum/advclass/janissary/jezail,
 	)
 
 /datum/outfit/job/roguetown/janissary
 	job_bitflag = BITFLAG_GARRISON
 
 /datum/outfit/job/roguetown/janissary
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/shalal/reinforced
 	belt = /obj/item/storage/belt/rogue/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/scomstone/bad/garrison
