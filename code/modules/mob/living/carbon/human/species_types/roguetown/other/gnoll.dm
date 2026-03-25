@@ -113,8 +113,14 @@
 
 /datum/species/gnoll/update_damage_overlays(mob/living/carbon/human/H)
 	H.remove_overlay(DAMAGE_LAYER)
+	H.remove_overlay(LEG_DAMAGE_LAYER)
+	H.remove_overlay(ARM_DAMAGE_LAYER)
 	H.overlays_standing[DAMAGE_LAYER] = list()
+	H.overlays_standing[LEG_DAMAGE_LAYER] = list()
+	H.overlays_standing[ARM_DAMAGE_LAYER] = list()
 	H.apply_overlay(DAMAGE_LAYER)
+	H.apply_overlay(LEG_DAMAGE_LAYER)
+	H.apply_overlay(ARM_DAMAGE_LAYER)
 	return TRUE
 
 /datum/species/gnoll/random_name(gender,unique,lastname)
