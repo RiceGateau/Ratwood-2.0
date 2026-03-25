@@ -102,6 +102,8 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Squire",
 	"Vanguard",
 	"Dungeoneer",
+	"Master Warden",
+	"Watch Captain",
 	//desert
 	"Cataphract",
 	"Janissary",
@@ -109,7 +111,6 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Azeb",
 	"Azeb Agha",
 	"Slave Master",
-
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
