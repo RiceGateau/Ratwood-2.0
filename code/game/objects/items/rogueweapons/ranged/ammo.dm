@@ -81,19 +81,21 @@
 /obj/projectile/bullet/reusable/bolt/blunt
 	damage = 25
 	armor_penetration = 0
-	embedchance = 0
+	embedchance = 1//freak accident
 	woundclass = BCLASS_BLUNT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/blunt
 	hitsound = 'sound/combat/hits/blunt/woodblunt (2).ogg'
+	speed = 0.3
 
 /obj/projectile/bullet/reusable/bolt/heavyblunt
 	damage = 70
 	armor_penetration = 50
-	embedchance = 2
+	embedchance = 2//freak accident
 	woundclass = BCLASS_BLUNT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/heavyblunt
+	hitsound = 'sound/combat/hits/blunt/woodblunt (2).ogg'
 	icon_state = "bolt_blunt_proj"
-	speed = 0.3
+	speed = 0.25
 
 /obj/projectile/bullet/reusable/bolt/on_hit(atom/target)
 	. = ..()
