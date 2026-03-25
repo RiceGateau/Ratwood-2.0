@@ -6161,6 +6161,13 @@
 /obj/machinery/light/rogue/candle/green,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/banditcamp)
+"Ca" = (
+/obj/structure/fluff/traveltile/dungeoneer{
+	aportalgoesto = "siberia2b";
+	aportalid = "siberia1b"
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/dietroyt)
 "Cc" = (
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/herringbone,
@@ -10971,6 +10978,12 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /turf/open/floor/rogue/concrete,
 /area/rogue/dietroyt)
+"ZY" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/dietroyt)
 "ZZ" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -15666,7 +15679,7 @@ rQ
 qB
 qB
 fV
-Am
+Ca
 fV
 qB
 qB
@@ -15796,7 +15809,7 @@ rQ
 qB
 Qt
 Qt
-lW
+ZY
 fV
 Qt
 Qt
