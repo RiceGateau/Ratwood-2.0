@@ -12,9 +12,9 @@
 
 /datum/round_event/migrant_wave/gnolls/start()
 	var/datum/job/gnoll_job = SSjob.GetJob("Gnoll")
-	gnoll_job.total_positions = min(gnoll_job.total_positions + 2, 10)
-	gnoll_job.spawn_positions = min(gnoll_job.spawn_positions + 2, 10)
-	if(gnoll_job.total_positions < 10) // Not at max capacity, increasing goal.
+	gnoll_job.total_positions = min(gnoll_job.total_positions + 2, 6)
+	gnoll_job.spawn_positions = min(gnoll_job.spawn_positions + 2, 6)
+	if(gnoll_job.total_positions < 6) // Not at max capacity, increasing goal.
 		SSrole_class_handler.assassins_in_round = TRUE
 		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 			if(!player.client)

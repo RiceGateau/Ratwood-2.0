@@ -732,7 +732,6 @@ SUBSYSTEM_DEF(gamemode)
 		var/datum/storyteller/storyboy = storytellers[storyteller_type]
 		if(findtext(html_contaminated, storyboy.name))
 			selected_storyteller = storyboy.type
-			SSgnoll_scaling.get_gnoll_scaling() // Calling this here as to make sure scaling holds true as per the roundstart vote, not a latejoin hunted character joining.
 			break
 
 	var/datum/storyteller/storytypecasted = selected_storyteller
@@ -764,6 +763,9 @@ SUBSYSTEM_DEF(gamemode)
 	chosen_storyteller.times_chosen++
 	GLOB.featured_stats[FEATURED_STATS_STORYTELLERS]["entries"][initial(chosen_storyteller.name)] = chosen_storyteller.times_chosen
 	current_storyteller = chosen_storyteller
+	if(SSgnoll_scaling)
+		SSgnoll_scaling.gnoll_scaling_mode = current_storyteller.preferred_gnoll_mode
+		SSgnoll_scaling.unlock_gnoll_scaling()
 	if(!secret_storyteller)
 		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))

@@ -130,7 +130,7 @@
 		H.AddSpell(I)
 
 		var/mode = SSgnoll_scaling.get_gnoll_scaling()
-		if(mode == GNOLL_SCALING_DYNAMIC)
+		if(mode != GNOLL_SCALING_SINGLE)
 			to_chat(H, span_bignotice("I can expect to be joined by my pack this week. I should wait for them and group up."))
 		else
 			to_chat(H, span_bignotice("Isolated from my pack, I am likely a lone soul this week. I should especially avoid getting killed, and look for my pack next week."))
