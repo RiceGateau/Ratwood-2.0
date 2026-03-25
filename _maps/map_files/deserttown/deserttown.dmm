@@ -3939,6 +3939,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
+/obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "chy" = (
@@ -4036,6 +4037,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
+/obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church/chapel)
 "cjp" = (
@@ -10709,6 +10711,16 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/under/deserttown/basement/town)
+"fBM" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1;
+	pixel_y = 8
+	},
+/obj/item/cushion/desert1,
+/obj/machinery/light/rogue/candle,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "fBW" = (
 /obj/structure/flora/roguegrass/bush/desertshrub,
 /turf/open/floor/rogue/dirt/desert,
@@ -10807,7 +10819,6 @@
 /area/rogue/indoors/deserttown)
 "fEG" = (
 /obj/machinery/light/rogue/torchholder/r,
-/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "fEH" = (
@@ -20121,11 +20132,14 @@
 	},
 /area/rogue/indoors/deserttown/magician)
 "kpd" = (
-/obj/structure/fluff/walldeco/psybanner,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1;
+	pixel_y = 8
 	},
-/area/rogue/indoors/town/church)
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "kpp" = (
 /obj/machinery/light/rogue/candle{
 	pixel_y = -32
@@ -24694,11 +24708,16 @@
 	},
 /area/rogue/under/deserttown/basement/town)
 "mwB" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall";
+	dir = 1;
+	pixel_y = 8
 	},
-/obj/machinery/light/rogue/candle,
-/turf/open/floor/rogue/churchmarble,
+/obj/structure/roguemachine/mail{
+	mailtag = "Temple"
+	},
+/obj/structure/rack/rogue/shelf/big,
+/turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "mwC" = (
 /obj/structure/table/wood{
@@ -26456,7 +26475,7 @@
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
 /obj/structure/roguemachine/mail{
-	mailtag = "Temple"
+	mailtag = "Temple Library"
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church)
@@ -31596,6 +31615,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 5
 	},
+/obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church/chapel)
 "pXb" = (
@@ -34395,6 +34415,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
+/obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "rpF" = (
@@ -39919,11 +39940,9 @@
 /turf/open/floor/rogue/citybrick/citybrick2,
 /area/rogue/outdoors/mountains)
 "ufI" = (
-/obj/structure/fluff/walldeco/psybanner,
-/turf/closed/wall/mineral/rogue/decostone/end{
-	dir = 8
-	},
-/area/rogue/indoors/town/church)
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "ufL" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -333733,8 +333752,8 @@ lBe
 lBe
 uMQ
 uMQ
-ufI
-idD
+jrd
+kpd
 wvl
 kBp
 kBp
@@ -334037,7 +334056,7 @@ uMQ
 rgj
 wLU
 pWR
-mwB
+dvX
 kBp
 kBp
 kBp
@@ -335849,7 +335868,7 @@ qbW
 rgj
 wLU
 cjl
-mwB
+dvX
 kBp
 kBp
 kBp
@@ -336149,8 +336168,8 @@ wzg
 wNK
 qbW
 lyS
-kpd
-idD
+iNu
+mwB
 rov
 kBp
 kBp
@@ -336452,7 +336471,7 @@ wNK
 qbW
 uaG
 wNK
-hHG
+fBM
 dvX
 epY
 kBp
@@ -336465,7 +336484,7 @@ iks
 iks
 iks
 eMF
-iks
+ufI
 iks
 fcz
 khc
