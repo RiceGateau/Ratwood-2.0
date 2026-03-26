@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(gnoll_scaling)
 	if(gnoll_scaling_check_queued)
 		return
 	gnoll_scaling_check_queued = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_gnoll_scaling), 6000)
+	addtimer(CALLBACK(src, PROC_REF(unlock_gnoll_scaling)), 6000)
 
 /datum/controller/subsystem/gnoll_scaling/proc/unlock_gnoll_scaling()
 	gnoll_scaling_check_queued = FALSE
