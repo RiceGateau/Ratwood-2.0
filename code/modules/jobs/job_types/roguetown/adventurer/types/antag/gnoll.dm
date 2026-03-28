@@ -57,6 +57,7 @@
 		charflaw.on_removal(src)
 	vices = list()
 	charflaw = null
+	headshot_link = null
 
 	if(status_traits)
 		for(var/trait in status_traits.Copy())
