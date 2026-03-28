@@ -133,35 +133,6 @@
 	if(moving_diagonally)//no mob swap during diagonal moves.
 		return TRUE
 
-	if(!M.buckled && !M.has_buckled_mobs())
-		if(can_mobswap_with(M))
-			//switch our position with M
-			if(loc && !loc.Adjacent(M.loc))
-				return TRUE
-			now_pushing = TRUE
-			var/oldloc = loc
-			var/oldMloc = M.loc
-
-			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
-			var/src_passmob = (pass_flags & PASSMOB)
-			M.pass_flags |= PASSMOB
-			pass_flags |= PASSMOB
-
-			var/move_failed = FALSE
-			if(!M.Move(oldloc) || !Move(oldMloc))
-				M.forceMove(oldMloc)
-				forceMove(oldloc)
-				move_failed = TRUE
-			if(!src_passmob)
-				pass_flags &= ~PASSMOB
-			if(!M_passmob)
-				M.pass_flags &= ~PASSMOB
-
-			now_pushing = FALSE
-
-			if(!move_failed)
-				return TRUE
-
 	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))
 		if(isliving(M))
 			var/sprint_distance = sprinted_tiles
@@ -263,55 +234,6 @@
 		if(!istype(M, /obj/item/clothing))
 			if(prob(I.block_chance*2))
 				return
-
-/// Checks to see if you can mobswap with another mob
-/mob/living/proc/can_mobswap_with(mob/other)
-	return FALSE // Current TM, disabling mobswap and making sure the rest of the movement works fine
-	/*
-	if(HAS_TRAIT(other, TRAIT_NOMOBSWAP) || HAS_TRAIT(src, TRAIT_NOMOBSWAP))
-		return FALSE
-
-	if(istype(other, /mob/living/simple_animal/hostile/retaliate))
-		if(other:aggressive)
-			return FALSE
-
-	var/they_can_move = TRUE
-	var/their_cmode = FALSE
-
-	if(isliving(other))
-		var/mob/living/other_living = other
-		their_cmode = other_living.cmode
-		they_can_move = other_living.mobility_flags & MOBILITY_MOVE
-
-	var/too_strong = other.move_resist > move_force
-
-	// They cannot move, see if we can push through them
-	if(!they_can_move)
-		return !too_strong
-
-	// We are pulling them and can move through
-	if (other.pulledby == src && !too_strong)
-		return TRUE
-
-	// If we're in combat mode and not restrained we don't try to pass through people
-	if (cmode && !restrained())
-		return FALSE
-
-	// Nor can we pass through non-restrained people in combat mode (or if they're restrained but still too strong for us)
-	if (their_cmode && (!other.restrained() || too_strong))
-		return FALSE
-
-	// Allow free passage to the clientless
-	if (isnull(other.client) || isnull(client))
-		return TRUE
-
-	// Both clients have to be moving into each other to tile swap
-	if (client.intended_direction != REVERSE_DIR(other.client.intended_direction))
-		return FALSE
-
-	// Else, sure, let us pass
-	return TRUE
-	*/
 
 //Called when we bump onto an obj
 /mob/living/proc/ObjBump(obj/O)
