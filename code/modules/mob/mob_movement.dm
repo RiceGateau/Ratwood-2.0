@@ -79,7 +79,6 @@
 	var/old_move_delay = move_delay
 	move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
 	if(!direct || !new_loc)
-		to_chat(world, "moved with no direction or newloc")
 		return FALSE
 	if(!mob?.loc)
 		return FALSE
