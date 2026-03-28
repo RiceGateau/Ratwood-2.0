@@ -266,9 +266,6 @@
 
 /// Checks to see if you can mobswap with another mob
 /mob/living/proc/can_mobswap_with(mob/other)
-	if(src == other) // XANTODO Figure out why the fuck you can tileswap yourself on live server
-		return FALSE
-
 	if(HAS_TRAIT(other, TRAIT_NOMOBSWAP) || HAS_TRAIT(src, TRAIT_NOMOBSWAP))
 		return FALSE
 
