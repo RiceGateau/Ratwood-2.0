@@ -33,9 +33,8 @@
 		return FALSE
 	if(loc != wearer)
 		return FALSE
-	received_cum_count++
-	// TESTING ONLY: remove this log line after validation is complete.
-	log_game("COLLAR TEST COUNTER: [key_name(source)] -> [key_name(wearer)] count=[received_cum_count]")
+	var/is_hemi = source.sexcon && source.sexcon.double_penis_type()
+	received_cum_count += is_hemi ? 2 : 1
 	return TRUE
 
 /obj/item/clothing/neck/roguetown/cursed_collar/proc/reset_received_cum_count()
