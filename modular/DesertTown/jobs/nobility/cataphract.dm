@@ -68,6 +68,7 @@
 
 	category_tags = list(CTAG_CATAPHRACT)
 	traits_applied = list(TRAIT_HEAVYARMOR)
+	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = 3,//Heavy hitters. Less con/end, high strength.
 		STATKEY_INT = 3,
@@ -152,6 +153,7 @@
 	tutorial = "You are accustomed to traditional foot-soldiery, masterfully proficient in swords, flails, or maces. \
 	Your fortitude and mastery with the versatile combination of a shield and weapon makes you a fearsome opponent to take down!"
 	outfit = /datum/outfit/job/roguetown/cataphract/shieldmaster
+	subclass_languages = list(/datum/language/celestial)
 
 	category_tags = list(CTAG_CATAPHRACT)
 	traits_applied = list(TRAIT_HEAVYARMOR)

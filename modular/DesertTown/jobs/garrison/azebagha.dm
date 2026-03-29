@@ -70,6 +70,7 @@
 	outfit = /datum/outfit/job/roguetown/azebagha/azebagha
 
 	category_tags = list(CTAG_AZEBAGHA)
+	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = 1,
 		STATKEY_SPD = 1,
@@ -120,9 +121,9 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/primary = list("Scimitar","Shotel","Whip","Warden Axe")
-		var/primary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/primary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in primary
 		var/secondary = list("Glaive","Javelins and Shield","Blackhorn Longbow","Handgonne")
-		var/secondary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/secondary_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in secondary
 		H.set_blindness(0)
 		switch(primary_choice)
 			if("Scimitar")		

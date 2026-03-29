@@ -53,6 +53,8 @@
 	name = "Slavemaster"
 	tutorial = "CHANGE THIS!! something something WHIPS something something keeping the rabble in line something something sterin guiding hand"
 	outfit = /datum/outfit/job/roguetown/slavemaster/base
+	
+	subclass_languages = list(/datum/language/celestial)
 
 	category_tags = list(CTAG_SLAVEMASTER)
 	subclass_stats = list(
