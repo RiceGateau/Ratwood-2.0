@@ -7,7 +7,6 @@
 
 	category_tags = list(CTAG_JANISSARY)
 	//Garrison ranged/speed class. Time to go wild
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_SPD = 2,// seems kinda lame but remember guardsman bonus!!
 		STATKEY_PER = 2,

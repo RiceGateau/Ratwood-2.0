@@ -114,7 +114,6 @@
 	outfit = /datum/outfit/job/roguetown/sultan/warrior
 	category_tags = list(CTAG_SULTAN)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_LCK = 5,
 		STATKEY_INT = 3,
@@ -158,7 +157,6 @@
 	category_tags = list(CTAG_SULTAN)
 	noble_income = 400 // Let's go crazy. This is +400 per day for a total of 2400 per round at the end of a day. This is probably equal to doubling passive incomes of the keep.
 	traits_applied = list(TRAIT_NOBLE, TRAIT_SEEPRICES, TRAIT_CICERONE, TRAIT_KEENEARS, TRAIT_MEDIUMARMOR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_LCK = 5,
 		STATKEY_INT = 5,
@@ -196,7 +194,6 @@
 	outfit = /datum/outfit/job/roguetown/sultan/wizard
 	category_tags = list(CTAG_SULTAN)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_LCK = 5,
 		STATKEY_INT = 5,
@@ -235,7 +232,6 @@
 	outfit = /datum/outfit/job/roguetown/sultan/inbred
 	category_tags = list(CTAG_SULTAN)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_LCK = 10,
 		STATKEY_INT = -2,

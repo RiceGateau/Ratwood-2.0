@@ -55,7 +55,6 @@
 			You only answer to the Sultan, Sultana, Heir, or Heiress. However, your main focus is to assist the Vizier with their duties."
 	outfit = /datum/outfit/job/roguetown/sheikh/basic
 	category_tags = list(CTAG_SHEIKH)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_SPD = 2,
 		STATKEY_INT = 2,

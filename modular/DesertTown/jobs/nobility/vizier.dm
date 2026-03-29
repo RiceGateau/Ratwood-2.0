@@ -76,7 +76,6 @@
 
 	category_tags = list(CTAG_VIZIER)
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_HEAVYARMOR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_PER = 3,
 		STATKEY_INT = 3,
@@ -126,7 +125,6 @@
 	category_tags = list(CTAG_VIZIER)
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_KEENEARS, TRAIT_DODGEEXPERT, TRAIT_PERFECT_TRACKER)//Spy not a royal champion
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_SPD = 3,
 		STATKEY_PER = 2,
@@ -184,7 +182,6 @@
 
 	category_tags = list(CTAG_VIZIER)
 	traits_applied = list(TRAIT_ALCHEMY_EXPERT, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T2)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_INT = 4,
 		STATKEY_PER = 3,

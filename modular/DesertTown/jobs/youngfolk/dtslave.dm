@@ -41,7 +41,6 @@
 	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
 	outfit = /datum/outfit/job/roguetown/slave/servant
 	category_tags = list(CTAG_PSLAVE)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_INT = 1,
@@ -88,7 +87,6 @@
 	tutorial = "Not one really mentions how hard it is to do yardwork in a dress and stockings, but at least you still look really good."
 	outfit = /datum/outfit/job/roguetown/slave/pleasure
 	category_tags = list(CTAG_PSLAVE)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_INT = 1,
@@ -168,7 +166,6 @@
 // 	tutorial = "CHANGE THIS. You do HARD WORK!."
 // 	outfit = /datum/outfit/job/roguetown/slave/worker
 // 	category_tags = list(CTAG_PSLAVE)
-	// subclass_languages = list(/datum/language/celestial)
 // 	subclass_stats = list(
 // 		STATKEY_STR = 2,
 // 		STATKEY_END = 3,

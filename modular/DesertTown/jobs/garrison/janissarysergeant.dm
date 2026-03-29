@@ -55,7 +55,6 @@
 	tutorial = "You are the most experienced of the SULTAN's Soldiery, leading the Janissary in maintaining order and attending to threats and crimes below the PALACE's attention. \
 				See to those under your command and fill in the gaps CATAPHRACTS leave in their wake. Obey the orders of your Marshal and the SULTAN."
 	outfit = /datum/outfit/job/roguetown/janissarysergeant/janissarysergeant
-	subclass_languages = list(/datum/language/celestial)
 
 	category_tags = list(CTAG_JANISSARYSERGEANT)
 	subclass_stats = list(

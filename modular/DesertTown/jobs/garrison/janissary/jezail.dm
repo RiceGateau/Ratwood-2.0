@@ -8,7 +8,6 @@
 	maximum_possible_slots = 2//One always tells the truth, the other only lies. Guess wrong and they both shoot you.
 
 	category_tags = list(CTAG_JANISSARY)
-	subclass_languages = list(/datum/language/celestial)
 	//Garrison ranged/speed class. Time to go wild
 	subclass_stats = list(
 		STATKEY_SPD = 1,// probably objectively worse stats than skirmisher but the price ye pay

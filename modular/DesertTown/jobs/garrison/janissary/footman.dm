@@ -7,7 +7,6 @@
 
 	category_tags = list(CTAG_JANISSARY)
 	// traits_applied = list(TRAIT_MEDIUMARMOR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = 2,// seems kinda lame but remember guardsman bonus!!
 		STATKEY_INT = 1,

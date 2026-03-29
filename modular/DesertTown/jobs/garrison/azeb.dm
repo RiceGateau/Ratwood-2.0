@@ -59,7 +59,6 @@
 	outfit = /datum/outfit/job/roguetown/azeb/ranger
 	category_tags = list(CTAG_AZEB)
 	traits_applied = list(TRAIT_DODGEEXPERT)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_PER = 2,//7 points weighted, same as MAA. They get temp buffs in the city instead of in the city.
 		STATKEY_SPD = 2,
@@ -122,7 +121,6 @@
 	outfit = /datum/outfit/job/roguetown/azeb/footman
 	category_tags = list(CTAG_AZEB)
 	traits_applied = list(TRAIT_MEDIUMARMOR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = 2,//7 points weighted, same as MAA. They get temp buffs in the desert instead of in the city.
 		STATKEY_CON = 1,

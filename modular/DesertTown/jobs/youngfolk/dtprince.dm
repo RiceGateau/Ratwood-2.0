@@ -40,7 +40,6 @@
 	tutorial = "You're a somebody, someone important. It only makes sense you want to make a name for yourself, to gain your own glory so people see how great you really are beyond your bloodline. Plus, if you're beloved by the people for your exploits you'll be chosen! Probably. Shame you're as useful and talented as a squire, despite your delusions to the contrary."
 	outfit = /datum/outfit/job/roguetown/amir/daring
 	category_tags = list(CTAG_AMIR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = 1,
 		STATKEY_PER = 1,
@@ -99,7 +98,6 @@
 	outfit = /datum/outfit/job/roguetown/amir/bookworm
 	traits_applied = list(TRAIT_ARCYNE_T1, TRAIT_MAGEARMOR)
 	category_tags = list(CTAG_AMIR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_STR = -1,
 		STATKEY_INT = 2,
@@ -140,7 +138,6 @@
 	outfit = /datum/outfit/job/roguetown/amir/aristocrat
 	traits_applied = list(TRAIT_SEEPRICES_SHITTY, TRAIT_GOODLOVER)
 	category_tags = list(CTAG_AMIR)
-	subclass_languages = list(/datum/language/celestial)
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_STR = -1,
@@ -193,7 +190,6 @@
 	outfit = /datum/outfit/job/roguetown/amir/inbred
 	traits_applied = list(TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_GOODLOVER)
 	category_tags = list(CTAG_AMIR)
-	subclass_languages = list(/datum/language/celestial)
 	//They already can't run, no need to do speed and torture their move speed.
 	subclass_stats = list(
 		STATKEY_STR = -2,
@@ -246,7 +242,6 @@
 	outfit = /datum/outfit/job/roguetown/amir/scamp
 	traits_applied = list(TRAIT_SEEPRICES_SHITTY)
 	category_tags = list(CTAG_AMIR)
-	subclass_languages = list(/datum/language/celestial)
 	//Not standard weighted. Not intended to be considering the stat ceilings. -F
 	subclass_stats = list(
 	STATKEY_STR = -3,
