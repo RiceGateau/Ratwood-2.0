@@ -47,7 +47,6 @@
 /datum/outfit/job/roguetown/wretch/blackoak/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.set_blindness(-3)
-	wretch_select_bounty(H)
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/elven_boots
 	cloak = /obj/item/clothing/cloak/forrestercloak
 	gloves = /obj/item/clothing/gloves/roguetown/elven_gloves
@@ -69,6 +68,7 @@
 				)
 
 	if(H.mind)
+		wretch_select_bounty(H)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
