@@ -74,8 +74,7 @@
 		roll_stats()
 	refresh_live_vocal_preferences()
 
-	if(prefs.gnoll_name)
-		fully_replace_character_name(real_name, prefs.gnoll_name)
+	fully_replace_character_name(real_name, prefs.ensure_gnoll_name())
 
 	if(prefs.gnoll_pronouns)
 		pronouns = prefs.gnoll_pronouns

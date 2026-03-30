@@ -391,8 +391,8 @@
 	var/datum/advclass/gnoll_impure/G = new()
 	G.equipme(H)
 	var/datum/gnoll_prefs/summoned_prefs = C.client?.prefs?.gnoll_prefs
-	if(summoned_prefs?.gnoll_name)
-		H.fully_replace_character_name(null, summoned_prefs.gnoll_name)
+	if(summoned_prefs)
+		H.fully_replace_character_name(null, summoned_prefs.ensure_gnoll_name())
 	H.regenerate_icons()
 
 	//The summoned gnoll now has its name assigned before the howl plays
@@ -428,8 +428,8 @@
 	var/datum/advclass/gnoll_impure/C = new()
 	C.equipme(H)
 	var/datum/gnoll_prefs/summoned_prefs = user.client?.prefs?.gnoll_prefs
-	if(summoned_prefs?.gnoll_name)
-		H.fully_replace_character_name(null, summoned_prefs.gnoll_name)
+	if(summoned_prefs)
+		H.fully_replace_character_name(null, summoned_prefs.ensure_gnoll_name())
 	H.regenerate_icons()
 
 	user.visible_message(span_warning("The [src.name] melds into [user]'s flesh as they transform into an Impure Gnoll!"))

@@ -16,8 +16,15 @@
 
 /datum/gnoll_prefs/New()
 	. = ..()
+	ensure_gnoll_name()
+
+/datum/gnoll_prefs/proc/generate_random_gnoll_name()
+	return "[pick(GLOB.wolf_prefixes)] [pick(GLOB.wolf_suffixes)]"
+
+/datum/gnoll_prefs/proc/ensure_gnoll_name()
 	if(!gnoll_name)
-		gnoll_name = "[pick(GLOB.wolf_prefixes)] [pick(GLOB.wolf_suffixes)]"
+		gnoll_name = generate_random_gnoll_name()
+	return gnoll_name
 
 /datum/gnoll_prefs/proc/get_pronoun_options()
 	var/static/list/pronoun_options = list(
@@ -270,10 +277,11 @@
 			var/new_name = input(user, "Enter a custom name for your gnoll:", "Gnoll Name", gnoll_name) as text|null
 			if(new_name)
 				gnoll_name = sanitize_name(new_name)
+				ensure_gnoll_name()
 				gnoll_show_ui(user)
 
 		if("random_name")
-			gnoll_name = "[pick(GLOB.wolf_prefixes)] [pick(GLOB.wolf_suffixes)]"
+			gnoll_name = generate_random_gnoll_name()
 			gnoll_show_ui(user)
 
 		if("choose_pronouns")
