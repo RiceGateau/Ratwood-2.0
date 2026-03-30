@@ -21,9 +21,8 @@
 	overlay_icon = 'icons/mob/actions/gnollmiracles.dmi'
 	action_icon = 'icons/mob/actions/gnollmiracles.dmi'
 	overlay_state = "sniff"
-	invocation_type = "emote"
+	invocation_type = "none"
 	action_icon_state = "sniff"
-	invocation_emote_self = "<span class='notice'>I sniff the air.</span>"
 	var/static/list/combat_roles = list(
 		"Orthodoxist" = TRUE, 
 		"Absolver" = TRUE, 
