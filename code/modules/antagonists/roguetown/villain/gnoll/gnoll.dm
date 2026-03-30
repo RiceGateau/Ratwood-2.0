@@ -22,6 +22,28 @@
 	antagpanel_category = "Gnolls"
 	job_rank = ROLE_GNOLL
 
+/proc/get_gnoll_tracking_combat_roles()
+	var/static/list/combat_roles = list(
+		"Orthodoxist" = TRUE,
+		"Absolver" = TRUE,
+		"Templar" = TRUE,
+		"Sergeant" = TRUE,
+		"Man at Arms" = TRUE,
+		"Knight" = TRUE,
+		"Squire" = TRUE,
+		"Mercenary" = TRUE,
+		"Warden" = TRUE,
+		"Acolyte" = TRUE,
+		"Vanguard" = TRUE,
+		"City Guard" = TRUE,
+		"Bandit" = TRUE,
+		"Watch Captain" = TRUE,
+		"Master Warden" = TRUE,
+		"Knight Captain" = TRUE,
+		"Inquisitor" = TRUE
+	)
+	return combat_roles
+
 /datum/antagonist/gnoll/on_gain()
 	greet()
 	owner.special_role = "Gnoll"
@@ -32,6 +54,45 @@
 	. = ..()
 	if(owner)
 		owner.special_role = null
+
+/datum/antagonist/gnoll/proc/get_tracked_target()
+	var/mob/living/current_mob = owner?.current
+	if(!current_mob?.mind)
+		return null
+
+	var/obj/effect/proc_holder/spell/invoked/gnoll_sniff/sniff_spell = current_mob.mind.get_spell(/obj/effect/proc_holder/spell/invoked/gnoll_sniff)
+	if(!sniff_spell)
+		return null
+
+	var/mob/living/target = sniff_spell.tracked_target_ref?.resolve()
+	if(!target || QDELETED(target) || target.stat == DEAD)
+		return null
+
+	return target
+
+/datum/antagonist/gnoll/proc/get_tracked_target_source(mob/living/target)
+	if(!target)
+		return null
+	if(target.has_flaw(/datum/charflaw/hunted))
+		return "Hunted flaw"
+	if(target.job in get_gnoll_tracking_combat_roles())
+		return "Combat fallback"
+	return "Direct scent"
+
+/datum/antagonist/gnoll/antag_listing_status()
+	var/base_status = ..()
+	var/mob/living/target = get_tracked_target()
+	var/target_display = "None"
+
+	if(target)
+		var/source = get_tracked_target_source(target)
+		target_display = "<a href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(target)]'>[target.real_name]</a>"
+		if(source)
+			target_display += " ([source])"
+
+	if(base_status)
+		return "[base_status] | Tracked: [target_display]"
+	return "Tracked: [target_display]"
 
 /mob/living/carbon/human/proc/gnoll_can_feed_heal()
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder) || has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))

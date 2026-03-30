@@ -24,25 +24,6 @@
 	overlay_state = "sniff"
 	invocation_type = "none"
 	action_icon_state = "sniff"
-	var/static/list/combat_roles = list(
-		"Orthodoxist" = TRUE,
-		"Absolver" = TRUE,
-		"Templar" = TRUE,
-		"Sergeant" = TRUE,
-		"Man at Arms" = TRUE,
-		"Knight" = TRUE,
-		"Squire" = TRUE,
-		"Mercenary" = TRUE,
-		"Warden" = TRUE,
-		"Acolyte" = TRUE,
-		"Vanguard" = TRUE,
-		"City Guard" = TRUE,
-		"Bandit" = TRUE,
-		"Watch Captain" = TRUE,
-		"Master Warden" = TRUE,
-		"Knight Captain" = TRUE,
-		"Inquisitor" = TRUE
-	)
 	var/datum/weakref/tracked_target_ref = null
 	var/list/target_warning_next_by_ref = list()
 	var/shown_hunt_disclaimer = FALSE
@@ -71,6 +52,7 @@
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff/proc/select_new_target(mob/user)
 	var/list/hunted_targets = list()
 	var/list/combat_targets = list()
+	var/list/combat_roles = get_gnoll_tracking_combat_roles()
 	var/list/name_counts = list()
 	//Allows a fallback, if no hunted targets are available, we can track worthy prey (combat roles) instead. 
 	for(var/mob/living/L in GLOB.player_list)

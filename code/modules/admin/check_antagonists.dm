@@ -144,7 +144,8 @@
 	dat += "<a href='?_src_=holder;[HrefToken()];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 	dat += "<a href='?_src_=holder;[HrefToken()];ctf_toggle=1'>Enable/Disable CTF</a><br>"
 	dat += "<a href='?_src_=holder;[HrefToken()];rebootworld=1'>Reboot World</a><br>"
-	dat += "<a href='?_src_=holder;[HrefToken()];check_teams=1'>Check Teams</a>"
+	dat += "<a href='?_src_=holder;[HrefToken()];check_teams=1'>Check Teams</a><br>"
+	dat += "<a href='?_src_=holder;[HrefToken()];check_hunted_targets=1'>Check Hunted Targets</a>"
 	var/connected_players = GLOB.clients.len
 	var/lobby_players = 0
 	var/observers = 0
@@ -190,3 +191,54 @@
 
 	dat += "</body></html>"
 	usr << browse(dat.Join(), "window=roundstatus;size=500x500")
+
+/datum/admins/proc/check_hunted_targets()
+	if(!SSticker.HasRoundStarted())
+		alert("The game hasn't started yet!")
+		return
+
+	var/list/combat_roles = get_gnoll_tracking_combat_roles()
+	var/list/hunted_targets = list()
+	var/list/combat_targets = list()
+
+	for(var/mob/living/L in GLOB.player_list)
+		if(!L || QDELETED(L) || L.stat == DEAD)
+			continue
+		if(istype(L, /mob/living/carbon/human/dummy) || !L.mind)
+			continue
+
+		if(L.has_flaw(/datum/charflaw/hunted))
+			hunted_targets += L
+		else if(L.job in combat_roles)
+			combat_targets += L
+
+	var/list/active_targets = length(hunted_targets) ? hunted_targets : combat_targets
+	var/active_source = length(hunted_targets) ? "Hunted flaw" : "Combat fallback"
+
+	var/list/dat = list("<html><head><title>Gnoll Hunted Targets</title></head><body><h1><B>Gnoll Hunted Targets</B></h1>")
+	dat += "<a href='?_src_=holder;[HrefToken()];check_antagonist=1'>Back to Round Status</a><br>"
+	dat += "<br><b>Selection mode:</b> [active_source]"
+	dat += "<br><i>Follows gnoll tracking rules: hunted targets are preferred globally, combat roles are only used when no hunted targets are valid.</i><br><br>"
+
+	if(!length(active_targets))
+		dat += "No valid gnoll track targets."
+	else
+		var/list/sorted_target_rows = list()
+		for(var/mob/living/target in active_targets)
+			var/target_name = "<a href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(target)]'>[target.real_name]</a>"
+			var/target_key = target.ckey || "(none)"
+			var/target_job = target.job || "(none)"
+			var/target_source = target.has_flaw(/datum/charflaw/hunted) ? "Hunted flaw" : "Combat fallback"
+			var/row_key = "[lowertext(target.real_name)]-[REF(target)]"
+			sorted_target_rows[row_key] = "<tr><td>[target_name]</td><td>[target_key]</td><td>[target_job]</td><td>[target_source]</td></tr>"
+
+		sortTim(sorted_target_rows, GLOBAL_PROC_REF(cmp_text_asc), associative = TRUE)
+
+		dat += "<table cellspacing=5>"
+		dat += "<tr><th align='left'>Target</th><th align='left'>Key</th><th align='left'>Job</th><th align='left'>Source</th></tr>"
+		for(var/row_key in sorted_target_rows)
+			dat += sorted_target_rows[row_key]
+		dat += "</table>"
+
+	dat += "</body></html>"
+	usr << browse(dat.Join(), "window=gnollhuntedtargets;size=700x500")
