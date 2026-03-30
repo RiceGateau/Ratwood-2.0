@@ -33,7 +33,6 @@
 		"Mercenary" = TRUE,
 		"Warden" = TRUE,
 		"Acolyte" = TRUE,
-		"Adventurer" = TRUE,
 		"Vanguard" = TRUE,
 		"City Guard" = TRUE,
 		"Bandit" = TRUE,
@@ -43,11 +42,16 @@
 		"Inquisitor" = TRUE
 	)
 	var/datum/weakref/tracked_target_ref = null
+	var/list/target_warning_cooldown_end = list()
+	var/list/target_warning_seen = list()
 	var/shown_hunt_disclaimer = FALSE
 
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff/cast(list/targets, mob/user)
 	var/mob/living/target = targets[1]
 	var/mob/living/tracked_target = tracked_target_ref?.resolve()
+
+	if(tracked_target_ref && (!tracked_target || QDELETED(tracked_target) || tracked_target.stat == DEAD))
+		clear_target_warning_state(tracked_target_ref)
 
 	if(!tracked_target || QDELETED(tracked_target) || tracked_target.stat == DEAD || target == user)
 		select_new_target(user)
@@ -57,6 +61,7 @@
 	if(is_valid_hunted(target) && target != user)
 		tracked_target_ref = WEAKREF(target)
 		to_chat(user, span_notice("You catch the scent of [target.real_name]. The hunt begins!"))
+		notify_tracked_target(target)
 		user.playsound_local(get_turf(user), 'sound/vo/mobs/wwolf/sniff.ogg', 50, TRUE)
 	else if(!tracked_target_ref?.resolve())
 		to_chat(user, span_warning("[target] isn't something you can hunt."))
@@ -104,6 +109,7 @@
 		return
 
 	tracked_target_ref = WEAKREF(selected_target)
+	notify_tracked_target(selected_target)
 	to_chat(user, span_notice("You focus your senses on [selected_target.real_name]."))
 	give_tracking_directions(user)
 
@@ -111,6 +117,8 @@
 	var/mob/living/tracked_target = tracked_target_ref?.resolve()
 	if(!tracked_target || QDELETED(tracked_target) || tracked_target.stat == DEAD)
 		to_chat(user, span_warning("The scent has gone cold... your target is no more."))
+		if(tracked_target_ref)
+			clear_target_warning_state(tracked_target_ref)
 		tracked_target_ref = null
 		return
 
@@ -129,6 +137,29 @@
 			to_chat(user, span_notice("The scent is thick to the [dir_text]. They are very close."))
 		else
 			to_chat(user, span_notice("You catch a faint whiff of [tracked_target.real_name] to the [dir_text]."))
+
+/obj/effect/proc_holder/spell/invoked/gnoll_sniff/proc/notify_tracked_target(mob/living/target)
+	if(!is_valid_hunted(target))
+		return
+
+	var/datum/weakref/target_ref = WEAKREF(target)
+	if(!target_warning_seen[target_ref])
+		target_warning_seen[target_ref] = TRUE
+		target_warning_cooldown_end[target_ref] = world.time + 10 MINUTES
+		to_chat(target, span_warning("Faint cackles ride the wind. I need to be careful which shadows I tread through lest I find myself hunted!"))
+		return
+
+	if(world.time < (target_warning_cooldown_end[target_ref] || 0))
+		return
+
+	target_warning_cooldown_end[target_ref] = world.time + 10 MINUTES
+	to_chat(target, span_warning("I feel the gaze of a hunter, they are after me!"))
+
+/obj/effect/proc_holder/spell/invoked/gnoll_sniff/proc/clear_target_warning_state(datum/weakref/target_ref)
+	if(!target_ref)
+		return
+	target_warning_seen -= target_ref
+	target_warning_cooldown_end -= target_ref
 
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff/proc/is_valid_hunted(atom/A)
 	if(!isliving(A))
@@ -326,4 +357,4 @@
 
 #undef GNOLL_STEALTH_TIMER
 #undef GNOLL_ABDUCT_TIMER
-#undef GNOLL_ABDUCT_DAMAGE_TRESHOLD
+#undef GNOLL_ABDUCT_DAMAGE_THRESHOLD
