@@ -43,6 +43,7 @@
 		OFFSET_BREASTS_F = list(0,-1), \
 		)
 	enflamed_icon = "widefire"
+	race_bonus = list(STAT_CONSTITUTION = 2)
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/dullahan,
 	)
