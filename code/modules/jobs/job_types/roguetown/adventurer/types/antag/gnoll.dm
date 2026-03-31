@@ -49,6 +49,8 @@
 	if(!client?.prefs?.gnoll_prefs)
 		return FALSE
 
+	reset_gnoll_sprite_scale()
+
 	// Gnoll role always belongs to Graggar, regardless of the source slot's faith.
 	set_patron(/datum/patron/inhumen/graggar)
 
@@ -138,6 +140,13 @@
 	add_mob_descriptor(prefs.descriptor_voice || /datum/mob_descriptor/voice/growly)
 	add_mob_descriptor(prefs.descriptor_muzzle || /datum/mob_descriptor/face/gnoll/long_muzzle)
 	add_mob_descriptor(prefs.descriptor_expression || /datum/mob_descriptor/face_exp/gnoll/alert)
+	return TRUE
+
+/mob/living/carbon/human/proc/reset_gnoll_sprite_scale()
+	if(!dna?.features)
+		return FALSE
+	dna.features["body_size"] = BODY_SIZE_NORMAL
+	dna.update_body_size()
 	return TRUE
 
 /datum/outfit/job/roguetown/gnoll/proc/don_pelt(mob/living/carbon/human/H)
