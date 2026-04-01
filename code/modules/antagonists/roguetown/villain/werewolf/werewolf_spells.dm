@@ -10,7 +10,7 @@
 	var/list/howl_sounds_far = list('sound/vo/mobs/wwolf/howldist (1).ogg','sound/vo/mobs/wwolf/howldist (2).ogg')
 	var/howl_antag_type = /datum/antagonist/werewolf
 	var/howl_spies_allowed = TRUE
-	var/howl_distance_limit = 500
+	var/howl_distance_limit = 50
 	var/howl_distance_volume = 50
 	var/howl_prompt_text = "Howl at the hidden moon..."
 	var/howl_prompt_title = "MOONCURSED"
