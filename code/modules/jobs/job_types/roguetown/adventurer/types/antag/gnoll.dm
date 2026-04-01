@@ -148,7 +148,7 @@
 
 /mob/living/carbon/human/proc/clear_non_gnoll_bodyparts()
 	for(var/obj/item/bodypart/part as anything in bodyparts.Copy())
-		if(part.body_zone != BODY_ZONE_TAUR && part.body_zone != BODY_ZONE_LAMIAN_TAIL)
+		if(part.body_zone != BODY_ZONE_TAUR)
 			continue
 		part.drop_limb(1)
 		qdel(part)
