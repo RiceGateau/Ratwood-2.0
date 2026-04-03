@@ -9,6 +9,7 @@
 	realm_name = "Al-Ashur"
 	slot_adjust = list(
 		// /datum/job/roguetown/mercenary = 7, //haha fuck you one less slot!!
+		/datum/job/roguetown/apothecary = 1, //just isn't that much room in the bazaar until I remodel things significantly
 	)
 	title_adjust = list(
 		/datum/job/roguetown/lord = list(display_title = "Sultan", f_title = "Sultana"),
@@ -45,7 +46,7 @@
 		/datum/job/roguetown/knight,// cataphract
 		/datum/job/roguetown/hand,// vizier
 		// /datum/job/roguetown/suitor,
-		/datum/job/roguetown/steward, //gonna try merging this role with Vizier
+		// /datum/job/roguetown/steward, //gonna try merging this role with Vizier EDIT: with the higher pop we can afford to keep em separate now
 		// /datum/job/roguetown/consort,
 		// /datum/job/roguetown/captain,
 		// /datum/job/roguetown/bailiff,
@@ -100,7 +101,7 @@
 		/datum/job/roguetown/servant,//slave
 		// /datum/job/roguetown/apothecary,
 		// /datum/job/roguetown/churchling,
-		/datum/job/roguetown/clerk, //gonna try merging this with Sheikh
+		// /datum/job/roguetown/clerk, //gonna try merging this with Sheikh - EDIT with higher pop we can afford to keep this role around
 		// /datum/job/roguetown/wapprentice,
 		// /datum/job/roguetown/orphan,
 		/datum/job/roguetown/prince,//dtprince
