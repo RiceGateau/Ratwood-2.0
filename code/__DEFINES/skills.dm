@@ -37,3 +37,59 @@
 #define SMELTERY_LEVEL_GOOD 4
 #define SMELTERY_LEVEL_GREAT 5
 #define SMELTERY_LEVEL_EXCELLENT 6
+
+//Skill paths
+
+#define SKILL_WRESTLING /datum/skill/combat/wrestling
+#define SKILL_UNARMED /datum/skill/combat/unarmed
+#define SKILL_KNIVES /datum/skill/combat/knives
+#define SKILL_SHIELDS /datum/skill/combat/shields
+#define SKILL_SWORDS /datum/skill/combat/swords
+#define SKILL_AXES /datum/skill/combat/axes
+#define SKILL_MACES /datum/skill/combat/maces
+#define SKILL_WHIPSFLAILS /datum/skill/combat/whipsflails
+#define SKILL_POLEARMS /datum/skill/combat/polearms
+#define SKILL_STAVES /datum/skill/combat/staves
+
+#define SKILL_BOWS /datum/skill/combat/bows
+#define SKILL_CROSSBOWS /datum/skill/combat/crossbows
+#define SKILL_SLINGS /datum/skill/combat/slings
+#define SKILL_FIREARMS /datum/skill/combat/firearms
+
+#define SKILL_SEWING /datum/skill/craft/sewing
+#define SKILL_COOKING /datum/skill/craft/cooking
+#define SKILL_CARPENTRY /datum/skill/craft/carpentry
+#define SKILL_MASONRY /datum/skill/craft/masonry
+#define SKILL_TANNING /datum/skill/craft/tanning
+#define SKILL_CRAFTING /datum/skill/craft/crafting
+#define SKILL_WEAPONSMITH /datum/skill/craft/weaponsmithing
+#define SKILL_ARMORSMITH /datum/skill/craft/armorsmithing
+#define SKILL_BLACKSMITH /datum/skill/craft/blacksmithing
+#define SKILL_SMELT /datum/skill/craft/smelting
+#define SKILL_ENGINEER /datum/skill/craft/engineering
+#define SKILL_TRAPS /datum/skill/craft/traps
+#define SKILL_POTTERY /datum/skill/craft/ceramics
+#define SKILL_ALCHEMY /datum/skill/craft/alchemy
+
+#define SKILL_MINING /datum/skill/labor/mining
+#define SKILL_LUMBERJACKING /datum/skill/labor/lumberjacking
+#define SKILL_BUTCHERING /datum/skill/labor/butchering
+#define SKILL_FARMING /datum/skill/labor/farming
+#define SKILL_FISHING /datum/skill/labor/fishing
+
+#define SKILL_MEDICINE /datum/skill/misc/medicine
+#define SKILL_ATHLETICS /datum/skill/misc/athletics
+#define SKILL_CLIMBING /datum/skill/misc/climbing
+#define SKILL_RIDING /datum/skill/misc/riding
+#define SKILL_READING /datum/skill/misc/reading
+#define SKILL_TRACKING /datum/skill/misc/tracking
+#define SKILL_SNEAKING /datum/skill/misc/sneaking
+#define SKILL_PICKPOCKETING /datum/skill/misc/stealing
+#define SKILL_LOCKPICKING /datum/skill/misc/lockpicking
+#define SKILL_STEALTH /datum/skill/misc/sneaking
+#define SKILL_SWIMMING /datum/skill/misc/swimming
+
+#define SKILL_HOLY /datum/skill/magic/holy
+#define SKILL_BLOOD /datum/skill/magic/blood
+#define SKILL_ARCANE /datum/skill/magic/arcane
+#define SKILL_DRUIDIC /datum/skill/magic/druidic
