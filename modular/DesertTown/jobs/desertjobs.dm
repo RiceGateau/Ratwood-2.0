@@ -172,6 +172,23 @@
 	if(SSmapping.config.map_name == "Desert Town")
 		cmode_music = 'sound/music/combat_desert2.ogg'
 	..()
+	
+/datum/job/roguetown/prince/after_spawn(mob/living/L, mob/M, latejoin = TRUE)//
+	if(SSmapping.config.map_name == "Desert Town")
+		cmode_music = 'sound/music/combat_desert2.ogg'
+	..()
+	
+/datum/job/roguetown/squire/after_spawn(mob/living/L, mob/M, latejoin = TRUE)//
+	if(SSmapping.config.map_name == "Desert Town")
+		cmode_music = 'sound/music/combat_desert2.ogg'
+	..()
+
+/datum/outfit/job/roguetown/squire/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(SSmapping.config.map_name == "Roguetest")
+		cloak = /obj/item/clothing/cloak/citywatch/janissary
+		shoes = /obj/item/clothing/shoes/roguetown/shalal
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/zyb
 
 /obj/effect/proc_holder/spell/self/convertrole/slave
 	name = "Recruit Slave"
