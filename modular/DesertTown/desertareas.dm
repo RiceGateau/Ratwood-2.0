@@ -83,7 +83,7 @@
 
 //
 
-/area/rogue/outdoors/deserttown
+/area/rogue/outdoors/town/desert
 	name = "desert town outdoors"
 	icon_state = "town"
 	soundenv = 16
@@ -93,7 +93,7 @@
 	first_time_text = "The City of Al-Ashur"
 	town_area = TRUE
 
-/area/rogue/outdoors/deserttown/roofs
+/area/rogue/outdoors/town/roofs/desert
 	name = "desert roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
@@ -109,7 +109,7 @@
 	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
 	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
 
-/area/rogue/outdoors/deserttown/manor
+/area/rogue/outdoors/town/manor/desert
 	name = "Al-Ashur Palace exterior"
 	icon_state = "manor"
 	droning_sound = 'sound/music/area/desert/Iberia1.ogg'
@@ -118,7 +118,7 @@
 	first_time_text = "Al-Ashur Palace"
 	keep_area = TRUE
 
-/area/rogue/outdoors/deserttown/manor/roofs
+/area/rogue/outdoors/town/manor/roofs/desert
 	name = "Palace roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
@@ -129,7 +129,7 @@
 	first_time_text = null
 ///
 
-/area/rogue/indoors/deserttown
+/area/rogue/indoors/town/desert
 	name = "desert town indoors"
 	icon_state = "town"
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
@@ -139,7 +139,7 @@
 	town_area = TRUE
 	deathsight_message = "the city of Al-Ashur and all its bustling souls"
 
-/area/rogue/indoors/deserttown/manor
+/area/rogue/indoors/town/desert/manor
 	name = "Al-Ashur Palace interior"
 	icon_state = "manor"
 	droning_sound = 'sound/music/area/desert/Iberia1.ogg'
@@ -148,7 +148,7 @@
 	first_time_text = "Al-Ashur Palace"
 	keep_area = TRUE
 
-/area/rogue/indoors/deserttown/magician
+/area/rogue/indoors/town/desert/magician
 	name = "Wizard's Tower"
 	icon_state = "magician"
 	spookysounds = SPOOKY_MYSTICAL
@@ -158,42 +158,42 @@
 	droning_sound_night = null
 	keep_area = TRUE
 
-/area/rogue/indoors/deserttown/shop
+/area/rogue/indoors/town/desert/shop
 	name = "Shop"
 	icon_state = "shop"
 	droning_sound = 'sound/music/area/desert/Caravan.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
-/area/rogue/indoors/deserttown/smithguild
+/area/rogue/indoors/town/desert/smithguild
 	name = "Guild Smithy"
 	icon_state = "dwarfin"
 	droning_sound = 'sound/music/area/desert/Sandal.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
-/area/rogue/indoors/deserttown/physician
+/area/rogue/indoors/town/desert/physician
 	name = "Physician"
 	icon_state = "physician"
 	droning_sound = 'sound/music/area/academy.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
-/area/rogue/indoors/deserttown/academy
+/area/rogue/indoors/town/desert/academy
 	name = "Academy"
 	icon_state = "academy"
 	droning_sound = 'sound/music/area/academy.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
-/area/rogue/indoors/deserttown/bath
+/area/rogue/indoors/town/desert/bath
 	name = "Baths"
 	icon_state = "bath"
 	droning_sound = 'sound/music/area/desert/TenThousandDelights.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 
-/area/rogue/indoors/deserttown/garrison
+/area/rogue/indoors/town/desert/garrison
 	name = "Al-Ashur Garrison"
 	icon_state = "garrison"
 	droning_sound = 'sound/music/area/desert/DarMeshq.ogg'
@@ -201,7 +201,7 @@
 	droning_sound_night = null
 	keep_area = TRUE
 	
-/area/rogue/indoors/deserttown/garrison/cell
+/area/rogue/indoors/town/desert/garrison/cell
 	name = "dungeon cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
@@ -212,7 +212,7 @@
 	keep_area = TRUE
 	cell_area = TRUE
 
-/area/rogue/indoors/deserttown/garrison/cell/outdoor
+/area/rogue/indoors/town/desert/garrison/cell/outdoor
 	name = "dungeon cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
@@ -224,7 +224,7 @@
 	cell_area = TRUE
 
 
-/area/rogue/indoors/deserttown/tavern
+/area/rogue/indoors/town/desert/tavern
 	name = "tavern"
 	icon_state = "tavern"
 	ambientsounds = AMB_INGEN
@@ -234,7 +234,7 @@
 	droning_sound_night = null
 	tavern_area = TRUE
 
-/area/rogue/indoors/deserttown/warden
+/area/rogue/indoors/town/desert/warden
 	name = "Warden Fort"
 	warden_area = TRUE
 
@@ -250,6 +250,182 @@
 /area/rogue/under/deserttown/basement/keep
 	name = "keep basement"
 	icon_state = "basement"
+	keep_area = TRUE
+	town_area = TRUE
+
+/area/rogue/outdoors/banditcamp/desert
+	name = "Bandit Camp"
+	droning_sound = 'sound/music/area/desert/faithless.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/faithless.ogg'
+	droning_sound_night = 'sound/music/area/desert/faithless.ogg'
+	first_time_text = "A Gathering of Thieves"
+	deathsight_message = "hidden among thieves, in the hoard of a dragon"
+
+
+/area/rogue/indoors/banditcamp/desert
+	name = "Bandit Camp"
+	droning_sound = 'sound/music/area/desert/faithless.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/faithless.ogg'
+	droning_sound_night = 'sound/music/area/desert/faithless.ogg'
+	deathsight_message = "hidden among thieves, in the hoard of a dragon"
+
+
+
+
+/area/rogue/outdoors/town/desert
+	name = "desert town outdoors"
+	icon_state = "town"
+	soundenv = 16
+	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
+	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
+	first_time_text = "The City of Al-Ashur"
+	town_area = TRUE
+
+/area/rogue/outdoors/town/roofs/desert
+	name = "desert roofs"
+	icon_state = "roofs"
+	ambientsounds = AMB_MOUNTAIN
+	ambientnight = AMB_MOUNTAIN
+	spookysounds = SPOOKY_GEN
+	spookynight = SPOOKY_GEN
+	soundenv = 17
+	first_time_text = null
+//////////////////////////////////////////////////////////////////
+
+/area/rogue/indoors/shelter/town/desert
+	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
+	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
+
+/area/rogue/outdoors/town/manor/desert
+	name = "Al-Ashur Palace exterior"
+	icon_state = "manor"
+	droning_sound = 'sound/music/area/desert/Iberia1.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = 'sound/music/area/desert/Iberia2.ogg'
+	first_time_text = "Al-Ashur Palace"
+	keep_area = TRUE
+
+/area/rogue/outdoors/town/manor/desert/roofs
+	name = "Palace roofs"
+	icon_state = "roofs"
+	ambientsounds = AMB_MOUNTAIN
+	ambientnight = AMB_MOUNTAIN
+	spookysounds = SPOOKY_GEN
+	spookynight = SPOOKY_GEN
+	soundenv = 17
+	first_time_text = null
+///
+
+/area/rogue/indoors/town/desert
+	name = "desert town indoors"
+	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
+	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
+	converted_type = /area/rogue/outdoors/exposed/town
+	town_area = TRUE
+	deathsight_message = "the city of Al-Ashur and all its bustling souls"
+
+/area/rogue/indoors/town/manor/desert
+	name = "Al-Ashur Palace interior"
+	droning_sound = 'sound/music/area/desert/Iberia1.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = 'sound/music/area/desert/Iberia2.ogg'
+	first_time_text = "Al-Ashur Palace"
+	keep_area = TRUE
+
+/area/rogue/indoors/town/magician/desert
+	name = "Wizard's Tower"
+	// spookysounds = SPOOKY_MYSTICAL
+	// spookynight = SPOOKY_MYSTICAL
+	// droning_sound = 'sound/music/area/magiciantower.ogg'
+	// droning_sound_dusk = null
+	// droning_sound_night = null
+	// keep_area = TRUE
+
+/area/rogue/indoors/town/shop/desert
+	name = "Bazaar"
+	droning_sound = 'sound/music/area/desert/Caravan.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/dwarfin/desert
+	name = "Guild Smithy"
+	droning_sound = 'sound/music/area/desert/Sandal.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/physician/desert
+	name = "Physician"
+	droning_sound = 'sound/music/area/academy.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/academy/desert
+	name = "Academy"
+	icon_state = "academy"
+	droning_sound = 'sound/music/area/academy.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/bath/desert
+	name = "Baths"
+	droning_sound = 'sound/music/area/desert/TenThousandDelights.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/garrison/desert
+	name = "Al-Ashur Garrison"
+	droning_sound = 'sound/music/area/desert/DarMeshq.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	
+/area/rogue/indoors/town/garrison/desert/cell
+	name = "dungeon cell"
+	icon_state = "cell"
+	spookysounds = SPOOKY_DUNGEON
+	spookynight = SPOOKY_DUNGEON
+	droning_sound = 'sound/music/area/catacombs.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/indoors/town/garrison/desert/cell/outdoor
+	name = "dungeon cell"
+	icon_state = "cell"
+	spookysounds = SPOOKY_DUNGEON
+	spookynight = SPOOKY_DUNGEON
+	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
+	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
+	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
+	ceiling_protected = FALSE
+	keep_area = TRUE
+	cell_area = TRUE
+
+/area/rogue/indoors/town/tavern/desert
+	name = "tavern"
+	icon_state = "tavern"
+	ambientsounds = AMB_INGEN
+	ambientnight = AMB_INGEN
+	droning_sound = 'sound/silence.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	tavern_area = TRUE
+
+/area/rogue/indoors/town/desert/warden
+	name = "Azeb Fort"
+	warden_area = TRUE
+
+/area/rogue/under/town/basement/desert
+	name = "basement"
+	town_area = FALSE
+	ceiling_protected = TRUE
+
+/area/rogue/under/town/basement/desert/town
+	town_area = TRUE
+
+/area/rogue/under/town/basement/desert/keep
+	name = "palace basement"
 	keep_area = TRUE
 	town_area = TRUE
 
