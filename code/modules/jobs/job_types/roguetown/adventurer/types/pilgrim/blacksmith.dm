@@ -48,17 +48,6 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/rogueweapon/scabbard/sheath
-	if(H.pronouns == HE_HIM)
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	if(SSmapping.config.map_name == "Desert Town")
-		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
-		head = /obj/item/clothing/head/roguetown/turban/random
-		shoes = /obj/item/clothing/shoes/roguetown/sandals
-
 	backpack_contents = list(
 		/obj/item/flint = 1,
 		/obj/item/rogueore/coal = 4,
@@ -89,3 +78,14 @@
 			else
 				r_hand = molds[mold_choice]
 		H.set_blindness(0)
+	if(H.pronouns == HE_HIM)
+		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	else
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	if(SSmapping.config.map_name == "Desert Town")
+		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
+		head = /obj/item/clothing/head/roguetown/turban/random
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
+
