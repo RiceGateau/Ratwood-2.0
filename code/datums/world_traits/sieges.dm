@@ -7,6 +7,10 @@
 	desc = "Goblins are attacking the town."
 
 /*
+/datum/world_trait/ferentia_siege
+	name = "Ferentia Invasion"
+	desc = "Ferentia is attacking the duchy!"
+
 /datum/world_trait/rousman_siege
 	name = "Rousman Siege"
 	desc = "Rousmen are attacking the town."
