@@ -8,7 +8,7 @@
 	max_integrity = 1800
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	canSmoothWith = list(/turf/closed/wall/mineral/rogue/sandstone/sandstone)
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/sandstone)
 	above_floor = /turf/open/floor/rogue/citybrick
 	baseturfs = /turf/open/floor/rogue/citybrick
 	neighborlay = "dirtedge"
@@ -27,7 +27,7 @@
 	max_integrity = 1800
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	canSmoothWith = list(/turf/closed/wall/mineral/rogue/sandstone/sandbrick)
+	canSmoothWith = list(/turf/closed/wall/mineral/rogue/sandbrick)
 	above_floor = /turf/open/floor/rogue/darkpath
 	baseturfs = /turf/open/floor/rogue/darkpath
 	neighborlay = "dirtedge"
