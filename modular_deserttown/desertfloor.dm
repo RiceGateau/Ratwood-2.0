@@ -213,3 +213,12 @@
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	abstract_type = /turf/open/floor/rogue/deserttile
+
+/turf/open/floor/rogue/naturalstone/sandstone
+	name = "rough sandstone ground"
+	desc = "Rough sandstone that's been exposed to the air either through erosion or the swing of a pickaxe. Dust wisps through the cracks."
+	icon = 'modular_deserttown/icons/desertfloor.dmi'
+	smooth = SMOOTH_MORE
+	canSmoothWith = list(/turf/open/floor/rogue,
+						/turf/closed/mineral,
+						/turf/closed/wall/mineral)
