@@ -146,7 +146,7 @@
 /datum/stressevent/vblood
 	stressadd = -5
 	desc = span_boldred("Virgin blood!")
-	timer = 5 MINUTES
+	timer = 20 MINUTES // If Virgin Trait Returns, Should be Longer Than Solving A Fucking Puzzle
 
 /datum/stressevent/bathwater
 	stressadd = -1

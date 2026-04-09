@@ -5,13 +5,13 @@
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
 #define TRAIT_ZJUMP "High Jumping"
+#define TRAIT_LEAPER "Leaper"
 #define TRAIT_JESTERPHOBIA "Jesterphobic"
 #define TRAIT_XENOPHOBIC "Xenophobic"
+#define TRAIT_ETHNOCENTRIC "Ethnocentric"
 #define TRAIT_TOLERANT "Tolerant"
-#define TRAIT_LEAPER "Leaper"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
-#define TRAIT_SEEPRICES_SHITTY "Appraiser"
 #define TRAIT_VAMPBITE "Vampire bite"
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_STRONGKICK "Strong Kick"
@@ -112,7 +112,7 @@
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Huntmaster" //Will always find any tracks and analyzes them perfectly.
-#define TRAIT_ZIZOSIGHT "Blessing of Zizo" // I can see just a bit more clearly in darkness.
+#define TRAIT_ZIZO_BLESSING "Blessing of Zizo" // I can see just a bit more clearly in darkness.
 #define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
 #define TRAIT_DEATHSIGHT "Veiled Whispers" // Is notified when a player character dies, but not told exactly where or how.
 //Hearthstone/Azure end.
@@ -162,17 +162,16 @@
 
 // ASCENDANT CULTIST TRAITS (all of them recognize each other)
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
-#define TRAIT_CABAL "Of the Cabal" //Zizo cultists recognize each other too
 #define TRAIT_HORDE "Anointed" //Graggarites also recognize each other
 #define TRAIT_DEPRAVED "Fallen" //Baothans also recognize each other
-#define TRAIT_MATTHIOS_EYES	"Eyes of Matthios" //Examine to see the most expensive item someone has (Replaces shitty-appraisal)
+#define TRAIT_MATTHIOS_BLESSING	"Eyes of Matthios" //Examine to see the most expensive item someone has (Replaces shitty-appraisal)
 
 //ASCENDANT GOD CURSES
 
 #define TRAIT_CURSE_ZIZO "Curse of Zizo" //int nuke and no magic
 #define TRAIT_CURSE_GRAGGAR "Curse of Graggar" //str nuke, inhumen anatomy and disfigurment
 #define TRAIT_CURSE_MATTHIOS "Curse of Matthios" //lck nuke and clumsy
-#define TRAIT_CURSE_BAOTHA "Curse of Baotha" //nudist
+#define TRAIT_CURSE_BAOTHA "Curse of Baotha" //nudist & no arousal
 
 // Generic
 #define TRAIT_BASHDOORS "Door Basher"
@@ -304,16 +303,22 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
+	TRAIT_LEAPER = "I can leap like a frog, landing where I want.",
 	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
 	TRAIT_XENOPHOBIC = span_warning("Lesser races pollute our land"),
+	TRAIT_ETHNOCENTRIC = span_warning("We are not better because we hate them; we are better because our nature is more refined."),
 	TRAIT_TOLERANT = span_info("I dream of an ideal future, one with peace between all races"),
+	TRAIT_INTOLERANT = span_info("I dream of an ideal future, one with a few less races inside of it.")
 	TRAIT_NIGHT_OWL = span_info("I enjoy spending my time in the night."),
 	TRAIT_BEAUTIFUL = span_info("People love looking at my face"),
 	TRAIT_BEAUTIFUL_UNCANNY = span_info("<i>Some</i> would say my visage is an artwork created by the gods themselves; the others call me an unsettling abomination."),
 	TRAIT_UNSETTLING_BEAUTY = span_warning("My appearance is deeply unsettling to most. There's something profoundly wrong about my features."),
+	TRAIT_UNSEEMLY = span_info("My face is ugly and makes everyone who looks at me miserable."),
 	TRAIT_SCARRED = span_info("My face bears terrible scars that make identification difficult."),
-	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
-	TRAIT_LEAPER = "I can leap like a frog, landing where I want.",
+	TRAIT_GOOD_MOOD = span_warning("Nothing can get you down!"),
+	TRAIT_STABILIZED_MOOD = span_warning("I feel calm.. For now."),
+	TRAIT_BAD_MOOD = span_warning("Everything just seems to get to you."),
+	TRAIT_NOMOOD = span_info("I feel no sorrow, no joy, and no stress."),
 	TRAIT_NUTCRACKER = "I love kicking idiots in the nuts!",
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
@@ -334,6 +339,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MAGEARMOR = span_info("My magics can protect me from a blow every so often."),
 	TRAIT_DECEIVING_MEEKNESS = span_info("People look at me and think I am a weakling. They are mistaken. I've learned how to hide my vices and true beliefs from others."),
 	TRAIT_CRITICAL_RESISTANCE = span_info("My constitution is iron-clad. My lifeblood flows slowly, I can resist the first few criitical wounds that would fell others, but repeated punishment will overwhelm my defenses."),
+	TRAIT_CRITICAL_NULL = span_info("For the first time in ages, your constitution feels balanced"),
 	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
 	TRAIT_DNR = span_danger("My lux' vigor is weak. There is no hope for me. This lyfe is all I have."),
 	TRAIT_MANIAC_AWOKEN = span_danger("I am <b>WAKING UP</b> and the sheeple know this. They will resist."),
@@ -368,7 +374,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LIMPDICK = span_crit("My soldier refuses to rise to attention! Curses!"),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_PERFECT_TRACKER = span_info("I am a master at pursuing those I hunt. I can discern every last detail within a spotted track, and any attempts to hide said-tracks will fail to deceive me."),//Hearthstone port.
-	TRAIT_ZIZOSIGHT = span_info("Zizo blesses my eyes to be unburdened by the night."), //Hearthstone change.
+	TRAIT_ZIZO_BLESSING = span_info("Zizo blesses my eyes to be unburdened by the night."), //Hearthstone change.
 	TRAIT_NOCSIGHT = span_info("My nocturnal nature allows me to see during the time of Noc."),
 	TRAIT_CIVILIZEDBARBARIAN = span_info("My rigorous training in the martial arts has turned me into a living weapon. No limb is out of reach for my fists and feet, and my unarmed strikes now have a higher chance to inflict critical damage."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
@@ -385,7 +391,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_APRICITY = span_info("Astrata's light blesses and rejuvenates me, allowing me to regain my stamina quicker."),
 	TRAIT_SHARPER_BLADES = span_info("My blades go dull slower, ensuring they stay sharp longer."),
-	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED!"),
 	TRAIT_PSYDONITE = span_info("Divine contempt leaves me unable to receive most miracles."),
 	TRAIT_PSYDONIAN_GRIT = span_info("While I still stand, there is yet hope for mankind. The stronger my willpower is, the better I can struggle through crippling wounds."),
@@ -395,6 +400,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me."),
 	TRAIT_SILVER_BLESSED = span_info("I have been baptized in fire. Blessed silverdust flows through my blood, protecting me from both vampyrism and lycanthropy."),
 	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
+	TRAIT_MEDIOCRETRAINER = span_info("I suppose you're alright at teaching? You could be better though"),
 	TRAIT_BADTRAINER = span_info("I've spent yils studying the art of a single weapon, but unfortunately I've no patience to train anyone else. Everyone learning from me will only learn up to two skill levels below mine."),
 	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely."),
 	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and throw people more easily."),
@@ -404,7 +410,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEGENDARY_ALCHEMIST = span_info("An expert in the art of finding herbs in the wild."),
 	TRAIT_INTELLECTUAL = span_info("I have a keen eye and can assess a person's prowess in wit and blade."),
 	TRAIT_COUNTERCOUNTERSPELL = span_info("I automatically know when to counter Counterspells, and can do so without even thinking about it."),
-	TRAIT_UNSEEMLY = span_info("My face is ugly and makes everyone who looks at me miserable."),
 	TRAIT_HERETIC_SEER = span_info("I can tell other Ascendant followers without sharing their faith."),
 	TRAIT_DUALWIELDER = span_info("If I wield two weapons of the same type, I attack with them both simultaneously. I suffer a disadvantage when attempting to parry. I do not suffer penalties from using my off-hand in combat."),
 	TRAIT_SENTINELOFWITS = span_info("My Intelligence aids in my defense. Every 2 points above 10 INT become an additional 10% chance to dodge or parry. Does not count positive buffs from potions or substances."),
@@ -421,6 +426,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EASYDISMEMBER = span_info("My limbs are frail and fragile. They can be dismembered with greater ease, including my neck."),
 	TRAIT_HARDDISMEMBER = span_info("My body is strong and endurant. My limbs are not easily dismembered."),
 	TRAIT_EASYDECAPITATION = span_info("I often find my head rolling from my shoulders."),
+	TRAIT_HARDDECAPITATION = span_info("Your neck feels sturdier than most; I still wouldn't test it though."),
 	TRAIT_NOPAIN = span_info("I feel no pain."),
 	TRAIT_NOPAINSTUN = span_info("Pain does not impair me."),
 	TRAIT_NOBREATH = span_info("I do not breathe."),
@@ -431,11 +437,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOCSHADES = span_info("The lens I look through allows me to see in the dark clear as dae, at the cost of greater vision."),
 	TRAIT_RESIDENT = span_info("I've been granted a Nervelock account, and the ownership of a house in the vale."),
 	TRAIT_LIGHT_STEP = span_info("My steps are light and swift. I make less noise while sneaking, and can sneak much quicker."),
-	TRAIT_NOMOOD = span_info("I feel no sorrow, no joy, and no stress."),
 	TRAIT_AZURENATIVE = span_info("I've grown up and lived all my lyfe in these lands. I can only trigger ambushes if I sprint through them."),
 	TRAIT_SLEUTH = span_info("I can spot my tracked Mark's trail without needing to approach it, and can spot them at a distance. I can track more frequently, and the act is not impaired by movement. I can examine tracks right away."),
 	TRAIT_HARDSHELL = span_info("The bulk of this armor prevents me from parrying effectively, but I can still move out of the way."),
-	TRAIT_MATTHIOS_EYES = span_notice("I have a sense for what the most valuable item someone has is."),
+	TRAIT_MATTHIOS_BLESSING = span_notice("I have a sense for what the most valuable item someone has is."),
 	TRAIT_WOODWALKER = span_notice("I can climb trees quicker, and gain climbing experience twice as quickly. I can step on thorns and branches safely in the woods. I can get twice as many things from searching bushes, and I can stand on leaves in trees safely."),
 	TRAIT_ARCYNE_T1 = span_notice("I have received basic training in the Arcyne arts, allowing me access to a small variety of spells useful outside of combat."),
 	TRAIT_ARCYNE_T2 = span_notice("I have received advanced training in the Arcyne arts, allowing me to learn basic combat spells"),
@@ -567,6 +572,28 @@ GLOBAL_LIST_INIT(roguetraits, list(
 			}; \
 		} \
 	} while (0)
+
+#define MODIFY_TRAIT(target, trait, source) \
+	do { \
+		var/list/_L; \
+		if (!target.status_traits) { \
+			target.status_traits = list(); \
+			_L = target.status_traits; \
+			_L[trait] = list(source); \
+			SEND_SIGNAL(target, SIGNAL_MODIFYTRAIT(trait), trait); \
+			SEND_GLOBAL_SIGNAL(COMSIG_ATOM_MODIFY_TRAIT, target, trait); \
+		} else { \
+			_L = target.status_traits; \
+			if (_L[trait]) { \
+				_L[trait] |= list(source); \
+			} else { \
+				_L[trait] = list(source); \
+				SEND_SIGNAL(target, SIGNAL_MODIFYTRAIT(trait), trait); \
+				SEND_GLOBAL_SIGNAL(COMSIG_ATOM_MODIFY_TRAIT, target, trait); \
+			}; \
+		} \
+	} while (0)
+
 #define REMOVE_TRAITS_NOT_IN(target, sources) \
 	do { \
 		var/list/_L = target.status_traits; \

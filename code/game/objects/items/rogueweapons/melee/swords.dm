@@ -574,7 +574,7 @@
 
 /obj/item/rogueweapon/sword/long/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "SWORD")
+	AddComponent(/datum/component/cursed_item, TRAIT_ZIZO_BLESSING, "SWORD")
 
 /obj/item/rogueweapon/sword/long/heirloom
 	name = "old longsword"

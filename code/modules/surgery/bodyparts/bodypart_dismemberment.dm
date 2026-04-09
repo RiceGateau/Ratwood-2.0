@@ -61,6 +61,7 @@
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 
 	var/stress2give = /datum/stressevent/viewdismember
+	var/our_race = (C.dna.species.name == CA.dna.species.name = TRUE)
 	var/guillotine_execution = FALSE
 	if(C.buckled)
 		if(istype(C.buckled, /obj/structure/guillotine))

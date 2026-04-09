@@ -22,7 +22,7 @@
 	domain = "Necromancy, Progress, The Rot, Left-Handed Magicks"
 	desc = "The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON. When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot. Burn the world to ash, and build it anew."
 	worshippers = "Necromancers, Maddened Mages, The Undead"
-	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT, TRAIT_ZOMBIE_IMMUNE)
+	mob_traits = list(TRAIT_ZIZO_BLESSING)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/zizo_snuff						= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/lesser_heal 					= CLERIC_T1,
@@ -67,7 +67,7 @@
 	desc = "The Manyfaced Matthios has no true form. Some see Him as a merry highwayman, some as a god of beggars, and others the father of all dragons. One thing is certain: His followers despise Astrata's nobility."
 	worshippers = "Highwaymen, Downtrodden Peasants, Merchants, Slaves, Kobolds"
 	crafting_recipes = list(/datum/crafting_recipe/roguetown/sewing/bandithood)
-	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_EYES, TRAIT_SEEPRICES_SHITTY)
+	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_BLESSING, TRAIT_SEEPRICES_SHITTY)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/appraise						= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/targeted/touch/lesserknock/miracle	= CLERIC_T0,

@@ -754,7 +754,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "HELMET")
+	AddComponent(/datum/component/cursed_item, TRAIT_ZIZO_BLESSING, "HELMET")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/ComponentInitialize()
 	. = ..()

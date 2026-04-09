@@ -119,6 +119,10 @@
 // /atom signals
 #define COMSIG_ATOM_REMOVE_TRAIT "atom_remove_trait"
 #define COMSIG_ATOM_ADD_TRAIT "atom_add_trait"
+#define COMSIG_ATOM_MODIFY_TRAIT "atom_modify_trait"
+#define COMSIG_ATOM_ADD_TRAIT_FAMILY "atom_add_trait_family"
+#define COMSIG_ATOM_REMOVE_TRAIT_FAMILY "atom_add_trait_family"
+#define COMSIG_ATOM_MODIFY_TRAIT_FAMILY "atom_modify_trait_family"
 
 //from SSatoms InitAtom - Only if the  atom was not deleted or failed initialization
 #define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE "atom_init_success"

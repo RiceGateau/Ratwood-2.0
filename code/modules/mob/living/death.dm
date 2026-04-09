@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(last_words)
 				if (player.stat == DEAD || isbrain(player))
 					continue
 				if (HAS_TRAIT(player, TRAIT_DEATHSIGHT))
-					if (HAS_TRAIT(player, TRAIT_CABAL))
+					if (HAS_TRAIT(player, TRAIT_ZIZO_BLESSING))
 						to_chat(player, span_warning("I feel the faint passage of disjointed life essence as it flees [locale]."))
 					else
 						to_chat(player, span_warning("Veiled whispers herald the Undermaiden's gaze in my mind's eye as it turn towards [locale] for but a brief, singular moment."))
