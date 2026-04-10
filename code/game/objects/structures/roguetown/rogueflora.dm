@@ -766,7 +766,7 @@
 
 // cute underdark mushrooms from dreamkeep
 
-/obj/structure/flora/rogueshroom/happy
+/obj/structure/flora/rogueshroom/unhappy
 	name = "corpse fungus"
 	icon_state = "scarymush"
 	icon = 'icons/roguetown/misc/foliagemushroom48x64.dmi'
@@ -797,23 +797,23 @@
 // 	. = ..()
 // 	. += span_info("Most shroomtrees can be toppled by hitting them with the 'CUT', 'CHOP', or 'REND' intents on bladed weapons. Nothing chops trees and foliage better, or quicker, than a good old fashioned axe.")
 
-/obj/structure/flora/rogueshroom/happy/Initialize()
+/obj/structure/flora/rogueshroom/unhappy/Initialize()
 	. = ..()
 	if(mush_animate)
 		animate(src, icon_state = "[icon_state]animated", delay = rand(1, 100), loop = -1, time = 10)
 
-/obj/structure/flora/rogueshroom/happy/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir)
+/obj/structure/flora/rogueshroom/unhappy/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir)
 	. = ..()
 	if(damage_amount > 0 && mush_scream)
 		playsound(src, pick(abyssal_screams), 50, FALSE)
 
-/obj/structure/flora/rogueshroom/happy/obj_destruction(damage_flag)
+/obj/structure/flora/rogueshroom/unhappy/obj_destruction(damage_flag)
 	playsound(src, pick(abyssal_screams), 60, FALSE)
 	if(prob(7) && rare_mush_bonus_drop)
 		new rare_mush_bonus_drop(loc)
 	. = ..()
 
-/obj/structure/flora/rogueshroom/happy/examine(mob/user)
+/obj/structure/flora/rogueshroom/unhappy/examine(mob/user)
 	. = ..()
 
 	var/can_special = FALSE
@@ -829,7 +829,7 @@
 	if(can_special)
 		. += span_infection("\n[special_examine]")
 
-/obj/structure/flora/rogueshroom/happy/white
+/obj/structure/flora/rogueshroom/unhappy/white
 	name = "marrow-cap"
 	icon_state = "scarymush1"
 	desc = "You swear these mushrooms weren't so vile, it's as if Baotha herself lifted the veil."
@@ -843,7 +843,7 @@
 	rare_mush_bonus_drop = /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
 	mush_animate = FALSE
 
-/obj/structure/flora/rogueshroom/happy/fat
+/obj/structure/flora/rogueshroom/unhappy/fat
 	name = "canker stool"
 	icon_state = "scarymush2"
 	desc = "A pale mushroom with weeping sores. You feel strangely watched."
@@ -857,7 +857,7 @@
 	rare_mush_bonus_drop = /obj/item/rogueore/iron
 	mush_animate = TRUE
 
-/obj/structure/flora/rogueshroom/happy/angel
+/obj/structure/flora/rogueshroom/unhappy/angel
 	name = "grieving angel"
 	icon_state = "angelmush"
 	desc = "Each of these mushrooms is believed to have sprouted out of angel tears in the long past."
@@ -869,47 +869,55 @@
 	static_debris = null
 	mush_animate = FALSE
 
-/obj/structure/flora/rogueshroom/happy/random
+/obj/structure/flora/rogueshroom/unhappy/random
 
-/obj/structure/flora/rogueshroom/happy/random/Initialize()
+/obj/structure/flora/rogueshroom/unhappy/random/Initialize()
 	. = ..()
 	var/list/mushroom_types = list(
-		/obj/structure/flora/rogueshroom/happy       = 249,
-		/obj/structure/flora/rogueshroom/happy/white = 249,
-		/obj/structure/flora/rogueshroom/happy/fat   = 249,
-		/obj/structure/flora/rogueshroom/happy/angel = 249,
-		/obj/structure/flora/rogueshroom/happy/metal = 1,
+		/obj/structure/flora/rogueshroom/unhappy       = 249,
+		/obj/structure/flora/rogueshroom/unhappy/white = 249,
+		/obj/structure/flora/rogueshroom/unhappy/fat   = 249,
+		/obj/structure/flora/rogueshroom/unhappy/angel = 249,
+		/obj/structure/flora/rogueshroom/unhappy/metal = 1,
 	)
 	var/mushroom_type = pickweight(mushroom_types)
 	new mushroom_type(loc)
 	qdel(src)
 
-/obj/structure/flora/rogueshroom/happy/New(loc)
+/obj/structure/flora/rogueshroom/unhappy/New(loc)
 	..()
 	if(mush_light_power > 0)
 		set_light(mush_light_range, mush_light_range, mush_light_power, l_color = mush_light_color)
 
-/obj/structure/flora/rogueshroom/happy/mushroom1
-	icon = 'icons/roguetown/misc/foliagetall.dmi'
+/obj/structure/flora/rogueshroom/happy
+	name = "underdark mushroom"
 	icon_state = "happymush1"
+	icon = 'icons/roguetown/misc/foliagetall.dmi'
+	desc = "Mushrooms might be the happiest beings in this god forsaken place."
 
 /obj/structure/flora/rogueshroom/happy/mushroom2
-	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "happymush2"
 
 /obj/structure/flora/rogueshroom/happy/mushroom3
-	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "happymush3"
 
 /obj/structure/flora/rogueshroom/happy/mushroom4
-	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "happymush4"
 
 /obj/structure/flora/rogueshroom/happy/mushroom5
-	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "happymush5"
 
-/obj/structure/flora/rogueshroom/happy/metal
+/obj/structure/flora/rogueshroom/happy/random
+
+/obj/structure/flora/rogueshroom/happy/random/Initialize(mapload)
+	. = ..()
+	icon_state = "happymush[rand(1,5)]"
+
+/obj/structure/flora/rogueshroom/happy/New(loc)
+	..()
+	set_light(3, 3, 3, l_color ="#5D3FD3")
+
+/obj/structure/flora/rogueshroom/unhappy/metal
 	name = "metallic mushroom"
 	icon_state = "metal"
 	icon = 'icons/roguetown/misc/foliagemushroom60x64.dmi'
@@ -928,10 +936,15 @@
 
 /obj/structure/flora/mushroomcluster
 	name = "mushroom cluster"
-	desc = "A cluster of mushrooms native to the underdark."
+	desc = "A large cluster of mushrooms with a strange glow."
 	icon = 'icons/roguetown/misc/foliage.dmi'
 	icon_state = "mushroomcluster"
 	density = TRUE
+	max_integrity = 60
+
+/obj/structure/flora/mushroomcluster/unhappy
+	desc = "A cluster of mushrooms native to the underdark."
+	icon_state = "mushroomclusterunhappy"
 
 /obj/structure/flora/mushroomcluster/New(loc)
 	..()
@@ -939,9 +952,15 @@
 
 /obj/structure/flora/tinymushrooms
 	name = "small mushroom cluster"
-	desc = "A cluster of tiny mushrooms native to the underdark."
+	desc = "A cluster of tiny mushrooms that are growing in a suspicious circle shape."
 	icon = 'icons/roguetown/misc/foliage.dmi'
 	icon_state = "tinymushrooms"
+	max_integrity = 30
+
+/obj/structure/flora/tinymushrooms/unhappy
+	icon_state = "tinymushrooms"
+	desc = "A cluster of tiny mushrooms native to the underdark."
+	icon_state = "tinymushroomsunhappy"
 
 /obj/structure/flora/roguetree/pine
 	name = "pine tree"
@@ -950,8 +969,8 @@
 	icon = 'icons/obj/flora/pines.dmi'
 	pixel_w = -24
 	density = 0
-	max_integrity = 100
-	static_debris = list(/obj/item/grown/log/tree = 2)
+	max_integrity = 200
+	static_debris = list(/obj/item/grown/log/tree = 3)
 	stump_type = null
 
 /obj/structure/flora/roguetree/pine/Initialize(mapload)
