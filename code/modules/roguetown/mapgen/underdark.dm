@@ -34,15 +34,13 @@
 							/obj/structure/flora/roguegrass = 30,
 							/obj/structure/flora/roguegrass/herb/random = 5)
 	spawnableTurfs = list(/turf/open/floor/rogue/grasspurple = 2)
+	
 /obj/effect/landmark/mapGenerator/rogue/underdark
 	mapGeneratorType = /datum/mapGenerator/underdark
 	endTurfX = 255
 	endTurfY = 450
 	startTurfX = 1
 	startTurfY = 1
-
-/datum/mapGenerator/underdarkscary
-	modules = list(/datum/mapGeneratorModule/underdarkscarystone, /datum/mapGeneratorModule/underdarkscarymud)
 
 /datum/mapGeneratorModule/underdarkscarystone
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
