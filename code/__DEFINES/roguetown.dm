@@ -3,9 +3,10 @@
 #define STAT_PERCEPTION "perception"
 #define STAT_INTELLIGENCE "intelligence"
 #define STAT_CONSTITUTION "constitution"
+#define STAT_ENDURANCE "endurance"
 #define STAT_WILLPOWER "willpower"
 #define STAT_SPEED "speed"
-#define STAT_FORTUNE "fortune"
+#define STAT_LUCK "luck"
 
 // Weapon balance defines
 #define WBALANCE_NORMAL 0
@@ -37,101 +38,104 @@ Balloon Alert / Floating Text defines
 //used in various places
 #define ALL_RACES_TYPES list(\
 	/datum/species/human/northern,\
-	/datum/species/human/halfelf,\
-	/datum/species/elf/dark,\
 	/datum/species/elf/wood,\
 	/datum/species/dwarf/mountain,\
-	/datum/species/tieberian,\
+\
 	/datum/species/aasimar,\
+	/datum/species/halfbreed,\
+	/datum/species/demihuman,\
+\
+	/datum/species/tieberian,\
 	/datum/species/lizardfolk,\
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
+\
 	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/anthromorphsmall,\
-	/datum/species/demihuman,\
+	/datum/species/dracon,\
+	/datum/species/dullahan,\
+	/datum/species/dwarf/gnome,\
+	/datum/species/elf/dark,\
+	/datum/species/goblinp,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
-	/datum/species/goblinp,\
-	/datum/species/dullahan,\
 	/datum/species/lamia,\
-	/datum/species/dwarf/gnome,\
-	/datum/species/harpy\
+	/datum/species/lizardfolk,\
+	/datum/species/harpy,\
+	/datum/species/moth,\
+\
+	/datum/species/undead/dullahan,\
+	/datum/species/undead/vampire,\
+	/datum/species/undead/shiki,\
+	/datum/species/undead/skeleton,\
+	/datum/species/undead/ghoul,\
+	/datum/species/undead/zombie
 )
-
-#define RACES_RESPECTED \
+// Psydon's Chosen, Wretch.
+#define RACES_HUMEN \
 	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
-	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar,\
-	/datum/species/lupian,\
-	/datum/species/vulpkanin,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/dwarf/gnome\
 
-#define RACES_TOLERATED \
-	/datum/species/elf/dark,\
-	/datum/species/lizardfolk,\
-	/datum/species/tabaxi,\
-	/datum/species/akula,\
-	/datum/species/anthromorph,\
+#define RACES_DEMIHUMEN \
+	/datum/species/human/halfelf,\
+	/datum/species/aasimar,\
 	/datum/species/demihuman,\
-	/datum/species/harpy,\
-	/datum/species/lamia,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/kobold,\
+
+#define RACES_BEASTMEN \
+	/datum/species/lupian,\
+	/datum/species/tabaxi,\
 	/datum/species/tieberian,\
 
-#define RACES_SHUNNED \
+#define RACES_ABOMINATIONS \
+	/datum/species/akula,\
+	/datum/species/anthromorph,\
+	/datum/species/anthromorphsmall,\
+	/datum/species/dracon,\
 	/datum/species/dullahan,\
 	/datum/species/halforc,\
+	/datum/species/elf/dark,\
+	/datum/species/dwarf/gnome\
 	/datum/species/goblinp,\
 	/datum/species/harpy,\
+	/datum/species/kobold,\
+	/datum/species/lamia,\
+	/datum/species/lizardfolk,\
+	/datum/species/moth,\
+	/datum/species/vulpkanin,\
 
-#define RACES_DESPISED \
-	/datum/species/dullahan,\
-
-#define RACES_CONSTRUCT \
+#define RACES_CONSTRUCTS \
 	/datum/species/construct/metal,\
 	/datum/species/construct/metal/porcelain,\
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_CONSTRUCT)	//Truely no restrictions
+#define RACES_TRUE_UNDEAD \
+	/datum/species/undead/dullahan,\
+	/datum/species/undead/skeleton,\
+	/datum/species/undead/vampire,\
+	/datum/species/undead/shiki,\
+	/datum/species/undead/ghoul,\
+	/datum/species/undead/zombie
 
-#define ACCEPTED_RACES list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_CONSTRUCT)	//Allows all races except dallahun
+#define ACCEPTED_RACES list(RACES_HUMEN, RACES_DEMIHUMAN)
 
-#define RACES_NO_CONSTRUCT list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+#define RACES_TOLERATED_UP list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_CONSTRUCTS) //Constructs are technically Tolerated As They Are A Slave Race
 
-#define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+#define RACES_DISLIKED_UP list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_BEASTMEN, RACES_ABOMINATIONS)
 
-#define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
+#define RACES_HATED_UP list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_BEASTMEN, RACES_ABOMINATIONS) //No Undead & Constructs
+
+#define RACES_NO_CONSTRUCT list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_BEASTMEN, RACES_ABOMINATIONS, RACES_UNDEAD) //Every Race But Constructs
+
+#define RACES_NO_UNDEAD list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_BEASTMEN, RACES_ABOMINATIONS, RACES_CONSTRUCTS) //No Undead
+
+#define RACES_UNDEAD_UP list(RACES_HUMEN, RACES_DEMIHUMAN, RACES_BEASTMEN, RACES_ABOMINATIONS, RACES_CONSTRUCTS, RACES_TRUE_UNDEAD) //Truely no restrictions
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
-	/datum/species/human/halfelf,\
-	/datum/species/elf/dark,\
 	/datum/species/elf/wood,\
 	/datum/species/dwarf/mountain,\
-	/datum/species/tieberian,\
-	/datum/species/aasimar,\
-	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/demihuman,\
-	/datum/species/kobold,\
-	/datum/species/goblinp,\
-	/datum/species/lamia,\
-	/datum/species/harpy,\
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -190,22 +194,11 @@ Balloon Alert / Floating Text defines
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\
-	/datum/species/tieberian,\
 	/datum/species/aasimar,\
-	/datum/species/lizardfolk,\
-	/datum/species/lupian,\
-	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
-	/datum/species/akula,\
-	/datum/species/moth,\
-	/datum/species/dracon,\
-	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/construct/metal,\
 	/datum/species/construct/metal/porcelain,\
-	/datum/species/harpy,\
 	/datum/species/dullahan,\
-	/datum/species/lamia,\
 )
 #define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/ravox, /datum/patron/divine/malum, /datum/patron/divine/eora) // Currently unused.
 
@@ -283,13 +276,85 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define FAMILY_OMMER "Parents Sibling"
 #define FAMILY_INLAW "In Law"
 
+//faction relation defines
+#define FRELATION_EXALTED
+#define FRELATION_KINDRED
+#define FRELATION_ALLY
+#define FRELATION_TRUSTED
+#define FRELATION_NONE
+#define FRELATION_DISTRUSTED
+#define FRELATION_ENEMY
+#define FRELATION_VILIFIED
+#define FRELATION_NEMESIS
+
+//faction relation levels
+#define FLEVEL_EXALTED 20
+#define FLEVEL_KINDRED 15
+#define FLEVEL_ALLY 10
+#define FLEVEL_TRUSTED 5
+#define FLEVEL_NONE 0
+#define FLEVEL_DISTRUSTED -5
+#define FLEVEL_ENEMY -10
+#define FLEVEL_VILIFIED -15
+#define FLEVEL_NEMESIS -20
+
+//faction hierarchies defines
+#define HIERARCH_LEADER
+#define HIERARCH_COLEADER
+#define HIERARCH_ADMIN
+#define HIERARCH_MODERATOR
+#define HIERARCH_MENTOR
+#define HIERARCH_MEMBER
+#define HIERARCH_NONMEMBER
+#define HIERARCH_SLAVE
+#define HIERARCH_BANISHED
+
+//faction hierarchies levels
+#define HLEVEL_LEADER 30
+#define HLEVEL_COLEADER 25
+#define HLEVEL_ADMIN 20
+#define HLEVEL_MODERATOR 15
+#define HLEVEL_MENTOR 10
+#define HLEVEL_MEMBER 5
+#define HLEVEL_NONMEMBER 0
+#define HLEVEL_SLAVE -5
+#define HLEVEL_BANISHED -10
+
+//relation level defines
+#define RELATION_RESPECTED
+#define RELATION_LIKED
+#define RELATION_DISLIKED
+#define RELATION_HATED
+//special
+#define RELATION_LOVER
+#define RELATION_CRUSH
+#define RELATION_EXWIFE
+
+//relationship levels
+#define RLEVEL_RESPECTED 20
+#define RLEVEL_LIKED 10
+#define RLEVEL_UNKNOWN 0
+#define RLEVEL_DISLIKED -10
+#define RLEVEL_HATED -20
+
+//mood types
+#define STRESS_JOY
+#define STRESS_CONTENTMENT
+#define STRESS_RELIEF
+#define STRESS_BOREDOM
+#define STRESS_SAD
+#define STRESS_MAD
+#define STRESS_FEAR
+#define STRESS_GUILT
+#define STRESS_DISGUST
+
 //stress levels
-#define STRESS_MAX 30
-#define STRESS_INSANE 7
-#define STRESS_VBAD 5
-#define STRESS_BAD 3
-#define STRESS_NEUTRAL 2
-#define STRESS_GOOD 1
+#define STRESS_CRIT 100
+#define STRESS_BREAKDOWN 70
+#define STRESS_VERYBAD 50
+#define STRESS_BAD 30
+#define STRESS_NEUTRAL 20
+#define STRESS_GOOD 10
 #define STRESS_VGOOD 0
 
 /*
@@ -312,6 +377,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_ABSOLVER		"CAT_ABSOLVER"		// For Absolver (sub)class
 #define CTAG_COURTAGENT		"CAT_COURTAGENT"	// Court agent classes
 #define CTAG_WRETCH			"CAT_WRETCH"		// Wretch classes untethered from adventurer
+#define CTAG_DULLAHAN		"CAT_DULLAHAN"		// Necromancy summoned Dullahan classes
 #define CTAG_LSKELETON		"CAT_LSKELETON"		// Lich Fortified Skeleton classes
 #define CTAG_NSKELETON		"CAT_NSKELETON"		// Necromancer Greater Skeleton classes
 #define CTAG_LICKER_WRETCH  "CAT_LICKER_WRETCH" // Licker wretch. Nuff said.
@@ -337,7 +403,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_SENESCHAL		"CAT_SENESCHAL"		// Seneschal's aesthetic choices.
 #define CTAG_SERVANT		"CAT_SERVANT"		// Servant's aesthetic choices.
 #define CTAG_CAPTAIN		"CAT_CAPTAIN"		// Handles Captain class selector
-#define CTAG_WASSOCIATE		"CTAG_WASSOCIATE"	// Mage Apprentice Classes - Handles Mage Apprentices class selector
+#define CTAG_WASSOCIATE		"CAT_WASSOCIATE"	// Mage Apprentice Classes - Handles Mage Apprentices class selector
 #define CTAG_GUILDSMASTER 	"CAT_GUILDSMASTER"	// Guildsmaster class - Handles Guildsmaster class selector
 #define CTAG_GUILDSMEN 		"CAT_GUILDSMEN"		// Guildsmen class - Handles Guildsmen class selector
 #define CTAG_NIGHTMAIDEN	"CAT_NIGHTMAIDEN"	// Bathhouse Attendant's aesthetic choices.
@@ -347,6 +413,14 @@ GLOBAL_LIST_EMPTY(round_join_times)
 // List of mono-class categories. Only here for standardisation sake, but can be added on if desired.
 #define CTAG_DUNGEONEER		"CAT_DUNGEONEER"
 
+//The Good Guys
+#define CTAG_EDEACON		"CAT_EDEACON"
+#define CTAG_WARCHBISHOP	"CAT_WAB"
+#define CTAG_BCHIEF			"CAT_BCHIEF"
+#define CTAG_GSHAMAN		"CAT_GSHAMAN"
+#define CTAG_MADAM			"CAT_MADAM"
+
+//Evil Guys
 #define CTAG_BISHOP			"CAT_BISHOP"
 #define CTAG_MARTYR			"CAT_MARTYR"
 #define CTAG_ACOLYTE		"CAT_ACOLYTE"
@@ -417,6 +491,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CLASS_CAT_RACIAL "Race Exclusive" //Used for black oaks, grudgebearer dwarves, etc.
 
 // Social rank defines
+#define SOCIAL_RANK_LESSTHANDIRT 0
 #define SOCIAL_RANK_DIRT 1
 #define SOCIAL_RANK_PEASANT 2
 #define SOCIAL_RANK_YEOMAN 3

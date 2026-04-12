@@ -18,8 +18,7 @@
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	outfit = /datum/outfit/job/roguetown/captain
 
-	give_bank_account = 26
-	noble_income = 16
+	give_bank_account = 20
 	min_pq = 9
 	max_pq = null
 	round_contrib_points = 3

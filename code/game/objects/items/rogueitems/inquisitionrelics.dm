@@ -635,14 +635,10 @@ Inquisitorial armory down here
 			M.handle_blood()
 			icon_state = "indexer_used"
 			if(M.mind)
-				if(M.mind.has_antag_datum(/datum/antagonist/werewolf, FALSE))
+				if(M.mind.has_antag_datum(/datum/antagonist/werewolf, FALSE) || M.mind.has_antag_datum(/datum/antagonist/vampire, FALSE))
 					cursedblood = 3
-				if(M.mind.has_antag_datum(/datum/antagonist/werewolf/lesser, FALSE))
+				else if(M.mind.has_antag_datum(/datum/antagonist/werewolf/lesser, FALSE) || M.mind.has_antag_datum(/datum/antagonist/vampire, FALSE))
 					cursedblood = 2
-				if(M.mind.has_antag_datum(/datum/antagonist/vampire, FALSE))
-					cursedblood = 2
-				if(M.mind.has_antag_datum(/datum/antagonist/vampire))
-					cursedblood = 3
 			update_icon()
 			takeblood(M, user)
 		else

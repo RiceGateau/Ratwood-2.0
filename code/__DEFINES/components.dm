@@ -517,6 +517,10 @@
 // heretic signals
 #define COMSIG_TRAIT_GAIN "trait_gain"    // (trait, source)
 #define COMSIG_TRAIT_LOSS "trait_loss"    // (trait, source)				//from monkey CtrlClickOn(): (/mob)
+#define COMSIG_TRAIT_MODIFY "trait_modify"    // (trait, source)
+#define COMSIG_TRAIT_FAMILY_GAIN "trait_gain"    // (traitfam, source)
+#define COMSIG_TRAIT_FAMILY_LOSS "trait_loss"    // (traitfam, source)	
+#define COMSIG_TRAIT_FAMILY_MODIFY "trait_gain"    // (traitfam, source)
 
 #define COMSIG_DISGUISE_STATUS "comsig_disguise_status"
 #define COMSIG_FORCE_UNDISGUISE "comsig_force_undisguise"

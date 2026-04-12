@@ -1,7 +1,7 @@
 //The antipope. The evil twin sibling of Bishop.
 //Locked to Inhumen. Powerful support class with, however, very limited combat potential.
 //Gets the ability to torture, recycled from normal heretic, combined with EVIL sermons and some extra miracles from other Inhumen patrons.
-#define EVIL_PRIEST_SERMON_COOLDOWN (30 MINUTES)
+#define EVIL_PRIEST_SERMON_COOLDOWN (1 DAY)
 /datum/advclass/wretch/antipope
 	name = "Heresiarch" //formerly Doomsayer
 	tutorial = "They are pretentious. They are weak. They are complacent. And they are hopeless. But you. You will change this. \

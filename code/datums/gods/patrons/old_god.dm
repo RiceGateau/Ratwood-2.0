@@ -1,7 +1,10 @@
 /datum/patron/old_god
 	name = "Psydon"
 	domain = "Life, Creation, Compassion and Perseverance"
-	desc = "The One arrived to PSYDONIA on the COMET SYON, reshaping the barren world in His image. He was struck down by the Necromantress Zizo; some believe Him dead, others slumbering. May we ENDURE in His name."
+	desc = 
+	"The One arrived to PSYDONIA on the COMET SYON, reshaping the barren world in His image.\
+	He was struck down by the Necromantress Zizo; some believe Him dead, others slumbering. May we ENDURE in His name."
+
 	worshippers = "Ancient Dwarves and Elves, Zybantines, Otavans, Those Who Dream of Peace"
 	associated_faith = /datum/faith/old_god
 	mob_traits = list(TRAIT_PSYDONIAN_GRIT)
@@ -126,7 +129,10 @@
 	// Allows prayer if holding silver psycross.
 	if(istype(follower.get_active_held_item(), /obj/item/clothing/neck/roguetown/psicross/silver))
 		return TRUE
-	to_chat(follower, span_danger("For Psydon to hear my prayer I must either must be near a Pantheon Cross, shed my own blood in penitence, hold one of his silver holy symbols, or bask in his rain; as Psydon weeps for his children.."))
+	to_chat(follower, span_danger(
+	"For Psydon to hear my prayer I must either must be near a Pantheon Cross, shed my own blood in penitence, hold one of his silver holy symbols, or bask in his rain;\
+	as Psydon weeps for his children.."))
+	
 	return FALSE
 
 //////////////////////////////////

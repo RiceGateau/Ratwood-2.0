@@ -14,20 +14,19 @@
 		STATKEY_SPD = 2,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/bows = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/swords = 4,
+		/datum/skill/combat/whipsflails = 4,
+		/datum/skill/combat/knives = 4,
+		/datum/skill/combat/shields = 3,
+		/datum/skill/combat/bows = 4,
+		/datum/skill/combat/crossbows = 4,
+		/datum/skill/misc/athletics = 4,
+		/datum/skill/combat/unarmed = 2,
+		/datum/skill/misc/riding = 2,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/sneaking = 2,
+		/datum/skill/misc/tracking = 2,
+		/datum/skill/misc/reading = 3,
 	)
 
 	virtue_restrictions = list(

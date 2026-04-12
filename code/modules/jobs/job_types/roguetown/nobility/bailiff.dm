@@ -16,8 +16,7 @@
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard) // /obj/effect/proc_holder/spell/self/convertrole/bog
 	outfit = /datum/outfit/job/roguetown/marshal
 
-	give_bank_account = 40
-	noble_income = 20
+	give_bank_account = 20
 	min_pq = 8
 	max_pq = null
 	round_contrib_points = 3
@@ -104,17 +103,17 @@
 		STATKEY_STR = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/swords = 4,
+		/datum/skill/combat/knives = 3,
+		/datum/skill/combat/wrestling = 4,
+		/datum/skill/misc/tracking = 4,
+		/datum/skill/misc/athletics = 4,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/misc/reading = 3,
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/combat/crossbows = 2,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/riding = 4,
 	)
 
 /datum/outfit/job/roguetown/marshal/kcommander/pre_equip(mob/living/carbon/human/H)

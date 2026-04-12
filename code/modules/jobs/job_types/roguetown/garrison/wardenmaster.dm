@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)//I like the idea of making it set you to middle aged, but having the requirement removes it from the latejoin menu which I think is bad for visibility
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)//I like the idea of making it set you to middle aged, but having the requirement removes it from the latejoin menu which I think is bad for visibility
 	tutorial = "You are the most experienced of the Wardens, the elite rangers that patrol, scout and fiercely defend the lower city and wilderness surrounding it, attending to threats and crimes below the city's attention. \
 				Your job is to lead the aloof Wardens and wrangle the unruly vanguard, carving order out of the chaos south of the city's wals.\
 				Obey the orders of your Marshal and the Crown, and enact their will beyond the wall as the first line of defence from threats beyond the borders of civilisation. \
@@ -15,7 +15,7 @@
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 	round_contrib_points = 3
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_PEASANT
 
 	outfit = /datum/outfit/job/roguetown/wardenmaster
 	advclass_cat_rolls = list(CTAG_BOGMASTER = 20)
@@ -64,28 +64,20 @@
 		STATKEY_WIL = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/firearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/bows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/tanning = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/butchering = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/swimming = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/polearms = 2,
+		/datum/skill/combat/swords = 2,
+		/datum/skill/combat/axes = 2,
+		/datum/skill/combat/maces = 2,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/combat/bows = 2,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/sneaking = 3,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/tracking = 4,
+		/datum/skill/craft/crafting = 2,
+		/datum/skill/labor/butchering = 2,
+		/datum/skill/craft/tanning = 2,
 	)
 
 /datum/outfit/job/roguetown/wardenmaster/wardenmaster/pre_equip(mob/living/carbon/human/H)
@@ -109,7 +101,7 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Greataxe","Javelins & Shield","Blackhorn Longbow","Handgonne")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
+		var/weapons = list("Greataxe","Javelins & Shield","Blackhorn Longbow","CrossBow")	//competent at both sides of wardenry so it's more a matter of what weapon you start with
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		var/armor_options = list("Light Armor", "Medium Armor")
 		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
@@ -124,10 +116,7 @@
 			if("Blackhorn Longbow")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden
-			if("Handgonne")//okay I can remove this later but I think it would be... just... so based
-				r_hand = /obj/item/gun/ballistic/firearm/handgonne
-				l_hand = /obj/item/powderflask
-				beltr = /obj/item/quiver/bullet/lead
+
 		switch(armor_choice)
 			if("Light Armor")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy

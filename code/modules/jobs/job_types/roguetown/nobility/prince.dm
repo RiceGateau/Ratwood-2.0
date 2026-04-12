@@ -15,8 +15,6 @@
 	tutorial = "You've never felt the gnawing of the winter, never known the bite of hunger and certainly have never known a honest day's work. You are as free as any bird in the sky, and you may revel in your debauchery for as long as your parents remain upon the throne: But someday you'll have to grow up, and that will be the day your carelessness will cost you more than a few mammons."
 
 	display_order = JDO_PRINCE
-	give_bank_account = 30
-	noble_income = 20
 	min_pq = 1
 	max_pq = null
 	round_contrib_points = 3
@@ -236,17 +234,17 @@
 	STATKEY_LCK = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/misc/sneaking = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/stealing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/slings = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/sneaking = 5,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/stealing = 4,
+		/datum/skill/misc/lockpicking = 4,
+		/datum/skill/combat/slings = 3,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 3,
+		/datum/skill/craft/alchemy = 2,
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/misc/riding = 2,
+		/datum/skill/craft/crafting = 2,
 	)
 	adv_stat_ceiling = list(STAT_STRENGTH = 8, STAT_CONSTITUTION = 8, STAT_SPEED = 15)	//don't get caught
 

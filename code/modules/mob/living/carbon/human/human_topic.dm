@@ -120,9 +120,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(social_rank && !HAS_TRAIT(src, TRAIT_OUTLANDER))
 			var/examiner_rank = usr.social_rank
 			var/rank_name
-			if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4) //anyone with the noble trait that wasn't a noble is now at least a minor noble
+			if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 5) //anyone with the noble trait that wasn't a noble is now at least a minor noble
 				social_rank = SOCIAL_RANK_MINOR_NOBLE
 			switch(social_rank)
+				if(SOCIAL_RANK_BELOW_DIRT)
+					rank_name = "less than dirt"
 				if(SOCIAL_RANK_DIRT)
 					rank_name = "dirt"
 				if(SOCIAL_RANK_PEASANT)
@@ -135,13 +137,13 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					rank_name = is_clergy ? "clergy" : "a noble"
 				if(SOCIAL_RANK_ROYAL)
 					rank_name = is_clergy ? "head of the clergy" : "royalty"
-			if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
-				rank_name = "a disgraced noble"
-				social_rank = 3
+			if(T2E_TRAIT(src, TRAIT_DISGRACED_NOBLE, TRAIT_KNIGHT_ERRANT))
+				social_rank = 5
 			if(is_jester)
 				rank_name = "the jester"
 			if(is_druid)
 				rank_name = "a druid"
+
 			if(social_rank > examiner_rank)
 				to_chat(usr, span_notice("This persons social standing is equivalent to <EM>[rank_name]</EM>, they are my better."))
 			if(social_rank == examiner_rank)

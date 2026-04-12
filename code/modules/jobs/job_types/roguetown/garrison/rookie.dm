@@ -3,8 +3,8 @@
 	flag = ROOKIE
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 4
+	spawn_positions = 4
 	allowed_races = ACCEPTED_RACES
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
@@ -57,21 +57,18 @@
 	)
 	subclass_skills = list(
 		/datum/skill/combat/shields = 2,
-		/datum/skill/combat/maces = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/polearms = 3,
+		/datum/skill/combat/maces = 2,
+		/datum/skill/combat/swords = 2,
+		/datum/skill/combat/polearms = 2,
 		/datum/skill/combat/crossbows = 2,
 		/datum/skill/combat/wrestling = 2,
 		/datum/skill/combat/unarmed = 2,
 		/datum/skill/combat/knives = 2,
 		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/tracking = 2,
-		/datum/skill/craft/crafting, 1,
-		/datum/skill/craft/cooking, 1,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/athletics = 2,
+		/datum/skill/craft/crafting, 2,
+		/datum/skill/craft/cooking, 2,
 	)
 
 /datum/outfit/job/roguetown/rookie/footman/pre_equip(mob/living/carbon/human/H)
@@ -124,20 +121,17 @@
 		STATKEY_END = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/slings = 3,
+		/datum/skill/combat/bows = 2,
+		/datum/skill/combat/crossbows = 2,
+		/datum/skill/combat/slings = 2,
 		/datum/skill/combat/wrestling = 1,
 		/datum/skill/combat/unarmed = 1,
 		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/maces = 2,//clobbering criminals
+		/datum/skill/combat/maces = 1,//clobbering criminals
 		/datum/skill/combat/knives = 2,
 		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/tracking = 2,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/athletics = 2,
 		/datum/skill/craft/crafting, 1,
 		/datum/skill/craft/cooking, 1,
 	)
@@ -184,7 +178,7 @@
 		switch(armor_choice)
 			if("Light Armor")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather
-				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+
 			if("Medium Armor")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

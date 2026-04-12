@@ -1,6 +1,24 @@
 #define SIGNAL_ADDTRAIT(trait_ref) ("addtrait " + trait_ref)
 #define SIGNAL_REMOVETRAIT(trait_ref) ("removetrait " + trait_ref)
 
+#define M2S(A, B, T) (HAS_TRAIT(A, T) ^ HAS_TRAIT(B, T)) // One Trait Only/If Both True = Fail/Mob Two Same
+
+#define M2R(A, B, T) (HAS_TRAIT(A, T) && HAS_TRAIT(B, T)) // Both Traits Required/Mob Two Required
+
+#define M2E(A, B, T) (HAS_TRAIT(A, T) || HAS_TRAIT(B, T)) // Atleast one Required/Mob Two Either
+
+#define T2S(A, T1, T2) (HAS_TRAIT(A, T1) ^ HAS_TRAIT(A, T2)) // Trait Two Same
+
+#define T2R(A, T1, T2) (HAS_TRAIT(A, T1) && HAS_TRAIT(A, T2)) // Trait Two Required
+
+#define T2E(A, T1, T2) (HAS_TRAIT(A, T1) || HAS_TRAIT(A, T2)) // Trait Two Either
+
+#define M2T2S(A, T1, B, T2) (HAS_TRAIT(A, T1) ^ HAS_TRAIT(B, T2)) // Mob Two Trait Two Same
+
+#define M2T2R(A, T1, B, T2) (HAS_TRAIT(A, T1) && HAS_TRAIT(B, T2)) // Mob Two Trait Two Required
+
+#define M2T2E(A, T1, B, T2) (HAS_TRAIT(A, T1) || HAS_TRAIT(B, T2)) // Mob Two Trait Two Either
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -12,6 +30,7 @@
 #define TRAIT_TOLERANT "Tolerant"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
+#define TRAIT_SEEPRICES_SHITTY "Appraiser"
 #define TRAIT_VAMPBITE "Vampire bite"
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_STRONGKICK "Strong Kick"
@@ -144,6 +163,7 @@
 #define TRAIT_PSYDONITE "Psydonite's Devotion" // Anti-Miracles on a selective basis, anastasis / cure rot still apply.
 #define TRAIT_BLACKBAGGER "Apprehension Techniques" // Capable of using Garrotes and Blackbags. Apprehension techniques.
 #define TRAIT_RESONANCE "Resonance Caster"//Casting miracles will buff nearby miraclists. Or, would, had I finished it. Instead it applies fortify in an AoE. - Carl
+#define TRAIT_NOMIRACLE "Warded Soul"//Miracles will not work on you, if ascendant, tennite miracles will only be warded. Inherent Godless Trait.
 
 // PATRON GOD CURSES
 
@@ -231,10 +251,7 @@
 #define TRAIT_SLEUTH	"Sleuth"
 #define TRAIT_HARDSHELL "Hardshell"
 #define TRAIT_WOODWALKER "Woodwalker"
-#define TRAIT_ARCYNE_T1 "Arcyne Training (Novice)"
-#define TRAIT_ARCYNE_T2 "Arcyne Training (Apprentice)"
-#define TRAIT_ARCYNE_T3 "Arcyne Training (Expert)"
-#define TRAIT_ARCYNE_T4 "Arcyne Training (Master)"
+#define TRAIT_ARCYNE "Arcyne Training"
 #define TRAIT_BITERHELM "Helmetbiter" // just use this to get helmets which are bitey.
 #define TRAIT_STRENGTH_UNCAPPED "Strength Unbound"	//ignores the STR softcap.
 #define TRAIT_EORAN_CALM "Eoran Calm"
@@ -289,7 +306,7 @@
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_STEELHEARTED = span_info("I have hardened nerves, and do not waiver from the sight of violence in battle."),
 	TRAIT_OUTLANDER = span_info("Those of the vale see me as not of their land."),
-	TRAIT_OUTLAW = span_info("This land's nervelocks and castificos reject my touch."),
+	TRAIT_OUTLAW = span_warning("I am currently wanted by the crown, nervelocks and castificos will now reject my touch."),
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_VOTARY = span_info("I'm of the Holy See's own. I feel most comfortable on hallowed ground."),
 	TRAIT_TAVERN_FIGHTER = span_info("I am vigilant in my duties. The Tavern is my home, none shall dare oppose me or skip out on payment."),
@@ -302,13 +319,13 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
-	TRAIT_ZJUMP = "Time to reach a new high.",
+	TRAIT_ZJUMP = span_info("Time to reach a new high."),
 	TRAIT_LEAPER = "I can leap like a frog, landing where I want.",
 	TRAIT_JESTERPHOBIA = span_warning("I have a severe irrational fear of Jesters"),
-	TRAIT_XENOPHOBIC = span_warning("Lesser races pollute our land"),
-	TRAIT_ETHNOCENTRIC = span_warning("We are not better because we hate them; we are better because our nature is more refined."),
+	TRAIT_XENOPHOBIC = span_bloody("Lesser races pollute our land"),
+	TRAIT_ETHNOCENTRIC = span_info("We are not better because we hate them; we are better because our nature is more refined."),
 	TRAIT_TOLERANT = span_info("I dream of an ideal future, one with peace between all races"),
-	TRAIT_INTOLERANT = span_info("I dream of an ideal future, one with a few less races inside of it.")
+	TRAIT_INTOLERANT = span_info("I dream of an ideal future, one with a few less races inside of it."),
 	TRAIT_NIGHT_OWL = span_info("I enjoy spending my time in the night."),
 	TRAIT_BEAUTIFUL = span_info("People love looking at my face"),
 	TRAIT_BEAUTIFUL_UNCANNY = span_info("<i>Some</i> would say my visage is an artwork created by the gods themselves; the others call me an unsettling abomination."),
@@ -316,12 +333,13 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_UNSEEMLY = span_info("My face is ugly and makes everyone who looks at me miserable."),
 	TRAIT_SCARRED = span_info("My face bears terrible scars that make identification difficult."),
 	TRAIT_GOOD_MOOD = span_warning("Nothing can get you down!"),
-	TRAIT_STABILIZED_MOOD = span_warning("I feel calm.. For now."),
+	TRAIT_STABILIZED_MOOD = span_info("I feel calm.. For now."),
 	TRAIT_BAD_MOOD = span_warning("Everything just seems to get to you."),
 	TRAIT_NOMOOD = span_info("I feel no sorrow, no joy, and no stress."),
-	TRAIT_NUTCRACKER = "I love kicking idiots in the nuts!",
-	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
-	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
+	TRAIT_NOEXPRESSION = span_warning("I cannot express my emotions, I feel so bottled up.."),
+	TRAIT_NUTCRACKER = span_bloody("I love kicking idiots in the nuts!"),
+	TRAIT_SEEPRICES = span_info("I can tell the prices of things down to the zenny."),
+	TRAIT_SEEPRICES_SHITTY = span_info("I can tell the prices of things... <i>Kind of</i>."),
 	TRAIT_STRONGBITE = span_info("Stronger bites, critical bite attacks."),
 	TRAIT_VAMPBITE = span_info("Your bite's victims going to feel very, VERY good."),
 	TRAIT_STRONGKICK = span_info("My kicks knock people down and back a step, consistently. There's no need for obstacles."),
@@ -339,7 +357,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MAGEARMOR = span_info("My magics can protect me from a blow every so often."),
 	TRAIT_DECEIVING_MEEKNESS = span_info("People look at me and think I am a weakling. They are mistaken. I've learned how to hide my vices and true beliefs from others."),
 	TRAIT_CRITICAL_RESISTANCE = span_info("My constitution is iron-clad. My lifeblood flows slowly, I can resist the first few criitical wounds that would fell others, but repeated punishment will overwhelm my defenses."),
-	TRAIT_CRITICAL_NULL = span_info("For the first time in ages, your constitution feels balanced"),
 	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
 	TRAIT_DNR = span_danger("My lux' vigor is weak. There is no hope for me. This lyfe is all I have."),
 	TRAIT_MANIAC_AWOKEN = span_danger("I am <b>WAKING UP</b> and the sheeple know this. They will resist."),
@@ -393,6 +410,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SHARPER_BLADES = span_info("My blades go dull slower, ensuring they stay sharp longer."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED!"),
 	TRAIT_PSYDONITE = span_info("Divine contempt leaves me unable to receive most miracles."),
+	TRAIT_NOMIRACLE = span_info("Your soul has been warded against divine intervention"),
 	TRAIT_PSYDONIAN_GRIT = span_info("While I still stand, there is yet hope for mankind. The stronger my willpower is, the better I can struggle through crippling wounds."),
 	TRAIT_BLACKBAGGER = span_info("I've been trained to properly abduct individuals through the use of seizing garrotes and blackbags."),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
@@ -400,7 +418,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me."),
 	TRAIT_SILVER_BLESSED = span_info("I have been baptized in fire. Blessed silverdust flows through my blood, protecting me from both vampyrism and lycanthropy."),
 	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
-	TRAIT_MEDIOCRETRAINER = span_info("I suppose you're alright at teaching? You could be better though"),
 	TRAIT_BADTRAINER = span_info("I've spent yils studying the art of a single weapon, but unfortunately I've no patience to train anyone else. Everyone learning from me will only learn up to two skill levels below mine."),
 	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely."),
 	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and throw people more easily."),
@@ -437,15 +454,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOCSHADES = span_info("The lens I look through allows me to see in the dark clear as dae, at the cost of greater vision."),
 	TRAIT_RESIDENT = span_info("I've been granted a Nervelock account, and the ownership of a house in the vale."),
 	TRAIT_LIGHT_STEP = span_info("My steps are light and swift. I make less noise while sneaking, and can sneak much quicker."),
-	TRAIT_AZURENATIVE = span_info("I've grown up and lived all my lyfe in these lands. I can only trigger ambushes if I sprint through them."),
+	TRAIT_BOGNATIVE = span_info("I've grown up and lived all my lyfe in these lands. I can only trigger ambushes if I sprint through them."),
 	TRAIT_SLEUTH = span_info("I can spot my tracked Mark's trail without needing to approach it, and can spot them at a distance. I can track more frequently, and the act is not impaired by movement. I can examine tracks right away."),
 	TRAIT_HARDSHELL = span_info("The bulk of this armor prevents me from parrying effectively, but I can still move out of the way."),
 	TRAIT_MATTHIOS_BLESSING = span_notice("I have a sense for what the most valuable item someone has is."),
 	TRAIT_WOODWALKER = span_notice("I can climb trees quicker, and gain climbing experience twice as quickly. I can step on thorns and branches safely in the woods. I can get twice as many things from searching bushes, and I can stand on leaves in trees safely."),
-	TRAIT_ARCYNE_T1 = span_notice("I have received basic training in the Arcyne arts, allowing me access to a small variety of spells useful outside of combat."),
-	TRAIT_ARCYNE_T2 = span_notice("I have received advanced training in the Arcyne arts, allowing me to learn basic combat spells"),
-	TRAIT_ARCYNE_T3 = span_notice("I am a full-fledged mage, and have access to devastating spells that affects a wide area."),
-	TRAIT_ARCYNE_T4 = span_notice("I'm a master of the Arcyne arts, and has access to some of the most powerful spells ever devised."),
+	TRAIT_ARCYNE = span_notice("I have received training in the Arcyne arts, allowing me access my innate mana pool."),
 	TRAIT_INFINITE_ENERGY = span_notice ("I don't need rest; I won't ever feel fatigue."),
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("MY STRENGTH IS UNBOUND!"),
@@ -490,7 +504,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DREAMWALKER = span_warning("I walk the dream and reality at the same time. My mind frays, but my vision shall be reality."),
 	TRAIT_BLACKLEG = span_warning("My people have an inherent connection to Xylix. This grants me the ability to rig coin flips and dice rolls in my favour."),
 	TRAIT_OVERTHERETIC = span_bloody("I've played my cards. Hallowed ground is now my bane."),
-	TRAIT_DEATHBYSNUSNU = "With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike.",
+	TRAIT_DEATHBYSNUSNU = span_bloody("With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike."),
 	TRAIT_HUMEN_INGENUITY = span_notice("Like most of my people, I am blessed with knowledge. Learning comes easier."),
 	TRAIT_HELLSPAWN = span_warning("My bloodline affords me an inherent resistance to catching ablaze."),
 	TRAIT_WING_BOUND = span_info("The wings upon my back allow me to glide. Poorly. Falls will be less painful, but still not ideal."),
@@ -514,6 +528,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BAOTHA_FERTILITY_BOON = span_info("I have been marked by Baotha. I am branded visibly on my groin and am able to be impregnated regardless of physical states that would usually prevent this"),
 	TRAIT_FUSILIER = span_suppradio("I've been trained in the safe use of smokepowder. Additionally, knowledge above <b><u>journeyman</u></b> status is attainable."),
 	TRAIT_HEMOPHAGE = span_bloody("Nothing but lyfeblood will keep me alive..."),
+	TRAIT_SKELETON, //Needed For Skeleton Virture/Curse
 	TRAIT_CHASTITY_FULL = span_info("My chastity device prevents me from engaging in most penetrative sex."),
 	TRAIT_CHASTITY_CAGE = span_info("My chastity device prevents me getting an erection or engaging in penetrative sex."),
 	TRAIT_CHASTITY_PENIS_BLOCKED = span_info("My chastity device blocks access to my penis."),

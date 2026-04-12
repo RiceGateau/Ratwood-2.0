@@ -22,8 +22,8 @@
 		"...an old hunter stands in front of your counter and demands two dozen arrows. He hands you a bundle of sticks with a smile on his face..."
 	)
 	expert_name = "Weaponsmith"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY, TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_WSMITHING_EXPERT = 6), 
 
 /datum/skill/craft/armorsmithing
 	name = "Armorsmithing"
@@ -33,8 +33,8 @@
 		"...the veteran's armor, battered beyond recognition, mirrors the scars upon his body. Yet, without your craft, he'd have fallen long ago. With skilled hands and a half a day's work, the armor is reborn - stronger than the day it was forged..."
 	)
 	expert_name = "Armorsmith"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY, TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_ASMITHING_EXPERT = 6),
 
 /datum/skill/craft/blacksmithing
 	name = "Blacksmithing"
@@ -45,8 +45,8 @@
 		"...the furnaces are lit and the forges roar. Today is a good day, and the lord of flame has blessed your smithy, the greatest in all the lands..."
 	)
 	expert_name = "Blacksmith"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY, TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_SMITHING_EXPERT = 6)
 
 /datum/skill/craft/smelting
 	name = "Smelting"
@@ -58,8 +58,8 @@
 
 	)
 	expert_name = "Smelter"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY, TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_MINING_EXPERT = SKILL_LEVEL_LEGENDARY)
 
 
 /datum/skill/craft/carpentry
@@ -71,7 +71,9 @@
 		"...you take a seat and there is no noise. None at all. The nightmare of its horrid creak is dispelled, and your thoughts turn to its make..."
 	)
 	expert_name = "Carpenter"
-	// Niche skill, no gating
+	
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_ENGINEERING_EXPERT = 6)
 
 /datum/skill/craft/masonry
 	name = "Masonry"
@@ -82,10 +84,8 @@
 	)
 	expert_name = "Mason"
 	// No longer niche with gemcarving etc
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_HOMESTEAD_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_ENGINEERING_EXPERT = 6)
 
 /datum/skill/craft/traps
 	name = "Trapmaking"
@@ -105,8 +105,8 @@
 		"...with steady hands you shape a new limb, each joint and cog designed to restore what was lost. Your work is a quiet promise; they will walk again..."
 	)
 	expert_name = "Engineer"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY, TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_ENGINEERING = 6)
 
 
 /datum/skill/craft/cooking
@@ -118,10 +118,9 @@
 		"...a one-eyed chef begins mashing apples in front of you before filling some pie dough. He can barely stop himself from salivating as he teaches you his secret ingredient..."
 	)
 	expert_name = "Cook"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_HOMESTEAD_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SURVIVAL_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list((TRAIT_COOKING_EXPERT = 6),
+						(TRAIT_SELF_SUSTENANCE = 3))
 
 /datum/skill/craft/sewing
 	name = "Sewing"
@@ -131,11 +130,9 @@
 		"...you turn over the fabric, and within the two layers of the gown, you hide a secret stitched into the gown, your initials, hidden within. A forbidden mark in some cultures... you never liked the bride much..."
 	)
 	expert_name = "Sewer"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SEWING_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SURVIVAL_EXPERT = SKILL_LEVEL_JOURNEYMAN,
-	TRAIT_HOMESTEAD_EXPERT = SKILL_LEVEL_JOURNEYMAN,
-	TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list((TRAIT_SEWING_EXPERT = 6),
+						(TRAIT_SELF_SUSTENANCE = 3))
 
 /datum/skill/craft/tanning
 	name = "Skincrafting"
@@ -145,11 +142,8 @@
 		"...the hunter, their voice as rough as bark and their skin weathered like grain lets out a hearty laugh as he shows you his stitching..."
 	)
 	expert_name = "Tanner"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_SEWING_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SURVIVAL_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_HOMESTEAD_EXPERT = SKILL_LEVEL_JOURNEYMAN,
-	TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(TRAIT_SURVIVAL_EXPERT = 6),
 
 /datum/skill/craft/ceramics
 	name = "Pottery"
@@ -159,10 +153,8 @@
 		"...a slab of clay is molded into a beautiful statue. A testiment to Malum's blessings, and Xylix's insperation. A pure work of beauty..."
 	)
 	expert_name = "Potter"
-	max_untraited_level = SKILL_LEVEL_APPRENTICE
-	trait_uncap = list(TRAIT_HOMESTEAD_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SMITHING_EXPERT = SKILL_LEVEL_LEGENDARY,
-	TRAIT_SELF_SUSTENANCE = SKILL_LEVEL_JOURNEYMAN)
+	max_untraited_level = 2
+	trait_uncap = list(null)
 
 /datum/skill/craft/alchemy
 	name = "Alchemy"
@@ -171,8 +163,8 @@
 		"...the smell of sulfur singes your nostrils... you taste iron... the smoke clears as you stare down at the reflection in your cauldron... the Queen stares back at you... she looks like she's crying..."
 	)
 	expert_name = "Alchemist"
-	max_untraited_level = SKILL_LEVEL_JOURNEYMAN // Special, we just gate the best potions away
-	trait_uncap = list(TRAIT_ALCHEMY_EXPERT = SKILL_LEVEL_LEGENDARY)
+	max_untraited_level = 2 // Special, we just gate the best potions away
+	trait_uncap = list(TRAIT_ALCHEMY_EXPERT = 6)
 
 /datum/skill/craft/alchemy/skill_level_effect(level, datum/mind/mind)
 	if(level > SKILL_LEVEL_MASTER)

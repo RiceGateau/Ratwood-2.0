@@ -75,7 +75,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 //Human sub-species
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
-#define isvampire(A) (is_species(A,/datum/species/vampire))
 
 //RT species
 #define ishumannorthern(A) (is_species(A, /datum/species/human/northern))
@@ -106,6 +105,13 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define isvulp(A) (is_species(A, /datum/species/vulpkanin))
 #define isharpy(A) (is_species(A, /datum/species/harpy))
 
+//Undead RT Species
+#define isdullahanu(A) (is_species(A,/datum/species/undead/dullahan))
+#define isskeleton(A) (is_species(A,/datum/species/undead/skeleton))
+#define isvampire(A) (is_species(A,/datum/species/undead/vampire))
+#define isshiki(A) (is_species(A,/datum/species/undead/shiki))
+#define isghoul(A) (is_species(A,/datum/species/undead/ghoul))
+#define iszombie(A)	(is_species(A,/datum/species/undead/ghoul))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

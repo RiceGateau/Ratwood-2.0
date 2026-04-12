@@ -11,11 +11,14 @@
 	outfit = /datum/outfit/job/roguetown/hand
 	advclass_cat_rolls = list(CTAG_HAND = 20)
 	display_order = JDO_HAND
-	tutorial = "Whether by outstanding merit or petty favoritism, you are the Archduke’s most trusted representative and advisor. Your authority is second only to the Archduke themselves. The weight of your words can shape policy, stir conflict, or silence dissent. Let none forget whose will you carry, and do not fail your benefactor."
+	tutorial = 
+	"Whether by outstanding merit or petty favoritism, you are the Archduke's most trusted representative and advisor.\
+	Your authority is second only to the Archduke themselves. The weight of your words can shape policy, stir conflict, or silence dissent.\
+	Let none forget whose will you carry, and do not fail your benefactor."
+
 	whitelist_req = TRUE
-	give_bank_account = 44
-	noble_income = 22
-	min_pq = 9 //The second most powerful person in the realm...
+	give_bank_account = 20
+	min_pq = 8 //The second most powerful person in the realm...
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/cmode/nobility/combat_spymaster.ogg'
@@ -49,7 +52,9 @@
 //Blademaster Hand start
 /datum/advclass/hand/blademaster
 	name = "Blademaster"
-	tutorial = "You have played blademaster and strategist to the Noble-Family for so long that you are a master tactician, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with swords than any spymaster could ever claim to."
+	tutorial = 
+	"You have played blademaster and strategist to the Noble-Family for so long that you are a master tactician, something you exploit with potent conviction.\
+	Let no man ever forget whose ear you whisper into. You've killed more men with swords than any spymaster could ever claim to."
 	outfit = /datum/outfit/job/roguetown/hand/blademaster
 
 	category_tags = list(CTAG_HAND)
@@ -103,7 +108,10 @@
 //Spymaster start
 /datum/advclass/hand/spymaster
 	name = "Spymaster"
-	tutorial = " You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
+	tutorial = 
+	"You have played spymaster and confidant to the Noble-Family for so long that you are a vault of intrigue, something you exploit with potent conviction.\
+	Let no man ever forget whose ear you whisper into. You've killed more men with those lips than any blademaster could ever claim to."
+
 	extra_context = "This subclass recieves 'Perfect Tracker' and 'Keen Ears' for free."
 	outfit = /datum/outfit/job/roguetown/hand/spymaster
 
@@ -117,20 +125,20 @@
 		STATKEY_STR = -1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/bows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/tracking = SKILL_LEVEL_MASTER,//Huntmaster, but this was apprentice. You can powerlevel this easy, but that's a waste of sleeping.
-		/datum/skill/misc/sneaking = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/stealing = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_MASTER, // not like they're gonna break into the vault.
+		/datum/skill/combat/crossbows = 5,
+		/datum/skill/combat/bows = 5,
+		/datum/skill/combat/wrestling = 3,
+		/datum/skill/combat/unarmed = 1,
+		/datum/skill/combat/knives = 5,
+		/datum/skill/combat/swords = 2,
+		/datum/skill/misc/swimming = 3,
+		/datum/skill/misc/climbing = 6,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 3,
+		/datum/skill/misc/tracking = 5,//Huntmaster, but this was apprentice. You can powerlevel this easy, but that's a waste of sleeping.
+		/datum/skill/misc/sneaking = 5,
+		/datum/skill/misc/stealing = 5,
+		/datum/skill/misc/lockpicking = 5, // not like they're gonna break into the vault.
 	)
 
 //Spymaster start. More similar to the rogue adventurer - loses heavy armor and sword skills for more sneaky stuff.
@@ -166,7 +174,9 @@
 //Advisor Start
 /datum/advclass/hand/advisor
 	name = "Advisor"
-	tutorial = "You serve as both scholar and advisor to the Noble-Family, wielding knowledge and magicks with potent ability. Let no man forget whose ear you whisper into, your sage advice has saved more lives than any strategist’s orders or spymaster’s schemes could ever claim to."
+	tutorial = 
+	"You serve as both scholar and advisor to the Noble-Family, wielding knowledge and magicks with potent ability.\
+	Let no man forget whose ear you whisper into, your sage advice has saved more lives than any strategist's orders or spymaster's schemes could ever claim to."
 	outfit = /datum/outfit/job/roguetown/hand/advisor
 
 	category_tags = list(CTAG_HAND)

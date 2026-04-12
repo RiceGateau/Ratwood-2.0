@@ -28,7 +28,7 @@
 		/datum/advclass/veteran/scout,
 		/datum/advclass/veteran/spy
 	)
-	job_traits = list(TRAIT_STEELHEARTED, TRAIT_COMBAT_AWARE)
+	job_traits = list(TRAIT_STEELHEARTED, TRAIT_COMBAT_AWARE, TRAIT_GOODTRAINER)
 	virtue_restrictions = list(/datum/virtue/combat/combat_aware)//due to them having the trait by default
 
 /datum/job/roguetown/veteran/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -62,69 +62,41 @@
 		STATKEY_PER = 1
 	)
 	subclass_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/maces = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/shields = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/bows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/swords = 5,
+		/datum/skill/combat/maces = 5,
+		/datum/skill/combat/axes = 4,
+		/datum/skill/combat/shields = 4,
+		/datum/skill/combat/wrestling = 5,
+		/datum/skill/combat/unarmed = 4,
+		/datum/skill/combat/polearms = 4,
+		/datum/skill/combat/bows = 4,
+		/datum/skill/combat/crossbows = 3,
+		/datum/skill/combat/whipsflails = 3,
+		/datum/skill/combat/knives = 2,
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/misc/athletics = 2,
+		/datum/skill/misc/reading = 1,
 	)
+		H.verbs |= /mob/proc/haltyell
 
-// Normal veteran start, from the olden days.
-
-/datum/outfit/job/roguetown/vet/battlemaster
-	has_loadout = TRUE
-
-/datum/outfit/job/roguetown/vet/battlemaster/pre_equip(mob/living/carbon/human/H)
-	neck = /obj/item/clothing/neck/roguetown/bevor
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
-	wrists = /obj/item/clothing/wrists/roguetown/splintarms/iron
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltr = /obj/item/storage/keyring/guardcastle
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	cloak = /obj/item/clothing/cloak/half/vet
-	belt = /obj/item/storage/belt/rogue/leather/black
-	backpack_contents = list(
-		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
-		/obj/item/rogueweapon/scabbard/sheath = 1
-		)
-	H.verbs |= /mob/proc/haltyell
-
-/datum/outfit/job/roguetown/vet/battlemaster/choose_loadout(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/vet/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Longsword","Sabre", "Quarterstaff")
+		var/weapons = list("Longbow","Sling","Crossbow")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Longsword")
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
-				H.put_in_hands(new /obj/item/rogueweapon/sword/long)
-				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L)
-			if("Flail")
-				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
-				H.put_in_hands(new /obj/item/rogueweapon/flail/sflail)
-			if("Quarterstaff")
-				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 6, TRUE) // Funny and rarely utilized weapon option. Why not?
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
-				H.put_in_hands(new /obj/item/rogueweapon/woodstaff/quarterstaff/steel)
-				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap, SLOT_BACK_L)
+			if("Longbow")
+				H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden)
+				H.equip_to_slot_or_del(new /obj/item/quiver/arrows, SLOT_BELT_L)
+			if("Sling")
+				H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/sling)
+				H.equip_to_slot_or_del( new /obj/item/quiver/sling/iron, SLOT_BELT_L)
+			if("Crossbow")
+				H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
+				H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_L)
 		var/retirement = list("Pursue Homesteading", "Dabble in Artisan Smithing", "Write an autobiography", "Keep up with your old regimen")
 		var/retirement_choice = input(H, "During your retirement, you decided to...", "PICK A HOBBY.") as anything in retirement
 		switch(retirement_choice)
@@ -148,6 +120,24 @@
 			if("Keep up with your old regimen")
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
+
+/datum/outfit/job/roguetown/vet/battlemaster/pre_equip(mob/living/carbon/human/H)
+	neck = /obj/item/clothing/neck/roguetown/bevor
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
+	wrists = /obj/item/clothing/wrists/roguetown/splintarms/iron
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	beltr = /obj/item/storage/keyring/guardcastle
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	cloak = /obj/item/clothing/cloak/half/vet
+	belt = /obj/item/storage/belt/rogue/leather/black
+	backpack_contents = list(
+		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		/obj/item/rogueweapon/scabbard/sheath = 1
+		)
+	H.verbs |= /mob/proc/haltyell
 
 /datum/advclass/veteran/footman
 	name = "Retired Footman"
@@ -312,14 +302,7 @@
 		/obj/item/storage/keyring/guardcastle = 1,
 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1 // Former noble, so it makes sense for them to have some more starting capital
 		)
-	H.verbs |= /mob/proc/haltyell
 
-	H.adjust_blindness(-3)
-	if(H.mind)
-		var/weapons = list("Sword + Recurve Bow","Axe + Crossbow","Spear + Shield")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		H.set_blindness(0)
-		switch(weapon_choice)
 			if("Sword + Recurve Bow")
 				H.put_in_hands(new /obj/item/rogueweapon/sword/long)
 				H.equip_to_slot_or_del(new /obj/item/quiver/arrows, SLOT_BELT_L)
@@ -332,29 +315,6 @@
 			if ("Spear + Shield")
 				H.put_in_hands(new /obj/item/rogueweapon/spear)
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/shield/tower/metal, SLOT_BACK_L)
-		var/retirement = list("Pursue Homesteading", "Dabble in Artisan Smithing", "Write an autobiography", "Keep up with your old regimen")
-		var/retirement_choice = input(H, "During your retirement, you decided to...", "PICK A HOBBY.") as anything in retirement
-		switch(retirement_choice)
-			if("Pursue Homesteading")
-				ADD_TRAIT(H, TRAIT_HOMESTEAD_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/labor/farming, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/butchering, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Dabble in Artisan Smithing")
-				ADD_TRAIT(H, TRAIT_SMITHING_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/craft/smelting, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/masonry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/mining, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Write an autobiography")
-				ADD_TRAIT(H, TRAIT_GOODWRITER, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_MASTER, TRUE)
-			if("Keep up with your old regimen")
-				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
 
 /datum/advclass/veteran/merc
 	name = "Retired Mercenary"
@@ -415,14 +375,7 @@
 		)
 	H.verbs |= /mob/proc/haltyell
 
-/datum/outfit/job/roguetown/vet/merc/choose_loadout(mob/living/carbon/human/H)
-	. = ..()
-	H.adjust_blindness(-3)
-	if(H.mind)
-		var/weapons = list("Zweihander","Halberd")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		H.set_blindness(0)
-		switch(weapon_choice)
+
 			if("Zweihander")
 				H.put_in_hands(new /obj/item/rogueweapon/greatsword/grenz)
 				H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -433,105 +386,8 @@
 				H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE) // SO, fun fact. The description of the grenzel halbardier says they specialize in axes, but they get no axe skill. Maybe this guy is where that rumor came from.
 				H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 				H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap, SLOT_BACK_L)
-		var/retirement = list("Pursue Homesteading", "Dabble in Artisan Smithing", "Write an autobiography", "Keep up with your old regimen")
-		var/retirement_choice = input(H, "During your retirement, you decided to...", "PICK A HOBBY.") as anything in retirement
-		switch(retirement_choice)
-			if("Pursue Homesteading")
-				ADD_TRAIT(H, TRAIT_HOMESTEAD_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/labor/farming, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/butchering, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Dabble in Artisan Smithing")
-				ADD_TRAIT(H, TRAIT_SMITHING_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/craft/smelting, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/masonry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/mining, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Write an autobiography")
-				ADD_TRAIT(H, TRAIT_GOODWRITER, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_MASTER, TRUE)
-			if("Keep up with your old regimen")
-				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
 
-/datum/advclass/veteran/scout
-	name = "Former Scout"
-	tutorial = "You and your unit maneuvered ahead of the main force, ever-watchful for traps and ambushes. You never thought of what would happen should you actually walk into one. You specialize in archery and axes." //Slightly reflavored into a full-on former bogmaster. Dodge-maxxing doesnt work on veteran anyhow.
-	outfit = /datum/outfit/job/roguetown/vet/scout
 
-	category_tags = list(CTAG_VETERAN)
-	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_WOODSMAN, TRAIT_OUTDOORSMAN, TRAIT_PERFECT_TRACKER)
-	subclass_stats = list(
-		STATKEY_PER = 3, // You are OLD you have OLD EYES. this is to counter that debuff so you can be OBSERVANT. Moved the bonus from BEING OLD since now veterans are forced to be such
-		STATKEY_INT = 2,
-		STATKEY_WIL = 2,
-		STATKEY_CON = 1,
-		STATKEY_STR = 1 //STR bonus instead of SPD one snce changed to medium armor. Dodge-maxxing is for the Spy Class.
-	)
-	subclass_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/axes = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/bows = SKILL_LEVEL_LEGENDARY, // I very rarely see ranged weapons outside of PVE. Maybe this'll fix that?
-		/datum/skill/combat/crossbows = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/combat/slings = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/stealing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/tanning = SKILL_LEVEL_JOURNEYMAN
-	)
-
-// Originally was meant to be a horse archer. I decided that was a bad idea.
-// Former Bogmaster, actually? I feel like that's much cooler than just an archer guy.
-/datum/outfit/job/roguetown/vet/scout
-	has_loadout = TRUE
-
-/datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H)
-	head = /obj/item/clothing/head/roguetown/helmet/bascinet/antler
-	mask = /obj/item/clothing/head/roguetown/roguehood/warden
-	neck = /obj/item/clothing/neck/roguetown/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/warden
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/angle
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/iron
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-	beltr = /obj/item/flashlight/flare/torch/lantern
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backl = /obj/item/rogueweapon/scabbard/gwstrap
-	r_hand = /obj/item/rogueweapon/greataxe/steel
-	belt = /obj/item/storage/belt/rogue/leather/black
-	cloak = /obj/item/clothing/cloak/wardencloak
-	backpack_contents = list(
-		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
-		/obj/item/storage/keyring/guardcastle = 1,
-		/obj/item/rogueweapon/scabbard/sheath = 1
-		)
-	H.verbs |= /mob/proc/haltyell
-	H.cmode_music = 'sound/music/cmode/antag/combat_deadlyshadows.ogg' // so apparently this works for veteran, but not for advents. i dont know why.
-
-/datum/outfit/job/roguetown/vet/scout/choose_loadout(mob/living/carbon/human/H)
-	. = ..()
-	H.adjust_blindness(-3)
-	if(H.mind)
-		var/weapons = list("Longbow","Sling","Crossbow")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		H.set_blindness(0)
-		switch(weapon_choice)
 			if("Longbow")
 				H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden)
 				H.equip_to_slot_or_del(new /obj/item/quiver/arrows, SLOT_BELT_L)
@@ -626,31 +482,3 @@
 		/obj/item/lockpickring/mundane,
 		)
 	H.verbs |= /mob/proc/haltyell
-
-/datum/outfit/job/roguetown/spy/scout/choose_loadout(mob/living/carbon/human/H)
-	. = ..()
-	H.adjust_blindness(-3)
-	if(H.mind)
-		var/retirement = list("Pursue Homesteading", "Dabble in Artisan Smithing", "Write an autobiography", "Keep up with your old regimen")
-		var/retirement_choice = input(H, "During your retirement, you decided to...", "PICK A HOBBY.") as anything in retirement
-		switch(retirement_choice)
-			if("Pursue Homesteading")
-				ADD_TRAIT(H, TRAIT_HOMESTEAD_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/labor/farming, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/butchering, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/fishing, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Dabble in Artisan Smithing")
-				ADD_TRAIT(H, TRAIT_SMITHING_EXPERT, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/craft/smelting, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/craft/masonry, SKILL_LEVEL_APPRENTICE, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/labor/mining, SKILL_LEVEL_APPRENTICE, TRUE)
-			if("Write an autobiography")
-				ADD_TRAIT(H, TRAIT_GOODWRITER, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_MASTER, TRUE)
-			if("Keep up with your old regimen")
-				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)

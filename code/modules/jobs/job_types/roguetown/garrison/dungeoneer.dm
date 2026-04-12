@@ -23,7 +23,7 @@
 	min_pq = 0
 	max_pq = null
 	round_contrib_points = 2
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_OUTCAST
 	cmode_music = 'sound/music/combat_dungeoneer.ogg'
 	job_subclasses = list(
 		/datum/advclass/dungeoneer
@@ -62,18 +62,15 @@
 		STATKEY_WIL = 1
 	)
 	subclass_skills = list(
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_MASTER, //hilarious
-		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE, //familiar with the weapon as per the labor camp implications
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,//Enough for majority of surgeries without grinding.
-		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/sewing = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/traps = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/whipsflails = 3,
+		/datum/skill/combat/wrestling = 3, //hilarious
+		/datum/skill/combat/crossbows = 2, //familiar with the weapon as per the labor camp implications
+		/datum/skill/combat/knives = 3,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/combat/swords = 3,
+		/datum/skill/misc/medicine = 3,//Enough for majority of surgeries without grinding.
+		/datum/skill/craft/traps = 3,
+		/datum/skill/misc/athletics = 3,
 	)
 
 /datum/outfit/job/roguetown/dungeoneer/base/pre_equip(mob/living/carbon/human/H)

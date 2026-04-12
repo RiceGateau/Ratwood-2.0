@@ -13,7 +13,7 @@
 
 /mob/living/proc/check_heartbeat(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || (src, mob_biotypes & MOB_UNDEAD))
 		message += "<B>No heartbeat...</B>"
 	else
 		message += "<B>The heart is still beating.</B>"
@@ -24,12 +24,12 @@
 
 /mob/living/proc/soul_examine(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
+	if((stat >= DEAD) || HAS_TRAIT(src, TRAIT_FAKEDEATH) || (src, mob_biotypes & MOB_UNDEAD))
 		if(suiciding)
 			message += "<span class='deadsay'>[p_they(TRUE)] commited suicide... Nothing can be done..."
 		if(HAS_TRAIT(src, TRAIT_DNR))
 			message += "<span class='deadsay'>[p_their(TRUE)] heart will never beat again...</span>"
-		if(isobserver(user) || HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
+		if(isobserver(user) || M2T2E(user, TRAIT_SOUL_EXAMINE, user, TRAIT_NECROMANCER))
 			if(!key && !get_ghost(FALSE, TRUE))
 				message += span_deadsay("[p_their(TRUE)] soul has departed...")
 			else

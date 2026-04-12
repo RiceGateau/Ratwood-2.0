@@ -421,13 +421,9 @@
 /mob/living/carbon/human/proc/zombie_check_can_convert()
 	if(!mind)
 		return
-	if(mind.has_antag_datum(/datum/antagonist/vampire))
+	if(mob_biotypes == MOB_UNDEAD)
 		return
 	if(mind.has_antag_datum(/datum/antagonist/werewolf))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/zombie))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/skeleton))
 		return
 	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
 		return

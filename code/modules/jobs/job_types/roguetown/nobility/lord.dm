@@ -25,7 +25,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
 
 	display_order = JDO_LORD
-	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error of their ways."
+	tutorial = 
+	"Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it.\
+	Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error of their ways."
+
 	whitelist_req = FALSE
 	min_pq = 10
 	max_pq = null
@@ -118,7 +121,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/warrior
 	name = "Valiant Warrior"
-	tutorial = "You're a noble warrior. You rose to your rank through your own strength and skill, whether by leading your men or by fighting alongside them. Or perhaps you are none of that, but simply a well-trained heir elevated to the position of Lord. You're trained in the usage of heavy armor, and knows swordsmanship well."
+	tutorial = 
+	"You're a noble warrior. You rose to your rank through your own strength and skill, whether by leading your men or by fighting alongside them.\
+	Or perhaps you are none of that, but simply a well-trained heir elevated to the position of Lord. You're trained in the usage of heavy armor, and knows swordsmanship well."
+
 	outfit = /datum/outfit/job/roguetown/lord/warrior
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
@@ -161,8 +167,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/merchant
 	name = "Merchant Lord"
-	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Rotwood Vale. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
-	But you have plenty of wealth, keen ears, and know a good deal from a bad one."
+	tutorial = 
+	"You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Rotwood Vale.\
+	You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins.\
+	Fighting directly is not your forte but you have plenty of wealth, keen ears, and know a good deal from a bad one."
+
 	outfit = /datum/outfit/job/roguetown/lord/merchant
 	category_tags = list(CTAG_LORD)
 	noble_income = 400 // Let's go crazy. This is +400 per day for a total of 2400 per round at the end of a day. This is probably equal to doubling passive incomes of the keep.
@@ -207,7 +216,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/wizard
 	name = "Magocrat"
-	tutorial = "A good ruler is backed with force. You just happen to have a keen amount of mastery over the world's strongest forces: Magic. Of course, having to manage your realm has meant that you aren't as studied as the realm's greatest wizards- but your cunning sorcery is what has you sat upon the throne."
+	tutorial = 
+	"A good ruler is backed with force. You just happen to have a keen amount of mastery over the world's strongest forces: Magic.\
+	Of course, having to manage your realm has meant that you aren't as studied as the realm's greatest wizards- but your cunning sorcery is what has you sat upon the throne."
+
 	outfit = /datum/outfit/job/roguetown/lord/wizard
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
@@ -246,7 +258,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/inbred
 	name = "Inbred Lord"
-	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of Rotwood Vale. May your reign lasts a hundred years."
+	tutorial = 
+	"Psydon and Astrata smiles upon you.\
+	For despite your inbred and weak body, your family's conspiracies to remove you from succession, you have somehow become the Lord of Rotwood Vale.\
+	May your reign lasts a hundred years."
+
 	outfit = /datum/outfit/job/roguetown/lord/inbred
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER)

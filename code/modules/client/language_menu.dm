@@ -171,7 +171,8 @@
 			
 			<div class="language-grid">
 	"}
-	
+
+/*		Disabling This For Now
 	// FREE LANGUAGE SLOT
 	var/datum/language/free_lang
 	if(ispath(extra_language, /datum/language))
@@ -199,7 +200,9 @@
 		html += "</div>"
 	
 	html += "</div>"
-	
+
+*/
+
 	// Generate 2 paid language slots (1 point each)
 	for(var/i = 1 to 2)
 		var/slot_var = i == 1 ? "extra_language_1" : "extra_language_2"

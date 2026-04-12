@@ -1,7 +1,10 @@
 /datum/patron/inhumen/matthios
 	name = "Matthios"
 	domain = "Greed, Theft, Dragons, True Freedom"
-	desc = "The Manyfaced Matthios has no true form. Some see Him as a merry highwayman, some as a god of beggars, and others the father of all dragons. One thing is certain: His followers despise Astrata's nobility."
+	desc = 
+	"The Manyfaced Matthios has no true form. Some see Him as a merry highwayman, some as a god of beggars, and others the father of all dragons.\
+	One thing is certain: His followers despise Astrata's nobility."
+	
 	worshippers = "Highwaymen, Downtrodden Peasants, Merchants, Slaves, Kobolds"
 	crafting_recipes = list(/datum/crafting_recipe/roguetown/sewing/bandithood)
 	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_BLESSING)

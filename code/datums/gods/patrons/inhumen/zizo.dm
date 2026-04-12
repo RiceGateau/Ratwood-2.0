@@ -1,7 +1,11 @@
 /datum/patron/inhumen/zizo
 	name = "Zizo"
 	domain = "Necromancy, Progress, The Rot, Left-Handed Magicks"
-	desc = "The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON. When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot. Burn the world to ash, and build it anew."
+	desc = 
+	"The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON.\
+	When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot.\
+	Burn the world to ash, and build it anew."
+
 	worshippers = "Necromancers, Maddened Mages, The Undead"
 	mob_traits = list(TRAIT_ZIZO_BLESSING)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
@@ -14,20 +18,13 @@
 					/obj/effect/proc_holder/spell/invoked/rituos/miracle 				= CLERIC_T3,
 	)
 	confess_lines = list(
-		"PRAISE THE SNOW WITCH!",
+		"PRAISE THE OMNISCIENT ZIZO!",
 		"UNDEATH TAKE ME!",
 		"FORGIVE ME ZIZO!",
 		"ZIZO KNOWS ALL!",
 	)
 	storyteller = /datum/storyteller/zizo
-
-/datum/patron/inhumen/zizo/post_equip(mob/living/pious)
-	. = ..()
-	if(ishuman(pious))
-		var/mob/living/carbon/human/human = pious
-		var/datum/devotion/pious_devotion = human.devotion
-		if(pious_devotion?.level >= CLERIC_T2)
-			pious.grant_language(/datum/language/undead)
+	user.grant_language(/datum/language/undead)
 
 // When the sun is blotted out, zchurch, bad-cross, or ritual chalk
 /datum/patron/inhumen/zizo/can_pray(mob/living/follower)

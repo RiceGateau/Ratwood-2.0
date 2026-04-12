@@ -105,7 +105,8 @@
 			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND) && !guillotine_execution)
 				if(stress2give == /datum/stressevent/viewdismember)
 					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
-						continue
+						if(HAS_TRAIT(CA, TRAIT_ETHNOCENTRIC) && our_race = TRUE)
+							continue
 				CA.add_stress(stress2give)
 	// Ensure grabbedby is a list so it can be properly .Cut()'d
 	grabbedby = SANITIZE_LIST(grabbedby)
@@ -185,6 +186,7 @@
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 
 	var/stress2give = /datum/stressevent/viewdismember
+	var/our_race = (C.dna.species.name == CA.dna.species.name = TRUE)
 	var/guillotine_execution = FALSE
 	if(C.buckled)
 		if(istype(C.buckled, /obj/structure/guillotine))
@@ -228,7 +230,11 @@
 			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND) && !guillotine_execution)
 				if(stress2give == /datum/stressevent/viewdismember)
 					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
-						continue
+						if(HAS_TRAIT(CA, TRAIT_ETHNOCENTRIC))
+							our_race == FALSE
+							continue
+						else
+							continue
 				CA.add_stress(stress2give)
 	// Ensure grabbedby is a list so it can be properly .Cut()'d
 	grabbedby = SANITIZE_LIST(grabbedby)

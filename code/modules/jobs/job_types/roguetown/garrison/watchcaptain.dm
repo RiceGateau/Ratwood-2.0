@@ -7,18 +7,18 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)//I like the idea of making it set you to middle aged, but having the requirement removes it from the latejoin menu which I think is bad for visibility
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)//I like the idea of making it set you to middle aged, but having the requirement removes it from the latejoin menu which I think is bad for visibility
 	tutorial = "You are the most experienced of the City Watch, leading the city watchmen in maintaining order in hightown and attending to threats and crimes below the keep's attention. \
 				See to those brave city watchmen under your command and fill in the gaps the ducal retinue leave in their wake. Obey the orders of the marshal and the Crown."
 	display_order = JDO_SHERIFF
 	whitelist_req = TRUE
 	round_contrib_points = 3
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_PEASANT
 
 	outfit = /datum/outfit/job/roguetown/watchcaptain
 	advclass_cat_rolls = list(CTAG_SHERIFF = 20)
 
-	give_bank_account = 50
+	give_bank_account = 20
 	min_pq = 6
 	max_pq = null
 	cmode_music = 'sound/music/combat_citywatch.ogg'
@@ -59,22 +59,15 @@
 		STATKEY_WIL = 2,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,	
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,	//detectivework
+		/datum/skill/combat/polearms = 3,
+		/datum/skill/combat/maces = 3,
+		/datum/skill/combat/swords = 3,
+		/datum/skill/combat/crossbows = 3,
+		/datum/skill/combat/shields = 3,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/misc/climbing = 3,
+		/datum/skill/misc/athletics = 4,	
+		/datum/skill/misc/tracking = 4,	//detectivework
 	)
 
 /datum/outfit/job/roguetown/watchcaptain/watchcaptain/pre_equip(mob/living/carbon/human/H)
@@ -107,8 +100,6 @@
 			if("Stunmace & Crossbow")
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				backl = /obj/item/quiver/bolts
-				H.change_stat(STATKEY_SPD, 1)
-				H.change_stat(STATKEY_STR, -1)
 				beltr = /obj/item/rogueweapon/mace/stunmace
 			if("Stunmace & Polehammer")
 				r_hand = /obj/item/rogueweapon/eaglebeak

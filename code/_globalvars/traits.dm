@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_JESTERPHOBIA,
 
 		// Racial/Species Exclusive Traits
-		
+
 		TRAIT_BASHDOORS, // Can Break Down Doors With Hands
 		TRAIT_BEAUTIFUL_UNCANNY,
 		TRAIT_BIGGUY, // Run Through Doors & Weak Grab Throw Targets
@@ -42,6 +42,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_TOXIMMUNE,
 		TRAIT_UNSETTLING_BEAUTY,
 		TRAIT_VAMPBITE,
+		TRAIT_SHIKI,
 		TRAIT_WATERBREATHING,
 		TRAIT_WEBWALK, // No Web Slow Down, Drow/Spider/UnderDark Exclusive; Minus Select Few
 		TRAIT_ZJUMP,
@@ -69,7 +70,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_CHOSEN, // Pope & Role Trait
 		TRAIT_DEATHSIGHT, // Soul Examine, Reveals DNR/Lobbied Status & Approximate Death Location Of User Mobs
 		TRAIT_DUNGEONMASTER,
-		TRAIT_DYES, // Crafting/Dying Trait? For 
+		TRAIT_DYES, // Crafting/Dying Trait? For
 		TRAIT_GUARDSMAN,
 		TRAIT_HERETIC_SEER, // Reveals User's Ascendant Faith, Cabal Arch-Bishop
 		TRAIT_HEDGE_KNIGHT, // Prevents Armour Fatigue Mood Debuff, Should "ONLY" Be Given To Active "ANTAG" Roles Or Independant/Anti Keep Roles
@@ -109,6 +110,9 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_MATTHIOS_BLESSING, // Tells User Target's Most Expensive Item
 		TRAIT_ORGAN_EATER, // Graggar, Organ & Raw Flesh Consumption
 		TRAIT_ZIZO_BLESSING, // See In The Dark, Like Undead_Sight
+
+		// Religion Other Traits
+		TRAIT_NOMIRACLE, //Miracles will not work on you, if ascendant, tennite miracles will only be warded. Inherent Godless Trait.
 
 		// Crafting Traits
 		TRAIT_TRAINED_SMITH,
@@ -156,6 +160,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_PERMAMUTE,
 		TRAIT_MISSING_NOSE,
 		TRAIT_SCARRED,
+		TRAIT_SKELETON, //Skeletonizes Users On Spawn
 		TRAIT_SPELLCOCKBLOCK,
 
 		// Societal Punishment Traits
@@ -185,7 +190,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_BADWRITER,
 		TRAIT_BADLOVER,
 		TRAIT_DULL,
-		TRAIT_UNLUCKY
+		TRAIT_UNLUCKY,
 		TRAIT_UNSEEMLY,
 		TRAIT_WORSE_SLEEP,
 		TRAIT_XENOPHOBIC,
@@ -207,7 +212,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_IGNOREDAMAGESLOWDOWN,
 		TRAIT_IGNORESLOWDOWN,
 		TRAIT_NOFALLDAMAGE1,
-		TRAIT_NOFALLDAMAGE2
+		TRAIT_NOFALLDAMAGE2,
 		TRAIT_PRESERVE_UI_WITHOUT_CLIENT,
 		TRAIT_UI_BLOCKED,
 

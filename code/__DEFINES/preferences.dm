@@ -112,7 +112,7 @@
 #define RANDOM_UNDERSHIRT "random_undershirt"
 #define RANDOM_SOCKS "random_socks"
 #define RANDOM_BACKPACK "random_backpack"
-#define RANDOM_JUMPSUIT_STYLE "random_jumpsuit_style"
+#define RANDOM_CLOTHING_STYLE "random_clothing_style"
 #define RANDOM_SKIN_TONE "random_skin_tone"
 #define RANDOM_EYE_COLOR "random_eye_color"
 

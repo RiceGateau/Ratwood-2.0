@@ -440,7 +440,7 @@
 
 	//converts the uniform string into the path we'll wear, whether it's the skirt or regular variant
 	var/holder
-	if(H.jumpsuit_style == PREF_SKIRT)
+	if(H.clothing_style == PREF_SKIRT)
 		holder = "[uniform]"
 	else
 		holder = "[uniform]"

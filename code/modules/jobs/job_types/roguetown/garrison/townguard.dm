@@ -21,11 +21,11 @@
 	outfit = /datum/outfit/job/roguetown/guardsman
 	advclass_cat_rolls = list(CTAG_WATCH = 20)
 
-	give_bank_account = 20
+	give_bank_account = 10
 	min_pq = 2
 	max_pq = null
 	round_contrib_points = 2
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_PEASANT
 
 	cmode_music = 'sound/music/combat_citywatch.ogg'
 
@@ -83,22 +83,12 @@
 		/datum/skill/combat/maces = 3,//They're serviceable with all weapons but I really don't want them to get expert outside of the weapons that fit them - blunt weapons are the role's identity. It's not their job to kill people.
 		/datum/skill/combat/swords = 3,
 		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/axes = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/shields = 4,
+		/datum/skill/combat/unarmed = 3,
+		/datum/skill/combat/shields = 3,
 		/datum/skill/combat/crossbows = 2,
 		/datum/skill/combat/bows = 2,
 		/datum/skill/combat/slings = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/swimming = 2,//moating practice
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/athletics = 4,//Chasin' suspects
-		/datum/skill/misc/tracking = 3,//Looking for Clues
+		/datum/skill/misc/athletics = 3,//Chasin' suspects
 	)
 
 /datum/outfit/job/roguetown/guardsman/cityguard/pre_equip(mob/living/carbon/human/H)
