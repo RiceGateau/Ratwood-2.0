@@ -404,38 +404,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 ////////////
 // CIGARS //
 ////////////
-/obj/item/clothing/mask/cigarette/cigar
-	name = "premium cigar"
-	desc = ""
-	icon_state = "cigaroff"
-	icon_on = "cigaron"
-	icon_off = "cigaroff" //make sure to add positional sprites in icons/obj/cigarettes.dmi if you add more.
-	type_butt = /obj/item/cigbutt/cigarbutt
-	throw_speed = 0.5
-	item_state = "cigaroff"
-	smoketime = 300 // 11 minutes
-	chem_volume = 40
-	list_reagents = list(/datum/reagent/drug/nicotine = 25)
-
-/obj/item/clothing/mask/cigarette/cigar/cohiba
-	name = "\improper Cohiba Robusto cigar"
-	desc = ""
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	icon_off = "cigar2off"
-	smoketime = 600 // 20 minutes
-	chem_volume = 80
-	list_reagents =list(/datum/reagent/drug/nicotine = 40)
-
-/obj/item/clothing/mask/cigarette/cigar/havana
-	name = "premium Havanian cigar"
-	desc = ""
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	icon_off = "cigar2off"
-	smoketime = 900 // 30 minutes
-	chem_volume = 50
-	list_reagents =list(/datum/reagent/drug/nicotine = 15)
 
 /obj/item/cigbutt
 	name = "cigarette butt"
