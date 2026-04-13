@@ -26,7 +26,7 @@
 						/turf/open/floor/rogue/snow,
 						/turf/open/floor/rogue/snowrough,)
 	// slowdown = 1
-	neighborlay = "duneedge"
+	// neighborlay = "duneedge"
 
 /turf/open/floor/rogue/dunes/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -35,6 +35,13 @@
 	. = ..()
 	dir = pick(GLOB.cardinals)
 	icon_state = "dune[rand(1,16)]"
+
+/obj/effect/decal/duneedge
+	name = ""
+	desc = ""
+	icon = 'modular_deserttown/icons/duneedge.dmi'
+	icon_state = "duneedge"
+	mouse_opacity = 0
 
 /turf/open/floor/rogue/sandbrick
 	icon_state = "sand-brick1"
@@ -219,42 +226,42 @@
 
 /turf/open/floor/rogue/dirt/desert
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	canSmoothWith = list(
-						/turf/open/floor/rogue/grass,
-						/turf/open/floor/rogue/dunes,
-						/turf/open/floor/rogue/dirt,
-						/turf/open/floor/rogue/dirt/road,
-						/turf/open/floor/rogue/dirt/desert,
-						/turf/open/floor/rogue/dirt/road/desert,
-						/turf/open/floor/rogue/citybrick,
-						/turf/open/floor/rogue/grassred,
-						/turf/open/floor/rogue/grassyel,
-						/turf/open/floor/rogue/grasscold,
-						/turf/open/floor/rogue/grassgrey,
-						/turf/open/floor/rogue/grasspurple,
-						/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
+	// canSmoothWith = list(
+	// 					/turf/open/floor/rogue/grass,
+	// 					/turf/open/floor/rogue/dunes,
+	// 					/turf/open/floor/rogue/dirt,
+	// 					/turf/open/floor/rogue/dirt/road,
+	// 					/turf/open/floor/rogue/dirt/desert,
+	// 					/turf/open/floor/rogue/dirt/road/desert,
+	// 					/turf/open/floor/rogue/citybrick,
+	// 					/turf/open/floor/rogue/grassred,
+	// 					/turf/open/floor/rogue/grassyel,
+	// 					/turf/open/floor/rogue/grasscold,
+	// 					/turf/open/floor/rogue/grassgrey,
+	// 					/turf/open/floor/rogue/grasspurple,
+	// 					/turf/open/floor/rogue/snowpatchy,
+	// 					/turf/open/floor/rogue/snow,
+	// 					/turf/open/floor/rogue/snowrough,)
 
 /turf/open/floor/rogue/dirt/road/desert
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	canSmoothWith = list(
-						/turf/open/floor/rogue/grass,
-						/turf/open/floor/rogue/dunes,
-						/turf/open/floor/rogue/desert_grass,
-						/turf/open/floor/rogue/dirt,
-						/turf/open/floor/rogue/dirt/road,
-						/turf/open/floor/rogue/dirt/desert,
-						/turf/open/floor/rogue/dirt/road/desert,
-						/turf/open/floor/rogue/citybrick,
-						/turf/open/floor/rogue/grassred,
-						/turf/open/floor/rogue/grassyel,
-						/turf/open/floor/rogue/grasscold,
-						/turf/open/floor/rogue/grassgrey,
-						/turf/open/floor/rogue/grasspurple,
-						/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
+	// canSmoothWith = list(
+						// /turf/open/floor/rogue/grass,
+						// /turf/open/floor/rogue/dunes,
+						// /turf/open/floor/rogue/desert_grass,
+						// /turf/open/floor/rogue/dirt,
+						// /turf/open/floor/rogue/dirt/road,
+						// /turf/open/floor/rogue/dirt/desert,
+						// /turf/open/floor/rogue/dirt/road/desert,
+						// /turf/open/floor/rogue/citybrick,
+						// /turf/open/floor/rogue/grassred,
+						// /turf/open/floor/rogue/grassyel,
+						// /turf/open/floor/rogue/grasscold,
+						// /turf/open/floor/rogue/grassgrey,
+						// /turf/open/floor/rogue/grasspurple,
+						// /turf/open/floor/rogue/snowpatchy,
+						// /turf/open/floor/rogue/snow,
+						// /turf/open/floor/rogue/snowrough,)
 
 
 ///.
