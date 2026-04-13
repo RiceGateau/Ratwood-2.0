@@ -70,7 +70,7 @@
 	if(!do_after(user, 60, src))
 		to_chat(user, span_warning("You lose your concentration."))
 		return FALSE
-	if(!HAS_TRAIT(user, TRAIT_ZIZO_BLESSING))
+	if(!HAS_TRAIT(user, TRAIT_FORBIDDEN_KNOWLEDGE))
 		to_chat(user, span_warning("The crystal rejects you! It shatters within your grasp!"))
 		user.flash_fullscreen("redflash1")
 		new /obj/item/natural/glass_shard(get_turf(src))

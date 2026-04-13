@@ -5,6 +5,8 @@
 	// Redirect to unified character customization menu
 	open_vices_menu(user)
 
+/*		Disabling As Language Buy Is Dumb, If Even Still Functional
+
 /datum/preferences/proc/generate_language_html(mob/user)
 	// Use shared point pool
 	var/total_points = get_total_points()
@@ -172,7 +174,7 @@
 			<div class="language-grid">
 	"}
 
-/*		Disabling This For Now
+		Disabling This For Now, Random Grenzel Peasants Will Not Know Another Language, They Can't Even Read!
 	// FREE LANGUAGE SLOT
 	var/datum/language/free_lang
 	if(ispath(extra_language, /datum/language))
@@ -201,7 +203,7 @@
 	
 	html += "</div>"
 
-*/
+		//Also Unneeded For Now
 
 	// Generate 2 paid language slots (1 point each)
 	for(var/i = 1 to 2)

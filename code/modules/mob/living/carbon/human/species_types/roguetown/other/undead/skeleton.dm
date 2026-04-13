@@ -1,7 +1,7 @@
 /mob/living/carbon/human/species/undead/skeleton
 	race = /datum/species/undead/skeleton
 
-/datum/species/human/northern
+/datum/species/undead/skeleton
 	name = "Skeleton"
 	id = "skeleton"
 	desc = "<b>Humen</b><br>\
@@ -45,8 +45,9 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		OFFSET_BREASTS_F = list(0,-1), \
 		)
-	inherent_traits = list(TRAIT_HUMEN_INGENUITY)
-	race_bonus = list(STAT_INTELLIGENCE = 1, STAT_WILLPOWER = 1)
+	
+	race_bonus = list(STAT_SPEED = +2, STAT_INTELLIGENCE = -2)
+	race_max = list(STAT_SPEED = +2, STAT_INTELLIGENCE = -2)
 	enflamed_icon = "widefire"
 
 /datum/species/human/northern/check_roundstart_eligible()

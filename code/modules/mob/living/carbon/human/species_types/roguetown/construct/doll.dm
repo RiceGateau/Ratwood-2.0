@@ -29,8 +29,7 @@
 	skinned_type = /obj/item/ingot/steel
 	disliked_food = NONE
 	liked_food = NONE
-	inherent_traits = list(TRAIT_NOHUNGER, TRAIT_BLOODLOSS_IMMUNE, TRAIT_NOBREATH, TRAIT_NOSLEEP, TRAIT_CRITICAL_WEAKNESS,
-	TRAIT_BEAUTIFUL, TRAIT_EASYDISMEMBER, TRAIT_LIMBATTACHMENT, TRAIT_NOMETABOLISM, TRAIT_NOPAIN, TRAIT_ZOMBIE_IMMUNE)
+	inherent_traits = list(TRAIT_FAMILY_CONSTRUCT, TRAIT_CRITICAL_WEAKNESS, TRAIT_BEAUTIFUL, TRAIT_EASYDISMEMBER, TRAIT_LIMBATTACHMENT)
 	banned_traits = list(TRAIT_CRITICAL_RESISTANCE)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mcom.dmi'
@@ -57,13 +56,23 @@
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain/construct,
-		ORGAN_SLOT_HEART = /obj/item/organ/heart/construct,
-		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs/construct,
-		ORGAN_SLOT_EYES = /obj/item/organ/eyes/construct,
 		ORGAN_SLOT_EARS = /obj/item/organ/ears,
-		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/construct,
-		ORGAN_SLOT_LIVER = /obj/item/organ/liver/construct,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes/construct,
+		ORGAN_SLOT_GALLBLADDER = /obj/item/organ/
+		ORGAN_SLOT_HEART = /obj/item/organ/heart/construct,
+		ORGAN_SLOT_INTESTINES = /obj/item/organ/
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver/construct,		
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs/construct,
+		ORGAN_SLOT_MUSCLE = /obj/item/organ/
+		ORGAN_SLOT_NOSE = /obj/item/organ/
+		ORGAN_SLOT_PANCREAS = /obj/item/organ/
+		ORGAN_SLOT_SEXORGAN = /obj/item/organ/
+		ORGAN_SLOT_SKELETON = /obj/item/organ/
+		ORGAN_SLOT_SKIN = /obj/item/organ/skin/porcelain
+		ORGAN_SLOT_SPLEEN = /obj/item/organ/
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach/construct,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/construct,
+		
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
@@ -96,6 +105,8 @@
 		/datum/body_marking/bangs,
 		/datum/body_marking/bun,
 	)
+
+	restricted_virtues = list(/datum/virtue/utility/noble, /datum/virtue/utility/deathless)
 
 /datum/species/construct/metal/porcelain/check_roundstart_eligible()
 	return TRUE

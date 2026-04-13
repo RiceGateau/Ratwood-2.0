@@ -393,7 +393,7 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern/malums_lamptern/pickup(mob/living/user)
-	if(HAS_TRAIT(user, TRAIT_ZIZO_BLESSING))
+	if(HAS_TRAIT(user, TRAIT_ZIZOSIGHT))
 		to_chat(user, "<font color='yellow'> You attempt to take the lamptern. Runic flames of creation lap up the length of your arm in defiance of your Dark Mistress! Curses!</font>")
 		user.adjust_fire_stacks(5)
 		user.ignite_mob()

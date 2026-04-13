@@ -7,8 +7,20 @@
 	color = "#ec994b"
 	max_skillbook_level = 3
 
+/datum/skill/combat/experience
+	name = "Combat-Experience"
+	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with all weapons, and your chance to bypass dodge by 10%.\
+			At Master or above, you will gain Combat Aware."
+	dreams = NONE
+	expert_name = "Veteran"
+	max_untrained_level = 1
+	trait_uncap = list((TRAIT_KNIGHT_HERALDRY = 6),
+						(TRAIT_COMBAT_DRILLED = 4),
+						(TRAIT_BATTLEHARDENED = 3),
+						(TRAIT_GUARD_TRAINING = 2))
+
 /datum/skill/combat/knives
-	name = "Knife-fighting"
+	name = "Knife-Fighting"
 	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with knives, and your chance to bypass dodge by 10%. At Apprentice or above, you will not fumble while taking out knives from a bandolier."
 	dreams = list(
 		"...a barkeep whistles as he cleans glasses and a drunkard snores, passed out on the counter. The rest of the tavern focuses on you with bated breath as your dagger darts between your fingers in an impressive display of legerdemain...",
@@ -16,10 +28,14 @@
 		"...you tuck the blade away in your cloak, and offer yourself up for inspection. While small, the invisible blade cannot be parried..."
 	)
 	expert_name = "Shanker"
+	max_untrained_level = 2
+	trait_uncap = list((TRAIT_KNIGHT_HERALDRY = 6),
+						(TRAIT_COOKING_EXPERT = 4))
+
 
 
 /datum/skill/combat/swords
-	name = "Sword-fighting"
+	name = "Sword-Fighting"
 	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with swords, and your chance to bypass dodge by 10%."
 	dreams = list(
 		"...your heavy blade swings in a wide arc, cleaving through the air with a roar. Each landed strike hits with bone shattering force. Your opponent's shield crumples under the weight, and your blade finds its mark - crushing through armor, flesh, and will alike...",
@@ -27,16 +43,27 @@
 		"...the rapier dances in your hand, a whisper of steel cutting through the air. Every thrust is precise, every parry and riposte flowing in perfect rhythm, simply awaiting the moment to seal your their fate with a single, fatal strike..."
 	)
 	expert_name = "Swordsman"
+	max_untraited_level = 1
+	trait_uncap = list((TRAIT_KNIGHT_HERALDRY = 6),
+						(TRAIT_COMBAT_DRILLED = 3),
+						(TRAIT_BATTLEHARDENED = 2))
 
 /datum/skill/combat/polearms
 	name = "Polearms"
-	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with polearms, and your chance to bypass dodge by 10%."
+	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with polearms & staves, and increases your chance to bypass dodge by 10%."
 	dreams = list(
+	"...your reflection in the stream ripples as you train. Each motion a part of an ancient pattern, half-forgotten. Each strike, each parry, each feint, makes the water's surface split like silk. Psydonia listens...",
 	"...the pale volf snaps its jaws, but to no avail. Your weapon has the superior reach and you jab at it with precision until it bleeds and retreats back into the woods...",
+	"...you walk the forgotten road, your staff tapping against stone. When the brigands step forth, grinning, you do not break stride. The staff spins, a flicker of old instinct, and one falls. The others hesitate, seeing not an old, weary traveler, but a lesson long unlearned...",
 	"...armed with your trusty staff, you hike through the muck and mire with ease. It serves not only as a weapon but a tool, its sturdy length offering support as you press onward, unfazed by the thick, unrelenting muck...",
 	"...the billhook hums through the air, its hooked blade striking with chilling precision. It rends through chain and leather. With each twist, your strikes become inevitable, seamless. A relentless dance of destruction, merciless and fluid..."
 	)
 	expert_name = "Polewielder"
+	max_untrained_level = 2
+	trait_uncap = list((TRAIT_KNIGHT_HERALDRY = 6),
+						(TRAIT_COMBAT_DRILLED = 4),
+						(TRAIT_BATTLEHARDENED = 3),
+						(TRAIT_GUARD_TRAINING = 2))
 
 /datum/skill/combat/maces
 	name = "Maces"
@@ -48,6 +75,7 @@
 	"...'This blade is a masterwork of Malum's craftsmanship,' the elf declared. Moments later his head was abruptly transformed into pavement decor under the crushing weight of your brutish tool..."
 	)
 	expert_name = "Macer"
+	max_untrained_level = 2
 
 /datum/skill/combat/axes
 	name = "Axes"
@@ -60,6 +88,7 @@
 	"...despite the insurmountable challenge, you fear nothing, for the axe is thy companion eternal. Problem solving is quite simple, really..."
 	)
 	expert_name = "Axer"
+	max_untrained_level = null
 
 /datum/skill/combat/whipsflails
 	name = "Whips & Flails"
@@ -69,6 +98,11 @@
 	"...with a whistle and a snap and a crack, another bruise is left on flesh. With a sharp pull, you strike down again. They will be tamed..."
 	)
 	expert_name = "Whipper"
+	max_untrained_level = 1
+	trait_uncap = list((TRAIT_TORTURER_TRAINING = 6),
+						(TRAIT_HOMESTEAD_EXPERT = 4),
+						(TRAIT_SELF_SUSTENANCE = 3),
+						(TRAIT_BATTLEHARDENED = 2))
 
 /datum/skill/combat/bows
 	name = "Archery"
@@ -79,6 +113,10 @@
 	"...it takes half a minute for an experienced arbalist to cock and load a crossbow. You could kill five men with three arrows in half that time..."
 	)
 	expert_name = "Bower"
+	max_untrained_level = 1
+	trait_uncap = list((ARCHERY_EXPERT = 4),
+						(TRAIT_BATTLEHARDENED = 2),
+						(TRAIT_SURVIVAL_EXPERT = 2))
 
 /datum/skill/combat/crossbows
 	name = "Crossbows"
@@ -88,24 +126,22 @@
 	"...the crossbow is a deadly marvel of engineering, waiting for your guidance. You steady your breath, finger poised on the trigger. The world narrows as you take aim, the perfect shot soon to come..."
 	)
 	expert_name = "Crossbower"
-
-/datum/skill/combat/wrestling
-	name = "Wrestling"
-	desc = "Alongside strength, improves your chance of grabbing, and avoiding a grab from an opponent."
-	dreams = list(
-	"...you grab him by the shirt and twist your hand with a mighty shove, working your opponent to the ground. The dirt fills your lungs but you feel his resistance give way as he coughs, a smile of approval crossing his face...",
-	"...the dirt gets in your lungs and you can feel your legs quiver. You can't stand. You hear the clanking of plate, and see mighty boots stop in front of you. With a yank at their leg, your would-be killer is brought tumbling to the ground..."
-	)
-	expert_name = "Wrestler"
+	max_untrained_level = 2 //Renowned For Their 'Ease' Of Use & Training
 
 /datum/skill/combat/unarmed
 	name = "Unarmed"
-	desc = "Increases your chance to bypass your opponent's parry by 20% with unarmed or unarmed weapons such as katars, and your chance to bypass dodge by 10%. Parrying while unarmed does not work currently."
+	desc = "Alongside strength, improves your chance of grabbing, and avoiding a grab from an opponent.\
+			Also Increases your chance to bypass your opponent's parry by 20% with unarmed or unarmed weapons such as katars, and your chance to bypass dodge by 10%."
+
 	dreams = list(
+	"...you grab him by the shirt and twist your hand with a mighty shove, working your opponent to the ground. The dirt fills your lungs but you feel his resistance give way as he coughs, a smile of approval crossing his face...",
 	"...the wet and harsh sound of skin against bone and clattering teeth reaches your ears before your mind processes what just happened. You got knocked out with a mighty blow to the jaw...",
+	"...the dirt gets in your lungs and you can feel your legs quiver. You can't stand. You hear the clanking of plate, and see mighty boots stop in front of you. With a yank at their leg, your would-be killer is brought tumbling to the ground...",
 	"...your nails are claws, your hands are weapons. A silent watcher in pale plate armor nods with approval at your ferocity..."
 	)
-	expert_name = "Puncher"
+	expert_name = "Martial-Artist"
+	max_untrained_level = 1
+	trait_uncap = list(TRAIT_HOMESTEAD_EXPERT = 3)
 
 /datum/skill/combat/shields
 	name = "Shields"
@@ -115,6 +151,7 @@
 	"...the half-moon crest upon your shield shines even in the bright of Astrata's day. You catch a gleam on it, and reflexively pull it upwards. An arrow bounces off..."
 	)
 	expert_name = "Shieldbearer"
+	max_untrained_level = 2
 
 /datum/skill/combat/slings
 	name = "Slings"
@@ -125,18 +162,8 @@
 	"...your arm tires from the toils of practice. Swinging rapidly has left your arm numb. With weary eyes, you glance aside to witness a hunter practice their craft with a brief overhand toss. Absorbing the technique, you mimic it, and effortlessly cast a powerful stone square onto the target..."
 	)
 	expert_name = "Slinger"
-
-/datum/skill/combat/staves
-	name = "Staves"
-	desc = "Increases your chance to successfully parry and bypass your opponent's parry by 20% with staves, and your chance to bypass dodge by 10%."
-	dreams = list(
-	"...your reflection in the stream ripples as you train. Each motion a part of an ancient pattern, half-forgotten. Each strike, each parry, each feint, makes the water's surface split like silk. Psydonia listens...",
-	"...you walk the forgotten road, your staff tapping against stone. When the brigands step forth, grinning, you do not break stride. The staff spins, a flicker of old instinct, and one falls. The others hesitate, seeing not an old, weary traveler, but a lesson long unlearned...",
-	"...a dying monk presses a bloodied quarterstaff into your grasp. 'The world is not stone,' he rasps, 'but water.' You strike, and the staff seems to flow, finding paths you did not see before...",
-	"...amidst flickering torchlight, you spar with a silent figure. Their staff moves like a serpent, coiling, striking, vanishing - before it all goes dark. You wake, trying to recall the shape of their final blow...",
-	"...cattle thieves descend upon the homestead. You have no sword, only a sturdy branch. One by one they fall, the staff cracking through bone and flesh alike. Violence, you realize, is a language spoken in every tongue..."
-	)
-	expert_name = "Quarterstaffer"
+	max_untrained_level = null //Easiest Ranged Weapon To Use/Make
+	trait_uncap = null
 
 /datum/skill/combat/firearms
 	name = "Firearms"
@@ -148,5 +175,6 @@
 	)
 	expert_name = "Gunner"
 	randomable_dream_xp = FALSE
-	max_untraited_level = SKILL_LEVEL_JOURNEYMAN//Minimum to use these properly.
-	trait_uncap = list(TRAIT_FUSILIER = SKILL_LEVEL_LEGENDARY)
+	max_untraited_level = 2	//Minimum to use these properly.
+	trait_uncap = list((TRAIT_FUSILIER = SKILL_LEVEL_LEGENDARY),
+						(TRAIT_COMBAT_DRILLED = 3))

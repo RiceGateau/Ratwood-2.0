@@ -64,9 +64,23 @@
 		GLOB.statpacks[path] = statpack
 	sortList(GLOB.statpacks, GLOBAL_PROC_REF(cmp_text_dsc))
 
+	//For Main Proffesions
+	for (var/path in subtypesof(/datum/profession/main))
+		var/datum/class/main = new path()
+		GLOB.virtues[path] = profession
+
+	//For Sub Professions
+	for (var/path in subtypesof(/datum/profession/sub))
+		var/datum/profession/sub = new path()
+		GLOB.virtues[path] = side-trade
+
 	for (var/path in subtypesof(/datum/virtue))
 		var/datum/virtue/virtue = new path()
 		GLOB.virtues[path] = virtue
+
+	for (var/path in subtypesof(/datum/vice))
+		var/datum/vice/vice = new path()
+		GLOB.virtues[path] = vice
 
 	// Loadout items
 	for (var/path in subtypesof(/datum/loadout_item))

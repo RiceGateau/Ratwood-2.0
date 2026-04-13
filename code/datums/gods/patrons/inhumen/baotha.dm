@@ -21,7 +21,7 @@
 		"LIVE, LAUGH, LOVE!",
 		"BAOTHA IS MY JOY!",
 	)
-	storyteller = /datum/storyteller/baotha
+	storyteller = /datum/storyteller/ascendant
 
 /datum/patron/inhumen/baotha/can_pray(mob/living/follower)
 	. = ..()

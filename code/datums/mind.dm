@@ -965,6 +965,79 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 									keep_stats = loadout_datum.keep_loadout_stats
 									break
 
+						// Apply custom color if set (for clothing and weapons) - BEFORE putting in hands
+						var/dye = user.client?.prefs.resolve_loadout_to_color(path2item)
+						if (dye)
+							I.add_atom_colour(dye, FIXED_COLOUR_PRIORITY)
+							I.update_icon()
+
+						// Apply custom name if set
+						var/custom_name = user.client?.prefs.resolve_loadout_to_name(path2item)
+						if (custom_name)
+							I.original_name = I.name // Store original name before renaming
+							I.name = custom_name
+							// Log to game log
+							log_game("[key_name(user)] retrieved loadout item with custom name: '[custom_name]' (original: '[I.original_name]')")
+						// Apply custom description if set
+						var/custom_desc = user.client?.prefs.resolve_loadout_to_desc(path2item)
+						if (custom_desc)
+							I.desc = custom_desc
+
+						user.put_in_hands(I)
+
+						// Force update mob appearance to show colored item in hands
+						if(isliving(user))
+							var/mob/living/L = user
+							L.update_inv_hands()
+							L.update_icons() // Force full icon update
+
+/datum/mind/proc/load_curses()
+	if(!key)
+		return
+	load_curses_into_mind(src, key)
+	if(current)
+		apply_curses_to_mob(current, src)
+
+/datum/mind/proc/check_curse_trigger(trigger_name)
+	if(!curses || !curses.len)
+		return
+
+	for(var/curse_name in curses)
+		var/datum/modular_curse/C = curses[curse_name]
+		if(C)
+			C.check_trigger(trigger_name)
+
+/* Old Loadout Code
+/proc/handle_special_items_retrieval(mob/user, atom/host_object)
+	// Attempts to retrieve an item from a player's stash, and applies any base colors, custom names, and descriptions.
+	if(user.mind && isliving(user))
+		var/area/rogue/user_area = get_area(user)
+		if(user_area?.no_special_item_retrieval) // area does not allow fetching special items, return
+			return
+		if(user.mind.special_items && user.mind.special_items.len)
+			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			if(item)
+				if(user.Adjacent(host_object))
+					if(user.mind.special_items[item])
+						var/path2item = user.mind.special_items[item]
+						user.mind.special_items -= item
+						var/obj/item/I = new path2item(user.loc)
+
+						// Check if this is a loadout item and reduce armor if applicable
+						var/is_loadout_item = FALSE
+						var/keep_stats = FALSE
+						if(user.client?.prefs)
+							var/list/loadout_slots = list(
+								"loadout", "loadout2", "loadout3", "loadout4", "loadout5",
+								"loadout6", "loadout7", "loadout8", "loadout9", "loadout10",
+							)
+							for(var/slot in loadout_slots)
+								var/datum/loadout_item/loadout_datum = user.client.prefs.vars[slot]
+								if(loadout_datum && loadout_datum.path == path2item)
+									is_loadout_item = TRUE
+									keep_stats = loadout_datum.keep_loadout_stats
+									break
+
 						// Apply modifications for loadout items (unless keep_loadout_stats is TRUE)
 						if(is_loadout_item && !keep_stats)
 							// Mark as loadout item to prevent crafting usage
@@ -1052,19 +1125,5 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 							var/mob/living/L = user
 							L.update_inv_hands()
 							L.update_icons() // Force full icon update
+*/
 
-/datum/mind/proc/load_curses()
-	if(!key)
-		return
-	load_curses_into_mind(src, key)
-	if(current)
-		apply_curses_to_mob(current, src)
-
-/datum/mind/proc/check_curse_trigger(trigger_name)
-	if(!curses || !curses.len)
-		return
-
-	for(var/curse_name in curses)
-		var/datum/modular_curse/C = curses[curse_name]
-		if(C)
-			C.check_trigger(trigger_name)

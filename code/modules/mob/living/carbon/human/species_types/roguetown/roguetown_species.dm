@@ -2,59 +2,19 @@
 	var/amtfail = 0
 
 /datum/species/proc/get_accent_list(mob/living/carbon/human/H, type, convert_HTML = TRUE)
-	switch(H.char_accent)
-		if("No accent")
-			return
-		if("Dwarf accent")
-			return strings("dwarfcleaner_replacement.json", type, convert_HTML = TRUE)
-		if("Dwarf Gibberish accent")
-			return strings("dwarf_replacement.json", type, convert_HTML = TRUE)
-		if("Dark Elf accent")
-			return strings("french_replacement.json", type, convert_HTML = TRUE)
-		if("Elf accent")
-			return strings("russian_replacement.json", type, convert_HTML = TRUE)
-		if("Grenzelhoft accent")
-			return strings("german_replacement.json", type, convert_HTML = TRUE)
-		if("North Etruscan accent")
-			return strings("italian_replacement.json", type, convert_HTML = TRUE)
-		if("Hammerhold accent")
-			return strings("Anglish.json", type, convert_HTML = TRUE)
-		if("Assimar accent")
-			return strings("proper_replacement.json", type, convert_HTML = TRUE)
-		if("Lizard accent")
-			return strings("brazillian_replacement.json", type, convert_HTML = TRUE)
-		if("Lupian accent")
-			return strings("polish_replacement.json", type, convert_HTML = TRUE)
-		if("Tiefling accent")
-			return strings("spanish_replacement.json", type, convert_HTML = TRUE)
-		if("Half Orc accent")
-			return strings("middlespeak.json", type, convert_HTML = TRUE)
-		if("Urban Orc accent")
-			return strings("norf_replacement.json", type, convert_HTML = TRUE)
-		if("Hissy accent")
-			return strings("hissy_replacement.json", type, convert_HTML = TRUE)
-		if("Inzectoid accent")
-			return strings("inzectoid_replacement.json", type, convert_HTML = TRUE)
-		if("Feline accent")
-			return strings("feline_replacement.json", type, convert_HTML = TRUE)
-		if("Slopes accent")
-			return strings("welsh_replacement.json", type, convert_HTML = TRUE)
-		if("Saut al-Atash accent")
-			return
-		if("Valley accent")
-			return strings("valley_replacement.json", type, convert_HTML = TRUE)
-		if("Kazengun accent")
-			return strings("kazengun_replacement.json", type, convert_HTML = TRUE)
-		if("Xinyi accent")
-			return strings("xinyi_replacement.json", type, convert_HTML = TRUE)
-		if("Pui-Maen accent")
-			return strings("puimaen_replacement.json", type, convert_HTML = TRUE)
-		if("Avar accent")
-			return strings("russian_replacement.json", type, convert_HTML = TRUE)
-		if("Pirate accent")
-			return strings("axian_replacement.json", type, convert_HTML = TRUE)
-		if("Low-Town accent")
-			return strings("poor_replacement.json", type, convert_HTML = TRUE)
+	var/acc = H.char_accent
+	
+	// Handle the "No return" cases first
+	if(!acc || acc == "No accent" || acc == "Saut al-Atash accent" || acc == language.native_accent)
+		return
+
+	// Look up the file in our global map
+	var/file_name = GLOB.accent_file_map[acc]
+	
+	if(file_name)
+		return strings(file_name, type, convert_HTML)
+	
+	return // Fallback if accent name wasn't in the list
 
 /datum/species/proc/get_accent(mob/living/carbon/human/H)
 	return get_accent_list(H,"full")

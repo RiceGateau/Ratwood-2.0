@@ -7,9 +7,8 @@
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
 #define ROLE_MANIAC				"Maniac"
-#define ROLE_WEREWOLF			"Werewolf"
-#define ROLE_VAMPIRE			"Vampire"
-#define ROLE_NBEAST				"Vampire Lord"
+#define ROLE_ELDER_WEREWOLF		"Elder Werewolf"
+#define ROLE_VAMPIRE_LORD		"Vampire Lord"
 #define ROLE_BANDIT				"Bandit"
 #define ROLE_ASSASSIN			"Assassin"
 #define ROLE_DELF				"Dark Elf"
@@ -20,7 +19,7 @@
 #define ROLE_ASCENDANT			"Ascendant"
 #define ROLE_WRETCH				"Wretch"
 #define ROLE_UNBOUND_DEATHKNIGHT "Unbound Death Knight"
-#define ROLE_DARK_ITINERANT "Dark Itinerant"
+#define ROLE_DARK_ITINERANT		"Dark Itinerant"
 
 #define ROLE_SYNDICATE			"Syndicate"
 #define ROLE_TRAITOR			"Traitor"
@@ -57,17 +56,13 @@
 #define ROLE_VAMPIRE_SUMMON		"Vampire Summon"
 
 GLOBAL_LIST_INIT(special_roles_rogue, list(
-	ROLE_MANIAC = /datum/antagonist/maniac,
-	ROLE_PREBEL = /datum/antagonist/prebel,
-	ROLE_BANDIT = /datum/antagonist/bandit,
-	ROLE_ASPIRANT = /datum/antagonist/aspirant,
-	ROLE_WEREWOLF = /datum/antagonist/werewolf,
-	ROLE_NBEAST = /datum/antagonist/vampire/lord,
-	ROLE_VAMPIRE = /datum/antagonist/vampire,
-	ROLE_LICH = /datum/antagonist/lich,
-	ROLE_DREAMWALKER = /datum/antagonist/dreamwalker,
-	ROLE_THIEVESGUILD = /datum/antagonist/thievesguild,
-	ROLE_ASSASSIN = /datum/antagonist/assassin,
+	ROLE_MANIAC =			/datum/antagonist/maniac,
+	ROLE_REBEL =			/datum/antagonist/rebel,
+	ROLE_ASPIRANT = 		/datum/antagonist/aspirant,
+	ROLE_ELDER_WEREWOLF =	/datum/antagonist/elder/werewolf,
+	ROLE_NBEAST =			/datum/antagonist/vampire/lord,
+	ROLE_LICH =				/datum/antagonist/lich,
+	ROLE_DREAMWALKER =		/datum/antagonist/dreamwalker,
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

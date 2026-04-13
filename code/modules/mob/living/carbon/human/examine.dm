@@ -165,21 +165,44 @@
 		. = list("[display1] [display2]")
 
 		if(HAS_TRAIT(src, TRAIT_WITCH))
-			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
-				. += span_warning("A witch! Their presence brings an unsettling aura.")
-			else if(HAS_TRAIT(user, TRAIT_COMMIE) || HAS_TRAIT(user, TRAIT_CABAL) || HAS_TRAIT(user, TRAIT_HORDE) || HAS_TRAIT(user, TRAIT_DEPRAVED))
-				. += span_notice("A practitioner of the old ways.")
+			if(HAS_TRAIT(user, TRAIT_WITCH))
+				. += span_notice("A fellow sister of the coven.")
+			else if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION))
+					. += span_warning("A witch! Their presence brings a foul omen.")
+				if(HAS_TRAIT(user, TRAIT_COMMIE) || HAS_TRAIT(user, TRAIT_ZIZOSIGHT) || HAS_TRAIT(user, TRAIT_HORDE) || HAS_TRAIT(user, TRAIT_DEPRAVED))
+					. += span_notice("A practitioner of the old ways.")
+				else
+					. += span_notice("Something about them seems... different.")
+
+		if(HAS_TRAIT(src, TRAIT_NOBLE))
+			if(HAS_TRAIT(user, TRAIT_NOBLE))
+				. += span_notice("A fellow noble.")
+			if(HAS_TRAIT(user,)
+			
+			else if(HAS_TRAIT(user, TRAIT_DEFILED_NOBLE))
+				. += span_notice("One who has yet been tainted.. Why me?.")
 			else
-				. += span_notice("Something about them seems... different.")
+				. += span_notice("A noble!")
+
+		if(HAS_TRAIT(src, TRAIT_DEFILED_NOBLE))
+			if(HAS_TRAIT(user, TRAIT_NOBLE))
+				. += span_phobia("A tainted former Blue-Blood, there is no hope for them now.")
+			else if(HAS_TRAIT(user, TRAIT_DEFILED_NOBLE))
+				. += span_notice("A fellow wretch who fell rotten luck.. Astrata have mercy upon")
+			else
+				. += span_notice("Thy blood now runs as red as a pig's, so much for being 'blue.'")
+
+		if(M2T2R(src, TRAIT_DISGRACED_NOBLE, user, TRAIT_NOBLE))
+				. += span_phobia("A disgraced member of the nobility...")
+			else
+				. += span_notice("A disgraced noble.")
+
+		if((HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) || (HAS_TRAIT(user, TRAIT_RACISMISBAD) && !(src.dna.species.name == "Elf" || src.dna.species.name == "Dark Elf" || src.dna.species.name == "Half Elf")))
+			. += span_phobia("A foreigner...")
 
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
-
-		if(HAS_TRAIT(src, TRAIT_NOBLE) || HAS_TRAIT(src, TRAIT_DEFILED_NOBLE))
-			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_DEFILED_NOBLE))
-				. += span_notice("A fellow noble.")
-			else
-				. += span_notice("A noble!")
+		
 		// Leashed pet status effect message
 		if(has_status_effect(/datum/status_effect/leash_pet))
 			. += span_warning("A leash is hooked to their collar. They are being led like a pet.")
@@ -219,15 +242,6 @@
 		var/list/modular_lines = human_modular_examine_lines(user, observer_privilege, m1, m2, m3)
 		if(length(modular_lines))
 			. += modular_lines
-
-		if((HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) || (HAS_TRAIT(user, TRAIT_RACISMISBAD) && !(src.dna.species.name == "Elf" || src.dna.species.name == "Dark Elf" || src.dna.species.name == "Half Elf")))
-			. += span_phobia("A foreigner...")
-
-		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
-			if(HAS_TRAIT(user, TRAIT_NOBLE))
-				. += span_phobia("A disgraced member of the nobility...")
-			else
-				. += span_notice("A disgraced noble.")
 
 		//For tennite schism god-event
 		if(length(GLOB.tennite_schisms))
@@ -378,10 +392,11 @@
 			if(L.STAINT > 9 && L.STAPER > 9)
 				. += span_redtext("<i>[m1] critically fragile!</i>")
 
-	if(user != src && HAS_TRAIT(user, TRAIT_MATTHIOS_EYES) && (!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)))
-		var/atom/item = get_most_expensive()
-		if(item)
-			. += span_notice("You get the feeling [m2] most valuable possession is \a [item].")
+	if(user != src)
+		if(HAS_TRAIT(user, TRAIT_MATTHIOS_BLESSING) && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+			var/atom/item = get_most_expensive()
+			if(item)
+				. += span_notice("You get the feeling [m2] most valuable possession is \a [item].")
 
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
@@ -1100,52 +1115,54 @@
 
 /// Returns patron-related examine text for the mob, if any. Can return null.
 /mob/living/proc/get_heretic_text(mob/examiner)
-	var/heretic_text = null
-	var/seer
+	var/heretic_text = ""
+	var/seer = HAS_TRAIT(examiner, TRAIT_HERETIC_SEER)
 
-	if(HAS_TRAIT(src,TRAIT_DECEIVING_MEEKNESS))
+	if(HAS_TRAIT(src,TRAIT_DECEIVING_MEEKNESS) || !seer)
 		return null
 
-	if(HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
-		seer = TRUE
+	if(M2R(src, examiner, TRAIT_ZIZOSIGHT)) // God Head Always First On List, Profligates
 
-	if(HAS_TRAIT(src, TRAIT_COMMIE))
-		if(seer)
-			heretic_text += "Matthiosan."
-			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
-				heretic_text += " To share with. To take with. For all, and us."
-		else if(HAS_TRAIT(examiner, TRAIT_COMMIE))
-			heretic_text += "Comrade!"
-	else if((HAS_TRAIT(src, TRAIT_CABAL)))
-		if(seer)
-			heretic_text += "A member of Zizo's cabal."
-			if(HAS_TRAIT(examiner, TRAIT_CABAL))
-				heretic_text += " May their ambitions not interfere with mine."
-	else if((HAS_TRAIT(src, TRAIT_HORDE)))
-		if(seer)
-			heretic_text += "Hardened by Graggar's Rituals."
-			if(HAS_TRAIT(examiner, TRAIT_HORDE))
-				heretic_text += " Mine were a glorious memory."
-	else if((HAS_TRAIT(src, TRAIT_DEPRAVED)))
-		if(seer)
-			heretic_text += "Baotha's Touched."
-			if(HAS_TRAIT(examiner, TRAIT_DEPRAVED))
-				heretic_text += " She leads us to the greatest ends."
+			if(M2R(src, examiner, TRAIT_WITCH_CULT))
+				heretic_text = "A fellow member of the Witch-Cult. May we perform her works together."
+			else
+				heretic_text = "A fellow Zizite. May their ambitions not interfere with mine."
+		else
+			heretic_text = "Zizite."
 
-	return heretic_text
+	else if(M2R(src, examiner, COMMIE))
+
+			if(M2R(src, examiner, TRAIT_BRIGAND))
+				heretic_text = "A fellow Bandit. ."
+			else
+				heretic_text = "A fellow Matthiosan. To share with. To take with. For all, and us."				
+		else
+			heretic_text = "Matthiosan."
+
+	else if(M2R(src, examiner, TRAIT_HORDE))
+			heretic_text = "A fellow Graggari. Mine were a glorious memory."
+		else
+			heretic_text = "Graggari."
+
+	else if(M2R(src, examiner, TRAIT_DEPRAVED))
+			heretic_text = "A fellow Baothine. May she lead us to the greatest ends."
+		else
+			heretic_text = "Baothine."
+
+	return heretic_text || null
 
 /// Same as get_heretic_text, but returns a simple symbol depending on the type of heretic!
 /mob/living/proc/get_heretic_symbol(mob/examiner)
 	var/heretic_text
 	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 		return
-	if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(examiner, TRAIT_COMMIE))
+	if(M2R(src, examiner, TRAIT_ZIZOSIGHT))
 		heretic_text += "♠"
-	else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(examiner, TRAIT_CABAL))
+	else if(M2R(src, examiner, TRAIT_COMMIE))
 		heretic_text += "♦"
-	else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(examiner, TRAIT_HORDE))
+	else if(M2R(src, examiner, TRAIT_HORDE))
 		heretic_text += "♠"
-	else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+	else if(M2R(src, examiner, TRAIT_DEPRAVED))
 		heretic_text += "♥"
 
 	return heretic_text
@@ -1169,10 +1186,11 @@
 /mob/living/proc/get_villain_text(mob/examiner)
 	var/villain_text
 	if(mind)
+
+
+				villian_text = span_userdanger("")
 		if(mind.special_role == "Bandit")
-			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
-				villain_text = span_notice("Free man!")
-			if(HAS_TRAIT(src,TRAIT_KNOWNCRIMINAL))
+			if(HAS_TRAIT(src, TRAIT_KNOWNCRIMINAL))
 				villain_text = span_userdanger("OUTLAW!")
 		if(mind.special_role == "Deadite")
 			villain_text = span_userdanger("DEADITE!")

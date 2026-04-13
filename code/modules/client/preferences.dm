@@ -88,13 +88,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/accessory = "Nothing"
 	var/detail = "Nothing"
 	var/backpack = DBACKPACK				//backpack type
-	var/jumpsuit_style = PREF_SUIT		//suit/skirt
+	var/clothing_style = PREF_SUIT		//suit/skirt
 	var/hairstyle = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hairstyle = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
+	
 	var/extra_language = "None" // Extra language
 	var/extra_language_1 = "None" // Additional triumph language slot 1
 	var/extra_language_2 = "None" // Additional triumph language slot 2
@@ -106,7 +107,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/patron/selected_patron
 	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
 	var/list/features = MANDATORY_FEATURE_LIST
-	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
+	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_CLOTHING_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("male" = "masculine", "female" = "feminine")
 	var/phobia = "spiders"
 	var/shake = TRUE
@@ -159,15 +160,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			spent += L.triumph_cost
 	return spent
 
-// DEPRECATED - Languages now use actual triumph pool, not vice points
-// Kept for backwards compatibility but no longer used in calculations
 /datum/preferences/proc/get_language_points_spent()
+	var/points = 0
+	for(var/i = 1 to 3)
+		if(var["Language"])
+			points++
+	return points
+
+/*	//Old Language Point Buy
 	var/spent = 0
 	if(extra_language_1 && extra_language_1 != "None")
 		spent += 2
 	if(extra_language_2 && extra_language_2 != "None")
 		spent += 4
 	return spent
+*/
 
 // Total points available = base + points from vices
 /datum/preferences/proc/get_total_points()
@@ -1666,7 +1673,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 				if("bag")
 					backpack = pick(GLOB.backpacklist)
 				if("suit")
-					jumpsuit_style = PREF_SUIT
+					clothing_style = PREF_SUIT
 				if("all")
 					random_character(gender, FALSE, FALSE)
 
@@ -2529,10 +2536,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						backpack = new_backpack
 
 				if("suit")
-					if(jumpsuit_style == PREF_SUIT)
-						jumpsuit_style = PREF_SUIT
+					if(clothing_style == PREF_SUIT)
+						clothing_style = PREF_SUIT
 					else
-						jumpsuit_style = PREF_SUIT
+						clothing_style = PREF_SUIT
 
 				if("uplink_loc")
 					var/new_loc = input(user, "Choose your character's traitor uplink spawn location:", "Character Preference") as null|anything in GLOB.uplink_spawn_loc_list
@@ -3066,38 +3073,38 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.cmode_music_override_name = combat_music.name
 	character.highlight_color = highlight_color
 	character.nickname = nickname
-
 	character.eye_color = eye_color
-	if(extra_language && extra_language != "None")
-		character.grant_language(extra_language)
-	if(extra_language_1 && extra_language_1 != "None")
-		character.grant_language(extra_language_1)
-	if(extra_language_2 && extra_language_2 != "None")
-		character.grant_language(extra_language_2)
-	character.voice_color = voice_color
-	character.voice_pitch = voice_pitch
-	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
-	if(organ_eyes)
-		if(!initial(organ_eyes.eye_color))
-			organ_eyes.eye_color = eye_color
-	character.hair_color = hair_color
-	character.facial_hair_color = facial_hair_color
-	character.skin_tone = skin_tone
-	character.hairstyle = hairstyle
-	character.facial_hairstyle = facial_hairstyle
-	character.detail = detail
-	character.set_patron(selected_patron)
-	character.backpack = backpack
 
-	character.familytree_pref = family
-	character.gender_choice_pref = gender_choice
-	character.setspouse = setspouse
-	character.xenophobe = xenophobe_pref
-	character.restricted_species = restricted_species_pref
+	character.extra_language = list()
+	for(var/i = null)
+		var/datum/charflaw/vice = vars["language[i]"]
+		if(language)
+			var/datum/charflaw/new_vice = new language.type()
+			character.languages += new_language
+			new_language.on_mob_creation(character)
+			if(i == null)
+				character.extra_language = NONE
+			if(i == background.language)
+				character.extra_language = user.background_language
 
-	character.jumpsuit_style = jumpsuit_style
+	// Apply multiple virtues/vices system
+	character.virtue = list()
+	for(var/i = 1 to 4)
+		var/datum/charflaw/virtue = vars["virtue[i]"]
+		if(virtue)
+			var/datum/charflaw/new_virtue = new virtue.type()
+			character.virtue += new_virtue
+			new_vice.on_mob_creation(character)
+			// Set first vice as the legacy charflaw for compatibility
+			if(i == 1)
+				character.charflaw = new_virtue
 
-	// Apply multiple vices system
+	// Legacy single vice support (if new system not used)
+	if(!length(character.vices) && charflaw)
+		character.charflaw = new charflaw.type()
+		character.charflaw.on_mob_creation(character)
+		character.vices += character.charflaw
+
 	character.vices = list()
 	for(var/i = 1 to 5)
 		var/datum/charflaw/vice = vars["vice[i]"]
@@ -3114,6 +3121,41 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 		character.charflaw = new charflaw.type()
 		character.charflaw.on_mob_creation(character)
 		character.vices += character.charflaw
+	
+	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
+	if(organ_eyes)
+		if(!initial(organ_eyes.eye_color))
+			organ_eyes.eye_color = eye_color
+	
+/*		//Old Language System
+	if(extra_language && extra_language != "None")
+		character.grant_language(extra_language)
+	if(extra_language_1 && extra_language_1 != "None")
+		character.grant_language(extra_language_1)
+	if(extra_language_2 && extra_language_2 != "None")
+		character.grant_language(extra_language_2)
+*/
+	character.voice_color = voice_color
+	character.voice_pitch = voice_pitch
+	
+	character.hair_color = hair_color
+	character.facial_hair_color = facial_hair_color
+	character.skin_tone = skin_tone
+	character.hairstyle = hairstyle
+	character.facial_hairstyle = facial_hairstyle
+	character.detail = detail
+	character.set_patron(selected_patron)
+	character.backpack = backpack
+
+	character.familytree_pref = family
+	character.gender_choice_pref = gender_choice
+	character.setspouse = setspouse
+	character.xenophobe = xenophobe_pref
+	character.restricted_species = restricted_species_pref
+
+	character.clothing_style = clothing_style
+
+	
 
 	character.dna.real_name = character.real_name
 

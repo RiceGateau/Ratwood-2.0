@@ -45,11 +45,9 @@ Balloon Alert / Floating Text defines
 	/datum/species/halfbreed,\
 	/datum/species/demihuman,\
 \
-	/datum/species/tieberian,\
-	/datum/species/lizardfolk,\
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
-	/datum/species/vulpkanin,\
+	/datum/species/tieberian,\
 \
 	/datum/species/akula,\
 	/datum/species/anthromorph,\
@@ -65,14 +63,16 @@ Balloon Alert / Floating Text defines
 	/datum/species/lizardfolk,\
 	/datum/species/harpy,\
 	/datum/species/moth,\
+	/datum/species/vulpkanin,\
 \
 	/datum/species/undead/dullahan,\
 	/datum/species/undead/vampire,\
 	/datum/species/undead/shiki,\
 	/datum/species/undead/skeleton,\
 	/datum/species/undead/ghoul,\
-	/datum/species/undead/zombie
+	/datum/species/undead/zombie,\
 )
+
 // Psydon's Chosen, Wretch.
 #define RACES_HUMEN \
 	/datum/species/human/northern,\
@@ -491,7 +491,6 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CLASS_CAT_RACIAL "Race Exclusive" //Used for black oaks, grudgebearer dwarves, etc.
 
 // Social rank defines
-#define SOCIAL_RANK_LESSTHANDIRT 0
 #define SOCIAL_RANK_DIRT 1
 #define SOCIAL_RANK_PEASANT 2
 #define SOCIAL_RANK_YEOMAN 3

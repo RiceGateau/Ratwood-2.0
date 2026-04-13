@@ -102,34 +102,46 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_PSYDONITE,
 		TRAIT_XYLIX,
 
-		// Religion Ascendant Traits
-		TRAIT_COMMIE, // Mathhios
-		TRAIT_DEPRAVED, // Baothan
-		TRAIT_HORDE, // Graggar
-		TRAIT_CRACKHEAD, // Baothan, No OD From Drugs
-		TRAIT_MATTHIOS_BLESSING, // Tells User Target's Most Expensive Item
+		// Religion Ascendant Traits, Should Be Stronger Than Tennite To Encourage Pickage As They Sow Chaos. DO NOT BUFF TENNITE GODS IN RESPONSE
+		TRAIT_FORBIDDEN_KNOWLEDGE, // Zizo, Allows Necromany & +3 To Arcane For Ritual Requirement Minimum. Max Arcane Skill Increase to JourneyMan, No Cheese
+		TRAIT_ZIZOSIGHT, // See In The Dark, Like Weaker Undead Sight W/O Monocrome
+
+		TRAIT_DEPRAVED, // Baothan, Double Pleasure Moodlets, No Shame Moodlets, & Masocist/Sadist Bonuses. 
+		TRAIT_CRACKHEAD, // No OD From Drugs
+		
+		TRAIT_KELPTOMANIAC, // Mathhios, Proffesional Thief/Escape Artist, Can Pull Lockpicks Out Of Ass & Bonuses To LockPicking Speed, No Noise, & Stealth Picking
+		TRAIT_MATTHIOSIGHT, // Tells User Target's Most Expensive Item
+
+		TRAIT_BLOODTHIRSTY, // Graggar, Psychopathic Moodlets & Berserker Rage
 		TRAIT_ORGAN_EATER, // Graggar, Organ & Raw Flesh Consumption
-		TRAIT_ZIZO_BLESSING, // See In The Dark, Like Undead_Sight
+
+		
 
 		// Religion Other Traits
-		TRAIT_NOMIRACLE, //Miracles will not work on you, if ascendant, tennite miracles will only be warded. Inherent Godless Trait.
+		TRAIT_MEDITATIVE, //Moodlet Bonus From Meditation, Halved Time, & Counts As Rest. Rest Counts As Energy Increase & Minor Heal.
+		TRAIT_NOMIRACLE, //Miracles will not work on you, if ascendant, tennite miracles will only be warded. Inherent Godless Trait. BLESS YOUR UNDEAD!
 
 		// Crafting Traits
-		TRAIT_TRAINED_SMITH,
+		
 		TRAIT_DWARVEN_SMITH, // Allows Crafting Of Dwarven Weapons/Armor
 		TRAIT_ELVEN_SMITH, // Allows Crafting Of Elven Weapons/Armor
 		TRAIT_KAZENGUNITE_SMITH, // Allows Crafting Of Kazengun Weapons/Armor
-		TRAIT_LEGENDARY_ALCHEMIST,
+
+		TRAIT_TRAINED_SMITH, // Allows Progression To 6 In Smithing Skill & Subtypes
+		TRAIT_PHYSICIANS_CURRICULUM // Allows Progression To 6 In Medicine Skill
+		TRAIT_HOMESTEADER // Allows Progression To 6 In Farming Skill
+		TRAIT_LEGENDARY_ALCHEMIST, // Allows Progression To 6 In Alechemy Skill
+
 
 		// Status Traits
-		TRAIT_ANTIMAGIC,
-		TRAIT_ANTISCRYING,
+		TRAIT_ANTIMAGIC, // Usually A Item Buff Or Class Trait
+		TRAIT_ANTISCRYING, // Usually A Item Buff Or Class Trait
 		TRAIT_DEATHCOMA, // Unconscious & Appears Dead On Examinine, Vamp Exclusive Usually
-		TRAIT_FORTITUDE,
-		TRAIT_GUIDANCE,
-		TRAIT_LONGSTRIDER, // Removes SlowDown From Bog Tiles
-		TRAIT_NORUN,
-		TRAIT_PSYCHOSIS,
+		TRAIT_FORTITUDE, // Usually A Miracle/Spell Buff
+		TRAIT_GUIDANCE, // Usually A Miracle/Spell Buff
+		TRAIT_LONGSTRIDER, // Removes SlowDown From Bog Tiles, Staff, Buff Or WW Excusive
+		TRAIT_NORUN, // Debuff Or Zombie Trait
+		TRAIT_PSYCHOSIS, // Stress Break Usually
 		TRAIT_SCREENSHAKE,
 
 		// God Curse Traits
@@ -143,10 +155,10 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_CURSE_PESTRA,
 		TRAIT_CURSE_MALUM,
 		TRAIT_CURSE_EORA,
-		TRAIT_CURSE_ZIZO,
-		TRAIT_CURSE_GRAGGAR,
-		TRAIT_CURSE_MATTHIOS,
-		TRAIT_CURSE_BAOTHA,
+		TRAIT_CURSE_ZIZO, //Turns You Into An Undead Lesser Species, Either Shiki Or Deadite Curse
+		TRAIT_CURSE_GRAGGAR, //Mindless Frezy Or Rage
+		TRAIT_CURSE_MATTHIOS, //Cannot Hold Or Equip Money, Like Vampires With Silver
+		TRAIT_CURSE_BAOTHA, //Insatiable Lust/Vice Unsateable
 		TRAIT_CURSE_RESIST, // Job Trait but fits better here
 
 		// Disability Traits
@@ -160,11 +172,12 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_PERMAMUTE,
 		TRAIT_MISSING_NOSE,
 		TRAIT_SCARRED,
-		TRAIT_SKELETON, //Skeletonizes Users On Spawn
+		TRAIT_SKELETONIZED, //Skeletonizes Users On Spawn
 		TRAIT_SPELLCOCKBLOCK,
 
 		// Societal Punishment Traits
 		TRAIT_EXCOMMUNICATED,
+		TRAIT_OUTLAW, //No JawBank & Wanted Status
 
 		// Minor Faction Traits
 		TRAIT_GANG_A,
@@ -176,9 +189,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		TRAIT_GOODWRITER,
 		TRAIT_GOODLOVER,
 		TRAIT_INTELLECTUAL,
-		TRAIT_LUCKY,
 		TRAIT_BEAUTIFUL,
-		TRAIT_BETTER_SLEEP,
 		TRAIT_TOLERANT,
 		TRAIT_KEENEARS,
 		TRAIT_HARDDISMEMBER,
@@ -187,20 +198,11 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		//Net Negative Polarity Stats
 		TRAIT_BADMOOD,
 		TRAIT_BADTRAINER,
-		TRAIT_BADWRITER,
 		TRAIT_BADLOVER,
-		TRAIT_DULL,
-		TRAIT_UNLUCKY,
 		TRAIT_UNSEEMLY,
-		TRAIT_WORSE_SLEEP,
 		TRAIT_XENOPHOBIC,
-		TRAIT_DULLHEARING,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_CRITICAL_WEAKNESS,
-
-		//Net Great Polarity Stats
-		TRAIT_GENIUS,
-		TRAIT_FORTUNATE,
 
 		//Net Awful Polarity Stats
 		TRAIT_MORON,

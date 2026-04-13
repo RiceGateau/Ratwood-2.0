@@ -23,7 +23,7 @@
 	)
 	expert_name = "Weaponsmith"
 	max_untraited_level = 2
-	trait_uncap = list(TRAIT_WSMITHING_EXPERT = 6), 
+	trait_uncap = list(TRAIT_WSMITHING_EXPERT = 6)
 
 /datum/skill/craft/armorsmithing
 	name = "Armorsmithing"
@@ -34,7 +34,7 @@
 	)
 	expert_name = "Armorsmith"
 	max_untraited_level = 2
-	trait_uncap = list(TRAIT_ASMITHING_EXPERT = 6),
+	trait_uncap = list(TRAIT_ASMITHING_EXPERT = 6)
 
 /datum/skill/craft/blacksmithing
 	name = "Blacksmithing"
@@ -71,7 +71,7 @@
 		"...you take a seat and there is no noise. None at all. The nightmare of its horrid creak is dispelled, and your thoughts turn to its make..."
 	)
 	expert_name = "Carpenter"
-	
+
 	max_untraited_level = 2
 	trait_uncap = list(TRAIT_ENGINEERING_EXPERT = 6)
 
@@ -143,7 +143,7 @@
 	)
 	expert_name = "Tanner"
 	max_untraited_level = 2
-	trait_uncap = list(TRAIT_SURVIVAL_EXPERT = 6),
+	trait_uncap = list(TRAIT_SURVIVAL_EXPERT = 6)
 
 /datum/skill/craft/ceramics
 	name = "Pottery"
