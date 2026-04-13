@@ -14,16 +14,7 @@ Format:
 endmap
 
 map roguetest
-endmap
-
-map dun_world
-	votable
-endmap
-
-map rockhill
 	default
 	votable
 endmap
 
-map deserttown
-endmap
