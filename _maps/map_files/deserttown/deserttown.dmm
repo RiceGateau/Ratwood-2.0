@@ -1363,7 +1363,7 @@
 /turf/open/floor/rogue/citybrick/citybrick1,
 /area/rogue/outdoors/town/desert)
 "aHQ" = (
-/obj/structure/stairs/cw{
+/obj/structure/stairs{
 	dir = 8
 	},
 /turf/open/floor/rogue/wood/nosmooth,
@@ -10740,9 +10740,6 @@
 /area/rogue/indoors/town/desert)
 "eZp" = (
 /obj/structure/table/wood/long_table/mid/alt,
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
-	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -10882,9 +10879,6 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
-	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -17777,7 +17771,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/town/church/basement)
 "iiP" = (
-/obj/structure/stairs/ccw{
+/obj/structure/stairs{
 	dir = 4
 	},
 /turf/open/floor/rogue/wood/nosmooth,
@@ -20829,9 +20823,6 @@
 "jFz" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
-	},
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
 	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -25068,9 +25059,6 @@
 	pixel_x = -5
 	},
 /obj/structure/bell_common,
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
-	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -25522,9 +25510,6 @@
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable"
-	},
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
 	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -35664,9 +35649,6 @@
 	icon_state = "largetable";
 	pixel_x = -5
 	},
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
-	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -35691,13 +35673,13 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin/desert)
 "qjA" = (
-/obj/structure/lever{
-	redstone_id = "tavern_front_shutter";
-	pixel_x = 8;
-	pixel_y = 0
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/tile/harem1,
-/area/rogue/indoors/town/tavern/desert)
+/obj/machinery/light/rogue/candle,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/desert)
 "qjD" = (
 /obj/item/cushion/zybantine{
 	pixel_y = -12;
@@ -41783,17 +41765,6 @@
 "taP" = (
 /obj/structure/rack/rogue,
 /obj/item/candle/yellow,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tiledrab2"
 	},
@@ -42008,9 +41979,6 @@
 	pixel_x = -5
 	},
 /obj/item/book/rogue/cooking,
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
-	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -43069,9 +43037,6 @@
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "longtable"
-	},
-/obj/structure/bars/passage/shutter/hidden{
-	redstone_id = "tavern_front_shutter"
 	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -46294,10 +46259,6 @@
 /obj/structure/drape/desert,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/desert)
-"uZy" = (
-/obj/structure/stairs/ccw,
-/turf/open/floor/rogue/wood/nosmooth,
-/area/rogue/indoors/town/desert/warden)
 "uZB" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/sandbrick,
@@ -364369,7 +364330,7 @@ fqw
 fqw
 fqw
 vBt
-qjA
+xwP
 uso
 pTl
 hnW
@@ -384655,7 +384616,7 @@ iwx
 kfI
 fyO
 mcB
-puG
+lON
 lON
 kfI
 cji
@@ -384945,7 +384906,7 @@ kfI
 vVT
 dyg
 dyg
-puG
+lON
 pIF
 kfI
 iwx
@@ -385250,7 +385211,7 @@ dyg
 lON
 pIF
 kfI
-fnG
+iwx
 cji
 cji
 cji
@@ -385552,7 +385513,7 @@ ifE
 lON
 pIF
 qPY
-iwx
+fnG
 cip
 cji
 cji
@@ -385848,7 +385809,7 @@ iwx
 iwx
 iwx
 kfI
-hqF
+lON
 nRc
 kfI
 xoc
@@ -505454,9 +505415,9 @@ hUH
 hUH
 hUH
 kfI
-pJd
+qjA
 rSa
-hFd
+vwY
 byH
 kfI
 hUH
@@ -506058,7 +506019,7 @@ hUH
 hUH
 hUH
 kfI
-hTJ
+rSa
 rSa
 vwY
 fyY
@@ -511193,7 +511154,7 @@ hUH
 hUH
 vmr
 iiP
-equ
+wTH
 wTH
 vmr
 kFt
@@ -513609,7 +513570,7 @@ hUH
 hUH
 vmr
 aHQ
-smz
+wTH
 wTH
 vmr
 kFt
@@ -635321,7 +635282,7 @@ ajH
 wTH
 drK
 jVc
-uZy
+fuI
 vmr
 hUH
 hUH
