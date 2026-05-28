@@ -255,6 +255,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["crt"]				>> crt
 	S["grain"]				>> grain
 	S["sexable"]			>> sexable
+	S["virginity"]			>> virginity
 	S["chastenable"]		>> chastenable
 	S["chastity_hardmode"]	>> chastity_hardmode
 	S["extreme_erp"]		>> extreme_erp
@@ -339,6 +340,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_style		= sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
 	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings 	= sanitize_islist(key_bindings, list())
+	virginity 		= sanitize_integer(virginity, FALSE, TRUE, FALSE)
 
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
@@ -442,6 +444,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["patreon_say_color_enabled"], patreon_say_color_enabled)
 	WRITE_FILE(S["compliance_notifs"], compliance_notifs)
 	WRITE_FILE(S["skillcap_notifs"], skillcap_notifs)
+	WRITE_FILE(S["virginity"], virginity)
 
 	return TRUE
 

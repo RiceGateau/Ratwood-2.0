@@ -111,6 +111,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/phobia = "spiders"
 	var/shake = TRUE
 	var/sexable = FALSE
+	var/virgin = FALSE
 	var/chastenable = FALSE
 	var/chastity_hardmode = CHASTITY_HARDMODE_DISABLED
 	var/extreme_erp = FALSE
@@ -712,6 +713,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Rumours & Noble Gossip:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><br><a href='?_src_=prefs;preference=rumour;task=input'>Set Rumours</a><a href='?_src_=prefs;preference=gossip;task=input'>Set Gossip</a><a href='?_src_=prefs;preference=rumour_preview;task=input'><i>Preview</i></a>"
 
 			dat += "<br><b>ERP Preferences:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=erpprefs;task=input'>Change</a>"
+			dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
 			dat += "<br><b>Song:</b> <a href='?_src_=prefs;preference=ooc_extra;task=input'>Change URL</a>"
 			dat += "<a href='?_src_=prefs;preference=change_title;task=input'>Change Title</a>"
 			dat += "<a href='?_src_=prefs;preference=change_artist;task=input'>Change Artist</a>"
@@ -2187,7 +2189,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					erpprefs = new_erpprefs
 					to_chat(user, "<span class='notice'>Successfully updated ERP Preferences.</span>")
 					log_game("[user] has set their ERP preferences'.")
-
+				if("be_virgin")
+					virginity = !virginity
+					if(virginity)
+						to_chat(user, span_notice("You have not once indulged in the temptations of the flesh.")) 
+					else
+						to_chat(user, span_notice("You have. In a word. Fucked before.")) //Someone word this better please kitty is high and words are hard
 				if("img_gallery")
 
 					if(img_gallery.len >= 3)
@@ -3202,6 +3209,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 	// Rumours / Noble gossip
 	character.rumour = rumour
+
 	character.noble_gossip = noble_gossip
 
 	character.nsfwflavortext = nsfwflavortext
@@ -3211,6 +3219,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.nsfw_ooc_extra_img_link = nsfw_ooc_extra_img_link
 
 	character.erpprefs = erpprefs
+
+	character.virginity = virginity
 
 	character.img_gallery = img_gallery
 
